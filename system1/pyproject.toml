@@ -42,6 +42,7 @@ system1 = "system1.cli:main"
 dev = [
     "pytest>=8.0.0",
     "ipykernel>=6.0.0",
+    "jiwer>=3.0.0",
 ]
 
 [build-system]
