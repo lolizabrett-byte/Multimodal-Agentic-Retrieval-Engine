@@ -6,15 +6,22 @@
   "properties": {
     "scene_id": {"type": "string", "minLength": 1},
     "video_id": {"type": "string", "minLength": 1},
-    "summary_vi": {"type": "string", "minLength": 1},
-    "summary_en": {"type": "string", "minLength": 1},
+    "summary_vi": {"type": "string"},
+    "summary_en": {"type": "string"},
     "provider": {"enum": ["gemini", "qwen_local", "vintern_local"]},
     "model_name": {"type": "string", "minLength": 1},
     "model_version": {"type": "string", "minLength": 1},
     "prompt_version": {"type": "string", "minLength": 1},
     "schema_version": {"type": "string", "minLength": 1},
     "confidence": {"type": ["number", "null"]},
-    "status": {"const": "pass"}
+    "status": {"enum": ["pass", "failed"]}
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "if": {"properties": {"status": {"const": "pass"}}},
+  "then": {
+    "properties": {
+      "summary_vi": {"type": "string", "minLength": 1},
+      "summary_en": {"type": "string", "minLength": 1}
+    }
+  }
 }

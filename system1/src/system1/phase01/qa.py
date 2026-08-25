@@ -113,6 +113,8 @@ def _collect_artifact_candidates(
         for row in scene_rows:
             scene_id = str(row["scene_id"])
             summary = summary_by_scene[scene_id]
+            if summary.get("status") == "failed":
+                continue
             candidates["scene_summary"].append(
                 _review_row(
                     kind="scene_summary",

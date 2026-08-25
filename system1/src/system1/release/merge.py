@@ -258,12 +258,15 @@ def _build_structure_text_sources(
                 ))
     for row in scene_summaries.to_dict("records"):
         for language, column in (("vi", "summary_vi"), ("en", "summary_en")):
+            text = str(row.get(column, "")).strip()
+            if not text:
+                continue
             rows.append(_text_source(
                 str(row.get("video_id", "")),
                 "scene",
                 str(row.get("scene_id", "")),
                 "scene_summary",
-                str(row.get(column, "")),
+                text,
                 str(row.get("provider", row.get("model_name", "scene_summary"))),
                 str(row.get("status", "pass")),
                 language,
