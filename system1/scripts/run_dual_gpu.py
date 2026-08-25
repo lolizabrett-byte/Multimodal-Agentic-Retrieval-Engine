@@ -33,7 +33,7 @@ def detect_gpu_count() -> int:
 
 
 def split_evenly(video_ids: list[str], parts: int) -> list[list[str]]:
-    """Chia đều, phần dư rải vào các nhóm đầu — không video nào bị mất."""
+    """Chia đều theo số lượng, phần dư rải vào các nhóm đầu."""
     if parts < 1:
         raise ValueError("parts must be positive")
     base, remainder = divmod(len(video_ids), parts)
@@ -44,6 +44,55 @@ def split_evenly(video_ids: list[str], parts: int) -> list[list[str]]:
         chunks.append(video_ids[cursor : cursor + size])
         cursor += size
     return chunks
+
+
+def split_by_weight(
+    video_ids: list[str], weights: dict[str, float], parts: int
+) -> list[list[str]]:
+    """Chia sao cho tổng thời lượng mỗi phần xấp xỉ nhau.
+
+    Video trong một batch chênh nhau tới 70 lần (36 giây đến 42 phút). Chia theo
+    số lượng để một GPU ôm hết video dài — nó chạy thêm nhiều giờ trong khi GPU
+    kia đã xong và ngồi không.
+
+    Xếp video dài trước, mỗi lần bỏ vào phần đang nhẹ nhất.
+    """
+    if parts < 1:
+        raise ValueError("parts must be positive")
+
+    buckets: list[list[str]] = [[] for _ in range(parts)]
+    totals = [0.0] * parts
+    counts = [0] * parts
+    ordered = sorted(video_ids, key=lambda vid: (-weights.get(vid, 0.0), vid))
+    for video_id in ordered:
+        # Đếm số video là tiêu chí phụ: nếu thiếu thời lượng thì mọi trọng số
+        # bằng 0 và mọi video sẽ dồn vào nhóm đầu, để GPU kia ngồi không.
+        target = min(range(parts), key=lambda index: (totals[index], counts[index]))
+        buckets[target].append(video_id)
+        totals[target] += weights.get(video_id, 0.0)
+        counts[target] += 1
+    return buckets
+
+
+def read_durations(release_dir: Path, video_ids: list[str]) -> dict[str, float]:
+    """Đọc thời lượng từ videos.parquet của Phase00. Thiếu thì trả rỗng."""
+    table = release_dir / "tables" / "videos.parquet"
+    if not table.is_file():
+        return {}
+    try:
+        import pandas as pd
+
+        frame = pd.read_parquet(table)
+    except Exception:
+        return {}
+    if not {"video_id", "duration_seconds"} <= set(frame.columns):
+        return {}
+    wanted = set(video_ids)
+    return {
+        str(row.video_id): float(row.duration_seconds)
+        for row in frame.itertuples()
+        if str(row.video_id) in wanted and row.duration_seconds
+    }
 
 
 def resolve_release_id(output_root: Path, batch_id: str) -> str:
@@ -159,7 +208,16 @@ def main() -> int:
         thread.join()
         return process.returncode
 
-    shards = split_evenly(video_ids, requested)
+    durations = read_durations(release_dir, video_ids)
+    if durations:
+        shards = split_by_weight(video_ids, durations, requested)
+        for index, shard in enumerate(shards):
+            minutes = sum(durations.get(vid, 0.0) for vid in shard) / 60
+            print(f"[dual-gpu] gpu{index}: {len(shard)} video, {minutes:.0f} phút nguồn")
+    else:
+        print("[dual-gpu] no durations in videos.parquet, splitting by count")
+        shards = split_evenly(video_ids, requested)
+
     processes: list[tuple[int, str, subprocess.Popen]] = []
     threads: list[threading.Thread] = []
 

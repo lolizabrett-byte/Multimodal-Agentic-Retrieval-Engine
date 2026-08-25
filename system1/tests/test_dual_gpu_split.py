@@ -69,3 +69,52 @@ def test_manifest_reader_skips_blank_lines(tmp_path: Path):
 def test_manifest_reader_reports_missing_file(tmp_path: Path):
     with pytest.raises(SystemExit, match="batch manifest not found"):
         read_manifest(tmp_path / "nope.txt")
+
+
+split_by_weight = run_dual_gpu.split_by_weight
+read_durations = run_dual_gpu.read_durations
+
+
+def test_weighted_split_balances_total_duration():
+    # Một video dài phải cân với nhiều video ngắn, không dồn hết vào một phía.
+    weights = {"long": 2400.0, **{f"short{i}": 60.0 for i in range(40)}}
+
+    shards = split_by_weight(list(weights), weights, 2)
+
+    totals = [sum(weights[vid] for vid in shard) for shard in shards]
+    assert abs(totals[0] - totals[1]) < max(totals) * 0.1
+
+
+def test_weighted_split_keeps_every_video_exactly_once():
+    weights = {f"V{i:03d}": float(i * 10 + 5) for i in range(37)}
+
+    shards = split_by_weight(list(weights), weights, 3)
+
+    seen = [vid for shard in shards for vid in shard]
+    assert sorted(seen) == sorted(weights)
+
+
+def test_weighted_split_beats_naive_split_on_skewed_batch():
+    videos = [f"V{i:02d}" for i in range(20)]
+    # Nửa đầu toàn video dài — đúng kiểu manifest xếp theo tên gây lệch.
+    weights = {vid: (2000.0 if index < 10 else 100.0) for index, vid in enumerate(videos)}
+
+    naive = split_evenly(videos, 2)
+    weighted = split_by_weight(videos, weights, 2)
+
+    naive_worst = max(sum(weights[v] for v in shard) for shard in naive)
+    weighted_worst = max(sum(weights[v] for v in shard) for shard in weighted)
+    assert weighted_worst < naive_worst
+
+
+def test_weighted_split_falls_back_when_weights_missing():
+    videos = ["a", "b", "c", "d"]
+
+    shards = split_by_weight(videos, {}, 2)
+
+    assert sorted(v for shard in shards for v in shard) == videos
+    assert all(shards)
+
+
+def test_read_durations_returns_empty_without_table(tmp_path: Path):
+    assert read_durations(tmp_path, ["a"]) == {}
