@@ -131,6 +131,10 @@ scene_grouping:
 scene_summary:
   max_representative_images: 12
   image_sampling: evenly_spaced_shots
+  # A batch that is mostly failures signals a systemic outage (provider down,
+  # bad prompt) rather than isolated per-scene flakiness — fail the stage loudly
+  # instead of shipping a mostly-empty summary table.
+  max_failed_ratio: 0.5
 
 manual_review:
   sample_size: 12

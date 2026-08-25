@@ -1,0 +1,9 @@
+Describe only what is visibly supported by the representative shot image and
+the provided OCR text.
+
+Reply with one JSON object and nothing else — no prose, no markdown fences:
+{"caption_vi": "<mô tả tiếng Việt>", "caption_en": "<English description>", "objects_vi": ["<vật thể>"], "objects_en": ["<object>"], "actions_vi": ["<hành động>"], "actions_en": ["<action>"], "scene_type": "<indoor|outdoor|unknown>"}
+
+Both captions must be non-empty and describe the same image. Arrays may be empty
+when nothing applies. Do not invent names, locations, intent, events, or text
+that are not supported by the image or OCR evidence.

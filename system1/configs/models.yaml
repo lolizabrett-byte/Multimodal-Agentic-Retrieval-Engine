@@ -91,7 +91,13 @@ phase01:
     # Vintern ships repetition_penalty 1.0, i.e. no penalty at all. The 355-image
     # benchmark that measured 97% valid JSON ran at 1.05, and still saw the model
     # repeat a phrase until it hit the token ceiling in 5 of its 9 failures.
-    repetition_penalty: 1.05
+    # Raised to 1.15 after the L23_V011 run: at 1.05 the model still emitted 768
+    # straight `!` tokens and ran newlines to the ceiling mid-JSON.
+    repetition_penalty: 1.15
+    # A soft penalty only discourages repeats; this forbids them outright. Size 12
+    # is well above the longest legitimate repeat in the JSON envelope (the `", "`
+    # field separators), so it stops degenerate loops without truncating captions.
+    no_repeat_ngram_size: 12
     # Model config caps dynamic tiling at 4. A 16:9 keyframe becomes 2 tiles,
     # so small on-screen text keeps twice the pixels it had when squashed to one.
     max_dynamic_patch: 4
@@ -108,14 +114,18 @@ phase01:
     trust_remote_code: true
     torch_dtype: float16
     device_map: cuda:0
-    prompt_version: shot_caption_v3
+    prompt_version: shot_caption_v4
     response_schema_version: shot_caption_response_v2
     max_new_tokens: 768
-    # Same reason as the OCR model above. Captions ask for nine bilingual fields,
+    # Same reason as the OCR model above. Captions ask for seven bilingual fields,
     # so an unpenalised repeat runs further before the ceiling stops it.
-    repetition_penalty: 1.05
+    repetition_penalty: 1.15
+    no_repeat_ngram_size: 12
     max_dynamic_patch: 4
     fallbacks:
+      # Gemini fallback stays on v2 (9 fields) on purpose: it is not subject to the
+      # local model's token budget, so there is no cost pressure to drop the two
+      # visible_text_summary_* fields here.
       - provider: gemini
         sdk: google-genai
         sdk_version: 2.13.0

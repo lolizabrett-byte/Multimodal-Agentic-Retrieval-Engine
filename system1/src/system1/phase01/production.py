@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import gc
 import json
+import logging
 import os
 import shutil
 import tempfile
@@ -31,6 +32,7 @@ from system1.keyframes import (
     select_keyframes_for_shot,
     write_keyframe_images,
 )
+from system1.media.contact_sheet import write_contact_sheet
 from system1.phase01.checkpoint import CheckpointManager, compute_fingerprint
 from system1.phase01.qa import write_manual_review_report
 from system1.phase01.scheduler import plan_runtime_chunks
@@ -1679,8 +1681,6 @@ def _build_captions(
             "objects_en": {"type": "array", "items": {"type": "string"}},
             "actions_vi": {"type": "array", "items": {"type": "string"}},
             "actions_en": {"type": "array", "items": {"type": "string"}},
-            "visible_text_summary_vi": {"type": "string"},
-            "visible_text_summary_en": {"type": "string"},
             "scene_type": {"type": "string"},
         },
         "required": [
@@ -1690,8 +1690,6 @@ def _build_captions(
             "objects_en",
             "actions_vi",
             "actions_en",
-            "visible_text_summary_vi",
-            "visible_text_summary_en",
             "scene_type",
         ],
         "additionalProperties": False,
@@ -1751,8 +1749,12 @@ def _build_captions(
             objects_en = _string_list(response, "objects_en")
             actions_vi = _string_list(response, "actions_vi")
             actions_en = _string_list(response, "actions_en")
-            visible_text_summary_vi = str(response.get("visible_text_summary_vi", ""))
-            visible_text_summary_en = str(response.get("visible_text_summary_en", ""))
+            # v4 dropped these fields from the prompt/schema — the model already has
+            # the OCR text in its input, so re-emitting it just burns tokens. Reuse
+            # the same OCR text the request was built from instead of asking again.
+            shot_ocr_text = ocr_by_keyframe.get(keyframe_id, "")
+            visible_text_summary_vi = shot_ocr_text
+            visible_text_summary_en = shot_ocr_text
             scene_type = str(response.get("scene_type", ""))
             provider = str(response.get("__provider", model_config["provider"]))
             model_name = str(response.get("__model_id", model_config["model_id"]))
@@ -1837,10 +1839,12 @@ def _build_scene_evidence(shots, keyframes, ocr_rows, captions, asr_rows, links,
             if str(row["text"]).strip()
         )
         caption = caption_by_shot.get(shot_id)
-        if caption is None or caption.get("status") == "failed":
-            # Shot's caption request failed the batch — skip it from evidence
-            # instead of raising, so the rest of the video still packages.
-            continue
+        caption_failed = caption is None or caption.get("status") == "failed"
+        if caption_failed:
+            # group_scenes indexes evidence by shot position, so a dropped row
+            # would misalign every later shot. Emit an empty-text placeholder:
+            # the keyframe image still carries evidence for boundary judging.
+            caption = {}
         shot_ocr = [
             ocr_by_keyframe[str(row["keyframe_id"])]
             for row in frames
@@ -1852,7 +1856,8 @@ def _build_scene_evidence(shots, keyframes, ocr_rows, captions, asr_rows, links,
             / "keyframes"
             / Path(str(representative["keyframe_ref"])).name,
             "early_path": role_paths.get("early"), "late_path": role_paths.get("late"),
-            "caption_vi": caption["caption_vi"], "caption_en": caption["caption_en"],
+            "caption_missing": caption_failed,
+            "caption_vi": caption.get("caption_vi", ""), "caption_en": caption.get("caption_en", ""),
             "objects_vi": _string_list(caption, "objects_vi"), "objects_en": _string_list(caption, "objects_en"),
             "actions_vi": _string_list(caption, "actions_vi"), "actions_en": _string_list(caption, "actions_en"),
             "visible_text_summary_vi": caption.get("visible_text_summary_vi", ""),
@@ -1893,12 +1898,23 @@ def _build_scene_summaries(*, video_id, scenes, shots, keyframes, ocr_rows, capt
         sampled_shots = _evenly_sample(
             scene_shots, int(summary_config["max_representative_images"])
         )
-        image_paths = tuple(
-            stage_dir
-            / "keyframes"
-            / Path(str(representative[str(shot["shot_id"])]["keyframe_ref"])).name
+        sheet_tiles = [
+            (
+                stage_dir
+                / "keyframes"
+                / Path(str(representative[str(shot["shot_id"])]["keyframe_ref"])).name,
+                str(shot["shot_id"]),
+            )
             for shot in sampled_shots
+        ]
+        sheet_path = (
+            stage_dir
+            / "diagnostics"
+            / "scene_summaries"
+            / f"{scene['scene_id']}.jpg"
         )
+        contact_sheet = write_contact_sheet(sheet_tiles, sheet_path)
+        image_paths = (contact_sheet,) if contact_sheet is not None else ()
         shot_evidence = []
         for shot in scene_shots:
             shot_id = str(shot["shot_id"])
@@ -1924,37 +1940,68 @@ def _build_scene_summaries(*, video_id, scenes, shots, keyframes, ocr_rows, capt
                 ],
             })
         evidence = {"shots": shot_evidence, "transcript": [asr_by_id[str(link["asr_segment_id"])]["text"] for link in links_by_scene.get(str(scene["scene_id"]), [])], "timeline": [scene["start_sec"], scene["end_sec"]]}
-        response = client.request(
-            StructuredRequest(
-                request_kind="scene_summary",
-                video_id=video_id,
-                prompt=prompt_base
-                + "\n\nSCENE EVIDENCE:\n"
-                + json.dumps(evidence, ensure_ascii=False),
-                prompt_version=str(model_config["prompt_version"]),
-                response_schema_version=str(
-                    model_config["response_schema_version"]
-                ),
-                response_schema=schema,
-                image_paths=image_paths,
-                identity={"scene_id": scene["scene_id"]},
+        try:
+            response = client.request(
+                StructuredRequest(
+                    request_kind="scene_summary",
+                    video_id=video_id,
+                    prompt=prompt_base
+                    + "\n\nSCENE EVIDENCE:\n"
+                    + json.dumps(evidence, ensure_ascii=False),
+                    prompt_version=str(model_config["prompt_version"]),
+                    response_schema_version=str(
+                        model_config["response_schema_version"]
+                    ),
+                    response_schema=schema,
+                    image_paths=image_paths,
+                    identity={"scene_id": scene["scene_id"]},
+                )
             )
-        )
-        rows.append({
-            "scene_id": scene["scene_id"],
-            "video_id": video_id,
-            "summary_vi": _required_text(response, "summary_vi"),
-            "summary_en": _required_text(response, "summary_en"),
-            "provider": str(response.get("__provider", model_config["provider"])),
-            "model_name": str(response.get("__model_id", model_config["model_id"])),
-            "model_version": str(
-                response.get("__model_revision", model_config["model_revision"])
-            ),
-            "prompt_version": model_config["prompt_version"],
-            "schema_version": model_config["response_schema_version"],
-            "confidence": None,
-            "status": "pass",
-        })
+            rows.append({
+                "scene_id": scene["scene_id"],
+                "video_id": video_id,
+                "summary_vi": _required_text(response, "summary_vi"),
+                "summary_en": _required_text(response, "summary_en"),
+                "provider": str(response.get("__provider", model_config["provider"])),
+                "model_name": str(response.get("__model_id", model_config["model_id"])),
+                "model_version": str(
+                    response.get("__model_revision", model_config["model_revision"])
+                ),
+                "prompt_version": model_config["prompt_version"],
+                "schema_version": model_config["response_schema_version"],
+                "confidence": None,
+                "status": "pass",
+            })
+        except Exception as exc:  # noqa: BLE001 - preserve per-scene degradation
+            if _retryable_video_error(exc):
+                # Infrastructure faults (OOM, timeouts, 5xx) are systemic, not
+                # scene-specific — surface them instead of masking as "failed".
+                raise
+            logging.getLogger(__name__).warning(
+                "scene_summary failed for scene_id=%s video_id=%s: %s",
+                scene["scene_id"], video_id, str(exc)[:200],
+            )
+            rows.append({
+                "scene_id": scene["scene_id"],
+                "video_id": video_id,
+                "summary_vi": "",
+                "summary_en": "",
+                "provider": str(model_config["provider"]),
+                "model_name": str(model_config["model_id"]),
+                "model_version": str(model_config["model_revision"]),
+                "prompt_version": model_config["prompt_version"],
+                "schema_version": model_config["response_schema_version"],
+                "confidence": None,
+                "status": "failed",
+            })
+    failed_count = sum(1 for row in rows if row["status"] == "failed")
+    if rows:
+        max_failed_ratio = float((summary_config or {}).get("max_failed_ratio", 0.5))
+        if failed_count / len(rows) > max_failed_ratio:
+            raise RuntimeError(
+                f"scene_summaries stage exceeded max_failed_ratio: "
+                f"{failed_count}/{len(rows)} scenes failed"
+            )
     return rows
 
 
