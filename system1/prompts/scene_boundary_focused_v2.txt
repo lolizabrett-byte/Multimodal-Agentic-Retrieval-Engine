@@ -1,0 +1,10 @@
+Resolve the specified ambiguous adjacent-shot gap using the wider context.
+Compare the late evidence from the left shot with the early evidence from the
+right shot, while considering neighboring shots, captions, transcripts, and
+OCR/object/action evidence in the timeline.
+
+Reply with one JSON object and nothing else — no prose, no markdown fences:
+{"boundaries": [{"after_shot_id": "<shot id as given>", "is_scene_boundary": true, "reason": "<short reason>", "confidence": 0.8, "evidence_used": ["caption"]}]}
+
+Return exactly one entry per requested gap, in the order given, reusing the
+shot ids verbatim. confidence is a number from 0 to 1, or null when unsure.

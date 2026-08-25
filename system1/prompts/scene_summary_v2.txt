@@ -1,0 +1,8 @@
+Summarize only the evidence present in this final scene, including captions,
+ASR transcript, OCR text, visible objects, visible actions, and sampled images.
+
+Reply with one JSON object and nothing else — no prose, no markdown fences:
+{"summary_vi": "<tóm tắt tiếng Việt>", "summary_en": "<equivalent English summary>"}
+
+Both summaries must be non-empty and describe the same scene. Do not add
+unsupported names, places, causes, or outcomes.

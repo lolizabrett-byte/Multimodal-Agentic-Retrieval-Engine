@@ -85,7 +85,7 @@ phase01:
     # shard a model that fits on one card, adding cross-GPU hops for nothing.
     torch_dtype: float16
     device_map: cuda:0
-    prompt_version: keyframe_ocr_v1
+    prompt_version: keyframe_ocr_v2
     response_schema_version: keyframe_ocr_response_v1
     max_new_tokens: 512
     # Model config caps dynamic tiling at 4. A 16:9 keyframe becomes 2 tiles,
@@ -104,7 +104,7 @@ phase01:
     trust_remote_code: true
     torch_dtype: float16
     device_map: cuda:0
-    prompt_version: shot_caption_v2
+    prompt_version: shot_caption_v3
     response_schema_version: shot_caption_response_v2
     max_new_tokens: 768
     max_dynamic_patch: 4
@@ -121,9 +121,9 @@ phase01:
   scene_boundary:
     provider: vintern_local
     model_key: shot_caption
-    prompt_version: scene_boundary_primary_v1
-    focused_prompt_version: scene_boundary_focused_v1
-    consistency_prompt_version: scene_boundary_consistency_v1
+    prompt_version: scene_boundary_primary_v2
+    focused_prompt_version: scene_boundary_focused_v2
+    consistency_prompt_version: scene_boundary_consistency_v2
     response_schema_version: scene_boundary_response_v1
     fallbacks:
       - provider: gemini
@@ -136,7 +136,7 @@ phase01:
   scene_summary:
     provider: vintern_local
     model_key: shot_caption
-    prompt_version: scene_summary_v1
+    prompt_version: scene_summary_v2
     response_schema_version: scene_summary_response_v1
     fallbacks:
       - provider: gemini
