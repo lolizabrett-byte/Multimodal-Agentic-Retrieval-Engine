@@ -97,15 +97,23 @@ def test_phase01_config_encodes_one_fixed_production_pipeline() -> None:
     # Vintern-3B fits a 16 GB T4 at fp16, so captioning runs unquantised.
     assert "quantization" not in models["phase01"]["shot_caption"]
     assert models["phase01"]["shot_caption"]["torch_dtype"] == "float16"
-    # Scene stages inherit the captioning model via model_key. Their declared
+    # scene_summary inherits the captioning model via model_key. Its declared
     # provider must track it — a stale one would load Vintern weights through
     # the Qwen code path.
-    for stage in ("scene_boundary", "scene_summary"):
-        assert models["phase01"][stage]["model_key"] == "shot_caption"
-        assert (
-            models["phase01"][stage]["provider"]
-            == models["phase01"]["shot_caption"]["provider"]
-        )
+    assert models["phase01"]["scene_summary"]["model_key"] == "shot_caption"
+    assert (
+        models["phase01"]["scene_summary"]["provider"]
+        == models["phase01"]["shot_caption"]["provider"]
+    )
+    # scene_boundary runs Qwen-7B on its own weights: Vintern-3B could not hold
+    # the boundary schema (bare arrays, misspelled keys, invented shot ids).
+    boundary = models["phase01"]["scene_boundary"]
+    assert "model_key" not in boundary
+    assert boundary["provider"] == "qwen_local"
+    assert boundary["model_id"] == "Qwen/Qwen2.5-VL-7B-Instruct"
+    # qwen_local refuses to load without an explicit 4bit block, and 7B only
+    # fits a T4 quantised.
+    assert boundary["quantization"]["mode"] == "4bit"
     assert set(models["phase01"]["asr_providers"]) == {"faster_whisper", "nemo"}
 
 
@@ -282,8 +290,18 @@ def test_semantic_policies_change_only_relevant_stage_hashes() -> None:
     caption_runtime_changed = copy.deepcopy(resolved.payload)
     caption_runtime_changed["models"]["shot_caption"]["max_dynamic_patch"] = 1
     caption_hashes = _stage_config_hashes(caption_runtime_changed)
-    for stage in ("shot_captions", "scenes", "scene_summaries"):
+    # `scenes` runs its own model now, so caption runtime settings no longer
+    # reach it. `scene_summaries` still inherits the caption model via model_key.
+    for stage in ("shot_captions", "scene_summaries"):
         assert caption_hashes[stage] != resolved.stage_config_hashes[stage]
+    assert caption_hashes["scenes"] == resolved.stage_config_hashes["scenes"]
+
+    boundary_runtime_changed = copy.deepcopy(resolved.payload)
+    boundary_runtime_changed["models"]["scene_boundary"]["max_new_tokens"] = 123
+    boundary_runtime_hashes = _stage_config_hashes(boundary_runtime_changed)
+    assert (
+        boundary_runtime_hashes["scenes"] != resolved.stage_config_hashes["scenes"]
+    )
 
     boundary_changed = copy.deepcopy(resolved.payload)
     boundary_changed["models"]["scene_boundary"]["provider"] = "gemini"
@@ -617,7 +635,13 @@ def test_semantic_stages_resolve_to_one_consistent_local_provider() -> None:
 
     for stage_name in ("scene_boundary", "scene_summary"):
         stage = copy.deepcopy(models[stage_name])
-        model_key = stage.pop("model_key")
+        model_key = stage.pop("model_key", None)
+        if model_key is None:
+            # Stage declares its own weights, so there is nothing to inherit.
+            # It still has to name both halves itself.
+            assert stage["provider"]
+            assert stage["model_id"]
+            continue
         resolved = {**copy.deepcopy(models[model_key]), **stage}
 
         assert resolved["provider"] == models[model_key]["provider"]
