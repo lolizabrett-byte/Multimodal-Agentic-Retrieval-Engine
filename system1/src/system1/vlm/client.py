@@ -767,10 +767,10 @@ class LocalVisionStructuredClient:
                     ),
                 )
                 device = str(self.model_config.get("device_map", "cuda:0"))
-                # InternVisionEncoder.__init__ calls .item() on a torch.linspace
-                # result. low_cpu_mem_usage builds the model under the meta
-                # device, where .item() raises, so it has to stay off for this
-                # architecture. Materialise on CPU, then move to one device.
+                # No device_map here: accelerate cannot fully dispatch InternVL's
+                # remote code, so the model is materialised once and moved to a
+                # single card. low_cpu_mem_usage stays on — Kaggle shares ~13 GB
+                # of host RAM between both GPU workers.
                 model = AutoModel.from_pretrained(
                     self.model_id,
                     revision=self.model_revision,
@@ -778,7 +778,7 @@ class LocalVisionStructuredClient:
                         self.model_config.get("torch_dtype", "float16"), torch
                     ),
                     low_cpu_mem_usage=bool(
-                        self.model_config.get("low_cpu_mem_usage", False)
+                        self.model_config.get("low_cpu_mem_usage", True)
                     ),
                     trust_remote_code=bool(
                         self.model_config.get("trust_remote_code", True)
