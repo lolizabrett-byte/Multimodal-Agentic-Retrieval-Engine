@@ -295,10 +295,13 @@ class LocalVisionStructuredClient:
         self.inference_batch_size = int(
             self.model_config.get("inference_batch_size", 1)
         )
+        self.max_dynamic_patch = int(self.model_config.get("max_dynamic_patch", 1))
         if self.total_attempts < 1:
             raise ValueError("local VLM total_attempts must be positive")
         if self.inference_batch_size < 1:
             raise ValueError("local VLM inference_batch_size must be positive")
+        if self.max_dynamic_patch < 1:
+            raise ValueError("local VLM max_dynamic_patch must be positive")
         self._cache_lock = threading.Lock()
         self._model_lock = threading.Lock()
         self._loaded: tuple[Any, ...] | None = None
@@ -614,9 +617,17 @@ class LocalVisionStructuredClient:
         pixel_values: Any = None
         try:
             tensors = [
-                _vintern_pixel_values(request.image_paths[0]) for request in requests
+                _vintern_pixel_values(request.image_paths[0], self.max_dynamic_patch)
+                for request in requests
             ]
+            num_patches_list = [int(tensor.shape[0]) for tensor in tensors]
             pixel_values = torch.cat(tensors, dim=0).to(_model_device(model))
+            if sum(num_patches_list) != int(pixel_values.shape[0]):
+                raise RuntimeError(
+                    "vintern_local patch bookkeeping mismatch: "
+                    f"num_patches_list sums to {sum(num_patches_list)} but "
+                    f"pixel_values has {int(pixel_values.shape[0])} tiles"
+                )
             try:
                 dtype = next(model.parameters()).dtype
                 pixel_values = pixel_values.to(dtype=dtype)
@@ -639,7 +650,7 @@ class LocalVisionStructuredClient:
                         pixel_values,
                         prompts,
                         generation_config,
-                        num_patches_list=[1] * len(requests),
+                        num_patches_list=num_patches_list,
                     )
                 else:
                     output = model.chat(
@@ -738,6 +749,7 @@ class LocalVisionStructuredClient:
             started = time.monotonic()
             _reset_cuda_peak_memory()
             try:
+                import torch
                 from transformers import AutoModel, AutoTokenizer
             except ImportError as exc:  # pragma: no cover - production dependency guard
                 raise SystemicProviderError(
@@ -757,8 +769,10 @@ class LocalVisionStructuredClient:
                 model = AutoModel.from_pretrained(
                     self.model_id,
                     revision=self.model_revision,
-                    torch_dtype=self.model_config.get("torch_dtype", "auto"),
-                    device_map=self.model_config.get("device_map", "auto"),
+                    torch_dtype=_supported_torch_dtype(
+                        self.model_config.get("torch_dtype", "float16"), torch
+                    ),
+                    device_map=self.model_config.get("device_map", "cuda:0"),
                     low_cpu_mem_usage=bool(
                         self.model_config.get("low_cpu_mem_usage", True)
                     ),
@@ -860,6 +874,23 @@ def _torch_dtype(value: Any, torch: Any):
     if attribute is None:
         raise ValueError(f"unsupported torch dtype: {value}")
     return getattr(torch, attribute)
+
+
+def _supported_torch_dtype(value: Any, torch: Any):
+    """Downgrade bfloat16 to float16 on GPUs that lack bf16 (Kaggle's T4 is Turing).
+
+    Vintern checkpoints ship as bfloat16, so loading them verbatim on a T4 either
+    errors or silently falls back to a slow emulated path.
+    """
+    resolved = _torch_dtype(value, torch)
+    if resolved is not getattr(torch, "bfloat16", object()):
+        return resolved
+    try:
+        if torch.cuda.is_available() and not torch.cuda.is_bf16_supported():
+            return torch.float16
+    except Exception:  # pragma: no cover - probing must never break loading
+        return torch.float16
+    return resolved
 
 
 def _client_request_many(
@@ -981,13 +1012,69 @@ def _model_device(model: Any):
         return "cpu"
 
 
-def _vintern_pixel_values(image_path: Path):
+_VINTERN_TILE_SIZE = 448
+
+
+def _closest_tile_grid(
+    aspect_ratio: float, candidates: list[tuple[int, int]], width: int, height: int
+) -> tuple[int, int]:
+    best_ratio = (1, 1)
+    best_diff = float("inf")
+    area = width * height
+    for columns, rows in candidates:
+        candidate_ratio = columns / rows
+        diff = abs(aspect_ratio - candidate_ratio)
+        if diff < best_diff:
+            best_diff = diff
+            best_ratio = (columns, rows)
+        elif diff == best_diff:
+            if area > 0.5 * _VINTERN_TILE_SIZE * _VINTERN_TILE_SIZE * columns * rows:
+                best_ratio = (columns, rows)
+    return best_ratio
+
+
+def _vintern_tiles(image: Image.Image, max_num: int) -> list[Image.Image]:
+    """Split into 448px tiles on the grid whose shape is closest to the source.
+
+    Matches the InternVL dynamic_preprocess contract the model was trained on.
+    A single squashed tile destroys small text — the exact content OCR exists to read.
+    """
+    if max_num <= 1:
+        return [image.resize((_VINTERN_TILE_SIZE, _VINTERN_TILE_SIZE))]
+
+    width, height = image.size
+    candidates = sorted(
+        {
+            (columns, rows)
+            for total in range(1, max_num + 1)
+            for columns in range(1, total + 1)
+            for rows in range(1, total + 1)
+            if 1 <= columns * rows <= max_num
+        },
+        key=lambda grid: grid[0] * grid[1],
+    )
+    columns, rows = _closest_tile_grid(width / height, candidates, width, height)
+    resized = image.resize((_VINTERN_TILE_SIZE * columns, _VINTERN_TILE_SIZE * rows))
+    return [
+        resized.crop(
+            (
+                (index % columns) * _VINTERN_TILE_SIZE,
+                (index // columns) * _VINTERN_TILE_SIZE,
+                ((index % columns) + 1) * _VINTERN_TILE_SIZE,
+                ((index // columns) + 1) * _VINTERN_TILE_SIZE,
+            )
+        )
+        for index in range(columns * rows)
+    ]
+
+
+def _vintern_pixel_values(image_path: Path, max_num: int = 1):
     import torch
 
     with Image.open(image_path) as opened:
-        image = opened.convert("RGB").resize((448, 448))
-    array = np.asarray(image).astype("float32") / 255.0
-    tensor = torch.from_numpy(array).permute(2, 0, 1)
-    mean = torch.tensor([0.485, 0.456, 0.406], dtype=tensor.dtype).view(3, 1, 1)
-    std = torch.tensor([0.229, 0.224, 0.225], dtype=tensor.dtype).view(3, 1, 1)
-    return ((tensor - mean) / std).unsqueeze(0)
+        tiles = _vintern_tiles(opened.convert("RGB"), max_num)
+    array = np.stack([np.asarray(tile) for tile in tiles]).astype("float32") / 255.0
+    tensor = torch.from_numpy(array).permute(0, 3, 1, 2)
+    mean = torch.tensor([0.485, 0.456, 0.406], dtype=tensor.dtype).view(1, 3, 1, 1)
+    std = torch.tensor([0.229, 0.224, 0.225], dtype=tensor.dtype).view(1, 3, 1, 1)
+    return (tensor - mean) / std

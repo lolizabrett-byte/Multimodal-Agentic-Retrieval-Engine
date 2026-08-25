@@ -18,6 +18,9 @@ from system1.vlm.client import (
 class _FakeTensor:
     dtype = "torch.float32"
 
+    def __init__(self, tiles: int = 1) -> None:
+        self.shape = (tiles, 3, 448, 448)
+
     def to(self, *_args, **_kwargs):
         return self
 
@@ -27,7 +30,9 @@ def _install_fake_torch(monkeypatch):
     module.float16 = "torch.float16"
     module.bfloat16 = "torch.bfloat16"
     module.float32 = "torch.float32"
-    module.cat = lambda _tensors, dim=0: _FakeTensor()
+    module.cat = lambda tensors, dim=0: _FakeTensor(
+        sum(tensor.shape[0] for tensor in tensors)
+    )
 
     class NoGrad:
         def __enter__(self):
@@ -481,7 +486,7 @@ def test_vintern_uses_native_batch_chat_when_available(
     monkeypatch.setattr(client, "_load_vintern", lambda: (FakeTokenizer(), model))
     monkeypatch.setattr(
         "system1.vlm.client._vintern_pixel_values",
-        lambda _path: _FakeTensor(),
+        lambda _path, _max_num=1: _FakeTensor(),
     )
     requests = _image_requests(tmp_path, prompts=["a", "b"])
 
@@ -521,7 +526,7 @@ def test_vintern_without_native_batch_safely_uses_one_request(
     monkeypatch.setattr(client, "_load_vintern", lambda: (object(), model))
     monkeypatch.setattr(
         "system1.vlm.client._vintern_pixel_values",
-        lambda _path: _FakeTensor(),
+        lambda _path, _max_num=1: _FakeTensor(),
     )
 
     responses = client.request_many(_image_requests(tmp_path, prompts=["a", "b"]))
@@ -663,3 +668,99 @@ def test_repeated_batch_one_oom_opens_circuit_and_uses_gemini(monkeypatch) -> No
     assert response == {"value": "fallback"}
     assert attempts == 2
     assert client.circuit_open is True
+
+
+def _write_image(path: Path, width: int, height: int) -> Path:
+    from PIL import Image
+
+    Image.new("RGB", (width, height), (128, 128, 128)).save(path)
+    return path
+
+
+def test_wide_frame_is_split_into_multiple_tiles(tmp_path: Path) -> None:
+    pytest.importorskip("torch")
+    from system1.vlm.client import _vintern_pixel_values
+
+    image = _write_image(tmp_path / "wide.jpg", 1920, 1080)
+
+    tensor = _vintern_pixel_values(image, 4)
+
+    assert tensor.shape[0] > 1
+    assert tensor.shape[1:] == (3, 448, 448)
+
+
+def test_max_num_one_keeps_legacy_single_tile_behaviour(tmp_path: Path) -> None:
+    pytest.importorskip("torch")
+    from system1.vlm.client import _vintern_pixel_values
+
+    image = _write_image(tmp_path / "wide.jpg", 1920, 1080)
+
+    tensor = _vintern_pixel_values(image, 1)
+
+    assert tensor.shape == (1, 3, 448, 448)
+
+
+def test_tile_count_never_exceeds_max_num(tmp_path: Path) -> None:
+    pytest.importorskip("torch")
+    from system1.vlm.client import _vintern_pixel_values
+
+    image = _write_image(tmp_path / "panorama.jpg", 2400, 480)
+
+    tensor = _vintern_pixel_values(image, 4)
+
+    assert 1 <= tensor.shape[0] <= 4
+
+
+def test_square_frame_uses_square_grid(tmp_path: Path) -> None:
+    pytest.importorskip("torch")
+    from system1.vlm.client import _vintern_tiles
+    from PIL import Image
+
+    with Image.new("RGB", (800, 800), (10, 10, 10)) as image:
+        tiles = _vintern_tiles(image, 4)
+
+    assert len(tiles) == 4
+
+
+def test_small_image_is_upscaled_without_error(tmp_path: Path) -> None:
+    pytest.importorskip("torch")
+    from system1.vlm.client import _vintern_pixel_values
+
+    image = _write_image(tmp_path / "tiny.jpg", 120, 90)
+
+    tensor = _vintern_pixel_values(image, 4)
+
+    assert tensor.shape[1:] == (3, 448, 448)
+
+
+def test_patch_bookkeeping_mismatch_is_rejected(tmp_path: Path, monkeypatch) -> None:
+    _install_fake_torch(monkeypatch)
+
+    class FakeModel:
+        def parameters(self):
+            return iter([])
+
+        def batch_chat(self, *_args, **_kwargs):
+            raise AssertionError("model must not be called on a mismatch")
+
+    client = LocalVisionStructuredClient(
+        model_config={
+            "provider": "vintern_local",
+            "model_id": "vintern",
+            "model_revision": "revision",
+            "inference_batch_size": 2,
+            "max_dynamic_patch": 4,
+        }
+    )
+    monkeypatch.setattr(client, "_load_vintern", lambda: (object(), FakeModel()))
+    # Tensor claims 2 tiles but torch.cat is stubbed to report 1 — the guard must catch it.
+    monkeypatch.setattr(
+        "system1.vlm.client._vintern_pixel_values",
+        lambda _path, _max_num=1: _FakeTensor(2),
+    )
+    monkeypatch.setattr("torch.cat", lambda _tensors, dim=0: _FakeTensor(1), raising=False)
+
+    with pytest.raises(Exception) as excinfo:
+        client._call_vintern_many(_image_requests(tmp_path, prompts=["a", "b"]))
+
+    assert "patch bookkeeping mismatch" in str(excinfo.value)
