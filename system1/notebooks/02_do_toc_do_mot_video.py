@@ -30,6 +30,12 @@ from pathlib import Path
 
 MEASURE_BATCH_SUFFIX = "_do1"
 
+# Đọc từ videos.parquet của canonical_release_v001 ngày 25/08: 873 video,
+# 7.840 phút nội dung. Suy ngân sách theo tổng thời lượng chứ không theo số
+# video — video ngắn nhất 0,5 phút, dài nhất 45,6 phút.
+TOTAL_VIDEOS = 873
+TOTAL_CONTENT_MINUTES = 7840.0
+
 
 def _require(name: str):
     value = globals().get(name)
@@ -101,8 +107,66 @@ def restore_phase00_only(*, repo_root: Path, output_root: Path, batch_id: str,
     return release_dir
 
 
-def pick_shortest_video(release_dir: Path, batch_id: str) -> tuple[str, float]:
-    """Video ngắn nhất trong batch — đo rẻ nhất mà vẫn đi hết mọi stage."""
+TARGET_MIN_SEC = 300.0
+TARGET_MAX_SEC = 600.0
+
+
+def pick_representative_video(
+    durations: dict[str, float],
+    *,
+    target_min_sec: float = TARGET_MIN_SEC,
+    target_max_sec: float = TARGET_MAX_SEC,
+) -> tuple[str, float, str | None]:
+    """Video gần giữa khoảng mục tiêu, kèm cảnh báo nếu phải chọn ngoài khoảng.
+
+    Đo trên video ngắn nhất cho số vô dụng: chi phí nạp model (~77s) chia cho một
+    video 30 giây làm đơn giá phồng lên nhiều lần.
+    """
+    if not durations:
+        raise ValueError("không có video nào kèm thời lượng để chọn")
+
+    middle = (target_min_sec + target_max_sec) / 2
+    in_range = {
+        video_id: seconds
+        for video_id, seconds in durations.items()
+        if target_min_sec <= seconds <= target_max_sec
+    }
+    if in_range:
+        chosen = min(in_range, key=lambda vid: abs(in_range[vid] - middle))
+        return chosen, durations[chosen], None
+
+    chosen = min(durations, key=lambda vid: abs(durations[vid] - middle))
+    warning = (
+        f"không có video nào trong khoảng {target_min_sec / 60:.0f}-"
+        f"{target_max_sec / 60:.0f} phút — lấy gần nhất "
+        f"({durations[chosen] / 60:.1f} phút); đơn giá sẽ kém đại diện"
+    )
+    return chosen, durations[chosen], warning
+
+
+def caption_valid_ratio(status_counts: dict[str, int]) -> float | None:
+    """Tỉ lệ shot có caption dùng được. None khi chưa caption shot nào."""
+    total = sum(status_counts.values())
+    if not total:
+        return None
+    return status_counts.get("pass", 0) / total
+
+
+def unit_cost_excluding_load(
+    *, stage_seconds: float, load_seconds: float | None, units: int
+) -> float | None:
+    """Giây mỗi đơn vị sau khi trừ thời gian nạp model.
+
+    Nạp model chỉ trả một lần mỗi chunk, nên để nó trong đơn giá sẽ ước tính thừa
+    khi suy ra cho hàng trăm video.
+    """
+    if units <= 0:
+        return None
+    net = stage_seconds - (load_seconds or 0.0)
+    return max(net, 0.0) / units
+
+
+def pick_video_to_measure(release_dir: Path, batch_id: str) -> tuple[str, float]:
     import pandas as pd
 
     manifest = release_dir / "manifests" / f"{batch_id}.txt"
@@ -125,11 +189,13 @@ def pick_shortest_video(release_dir: Path, batch_id: str) -> tuple[str, float]:
         print(f"[chon] videos.parquet không có duration — lấy video đầu: {chosen}")
         return chosen, 0.0
 
-    chosen, seconds = min(durations.items(), key=lambda item: item[1])
+    chosen, seconds, warning = pick_representative_video(durations)
     print(
         f"[chon] {len(video_ids)} video trong batch, "
-        f"ngắn nhất = {chosen} ({seconds / 60:.1f} phút)"
+        f"chọn {chosen} ({seconds / 60:.1f} phút)"
     )
+    if warning:
+        print(f"[chon] CẢNH BÁO: {warning}")
     return chosen, seconds
 
 
@@ -236,6 +302,41 @@ def summarise(parsed: dict, *, video_id: str, duration_sec: float,
     ocr_seconds = stages.get("ocr", 0.0)
     sec_per_image = (ocr_seconds / ocr_images) if ocr_images else None
 
+    load_by_stage: dict[str, float] = {}
+    for event in parsed["model_events"]:
+        if event.get("status") == "loaded" and event.get("load_seconds") is not None:
+            load_by_stage[str(event.get("stage"))] = float(event["load_seconds"])
+
+    # Stage caption không phát sự kiện đếm riêng. Sự kiện batch của model có đủ:
+    # mỗi shot đúng một request, nên request_count chính là số shot.
+    caption_batch = next(
+        (
+            event
+            for event in parsed["model_events"]
+            if event.get("stage") == "shot_captions"
+            and event.get("status") == "batch_complete"
+        ),
+        {},
+    )
+    caption_shots = int(caption_batch.get("request_count") or 0)
+    caption_failed = int(caption_batch.get("failed_request_count") or 0)
+    caption_ratio = caption_valid_ratio(
+        {"pass": caption_shots - caption_failed, "failed": caption_failed}
+    )
+    ocr_net = unit_cost_excluding_load(
+        stage_seconds=ocr_seconds,
+        load_seconds=load_by_stage.get("ocr"),
+        units=ocr_images,
+    )
+    caption_net = unit_cost_excluding_load(
+        stage_seconds=stages.get("shot_captions", 0.0),
+        load_seconds=load_by_stage.get("shot_captions"),
+        units=caption_shots,
+    )
+    shots_per_minute = (
+        (caption_shots / (duration_sec / 60)) if duration_sec and caption_shots else None
+    )
+
     # Mỗi stage có batch size riêng (ocr=4, shot_captions=2). Gộp chung rồi so
     # min với max sẽ báo "tụt xuống" cho một hệ thống hoàn toàn bình thường.
     by_stage: dict[str, dict[str, set[int]]] = {}
@@ -270,6 +371,23 @@ def summarise(parsed: dict, *, video_id: str, duration_sec: float,
         if sec_per_image > 0:
             print(f"  nhanh hon            : {1.35 / sec_per_image:.2f} lan")
 
+    print("\n-- caption --")
+    print(f"  so shot              : {caption_shots}")
+    if caption_ratio is not None:
+        print(f"  ti le hop le         : {caption_ratio * 100:.1f}%  ({caption_failed} loi)")
+    if caption_net is not None:
+        print(f"  giay/shot (tru nap)  : {caption_net:.2f}s")
+
+    print("\n-- don gia da tru chi phi nap model --")
+    for stage, seconds in sorted(load_by_stage.items()):
+        print(f"  nap {stage:16} {seconds:6.1f}s")
+    if ocr_net is not None:
+        print(f"  OCR     : {ocr_net:.3f} s/anh   (tho: {sec_per_image:.3f})")
+    if caption_net is not None:
+        print(f"  caption : {caption_net:.2f} s/shot")
+    if shots_per_minute is not None:
+        print(f"  mat do  : {shots_per_minute:.1f} shot/phut")
+
     print("\n-- batch (tung stage) --")
     if by_stage:
         for stage, slot in sorted(by_stage.items()):
@@ -281,23 +399,34 @@ def summarise(parsed: dict, *, video_id: str, duration_sec: float,
     else:
         print("  KHONG thay su kien batch nao trong log")
 
+    samples = []
+    for event in parsed["model_events"]:
+        samples.extend(event.get("failure_samples") or [])
+    if samples:
+        print("\n-- model tra ve gi khi loi --")
+        for sample in samples[:3]:
+            print(f"  [{sample.get('reason')}] dai {sample.get('raw_text_length')} ky tu")
+            print(f"    {str(sample.get('raw_text'))[:300]}")
+
     scene_ok = "scene_summaries" in stages
     print("\n-- scene_summaries (nghi ngo bug 12 anh) --")
     print(f"  stage chay xong : {'CO' if scene_ok else 'KHONG'}")
     if not scene_ok:
         print("  -> stage khong hoan tat. Doc log tim 'expects exactly one image'.")
 
-    # Suy ra ngân sách cho 88 video trên 2 GPU
+    # Suy ra ngân sách theo TỔNG THỜI LƯỢNG, không theo số video: video dài ngắn
+    # chênh nhau 90 lần (0,5 đến 45,6 phút) nên nhân số video ra số vô nghĩa.
     projected = None
-    if exit_code == 0 and wall_seconds > 0:
-        projected = 88 * wall_seconds / 3600 / 2
+    if exit_code == 0 and wall_seconds > 0 and duration_sec:
+        minutes_per_minute = (wall_seconds / 60) / (duration_sec / 60)
+        projected = TOTAL_CONTENT_MINUTES * minutes_per_minute / 60 / 2
         print("\n-- ngan sach suy ra --")
-        print(f"  1 video = {wall_seconds / 60:.1f} phut")
-        print(f"  88 video / 2 GPU = {projected:.1f} gio")
-        print(f"  han muc con      : 29 gio")
-        print(f"  ket luan         : {'DU' if projected <= 29 else f'THIEU {projected - 29:.1f} gio'}")
-        if duration_sec:
-            print(f"  (video nay {duration_sec / 60:.1f} phut — video dai hon se lau hon)")
+        print(f"  video nay: {duration_sec / 60:.1f} phut -> {wall_seconds / 60:.1f} phut xu ly")
+        print(f"  ti le    : {minutes_per_minute:.1f} phut xu ly / phut video")
+        print(f"  {TOTAL_VIDEOS} video ({TOTAL_CONTENT_MINUTES:,.0f} phut) / 2 GPU = {projected:.0f} gio")
+        print(f"  han muc  : 30 gio/tuan/tai khoan")
+        for accounts in (1, 2, 4):
+            print(f"     {accounts} tai khoan -> {projected / 30 / accounts:.1f} tuan")
 
     return {
         "video_id": video_id,
@@ -315,7 +444,15 @@ def summarise(parsed: dict, *, video_id: str, duration_sec: float,
             for stage, slot in sorted(by_stage.items())
         },
         "scene_summaries_completed": scene_ok,
-        "projected_hours_88_videos_2gpu": projected,
+        "caption_shots": caption_shots,
+        "caption_failed": caption_failed,
+        "caption_valid_ratio": caption_ratio,
+        "model_load_seconds": load_by_stage,
+        "ocr_seconds_per_image_net": ocr_net,
+        "caption_seconds_per_shot_net": caption_net,
+        "shots_per_minute": shots_per_minute,
+        "failure_samples": samples[:3],
+        "projected_hours_all_videos_2gpu": projected,
     }
 
 
@@ -332,7 +469,7 @@ def main() -> dict:
         batch_id=batch_id,
         worker_id=worker_id,
     )
-    video_id, duration_sec = pick_shortest_video(release_dir, batch_id)
+    video_id, duration_sec = pick_video_to_measure(release_dir, batch_id)
     measure_batch_id = write_single_video_manifest(release_dir, batch_id, video_id)
 
     log_path = output_root / f"do-toc-do-{measure_batch_id}.log"

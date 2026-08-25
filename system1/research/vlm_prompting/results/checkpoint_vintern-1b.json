@@ -1,0 +1,2213 @@
+{
+  "model_key": "vintern-1b",
+  "da_xong": {
+    "001.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "009.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "010.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "014.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "019.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "025.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "027.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "028.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "032.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "055.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "056.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "061.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "063.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "065.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "066.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "075.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "076.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "079.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "081.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "088.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "091.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "094.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "099.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "109.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "110.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "111.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "112.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "114.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "118.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "120.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "125.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "127.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "131.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "132.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "135.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "136.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "140.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "146.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "152.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "153.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "154.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "172.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "174.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "177.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "178.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "185.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "192.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "194.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "207.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "215.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "230.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "231.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "237.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "238.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "247.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "259.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "264.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "266.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "274.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "277.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "283.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "291.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "293.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "303.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "304.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "306.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "311.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "327.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "333.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "335.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "339.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "350.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "353.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "359.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "361.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "365.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "367.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "375.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "384.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "388.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "393.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "402.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "406.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "435.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "437.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "440.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "455.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "484.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "514.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "528.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "566.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    },
+    "611.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 0.0,
+      "ket_qua": {
+        "doi_tuong": [
+          "[mock]"
+        ],
+        "mau_sac": [
+          "[mock]"
+        ],
+        "hanh_dong": "[mock]",
+        "boi_canh": "[mock]",
+        "caption_chi_tiet": "[DỮ LIỆU GIẢ - không phải kết quả model] Ảnh kích thước (1280, 720). Lý do dùng mock: transformers init failed: Không nạp được 5CD-AI/Vintern-1B-v3_5: 'InternVLChatModel' object has no attribute 'all_tied_weights_keys'",
+        "caption_en": "[MOCK DATA - not a real model output]",
+        "_model": "mock(5CD-AI/Vintern-1B-v3_5)",
+        "_model_key": "vintern-1b",
+        "_backend": "mock",
+        "_latency_sec": 0.0,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 0.0
+      },
+      "loi": null
+    }
+  }
+}

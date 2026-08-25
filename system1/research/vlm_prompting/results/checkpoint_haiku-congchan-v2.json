@@ -1,0 +1,688 @@
+{
+  "model_key": "haiku-congchan-v2",
+  "da_xong": {
+    "004.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nền xanh dương",
+          "dòng chữ hiệu ứng"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "vàng cam"
+        ],
+        "hanh_dong": "hiển thị tiêu đề bài học",
+        "boi_canh": "màn hình giảng dạy trực tuyến",
+        "caption_chi_tiet": "Một màn hình xanh dương hiển thị tiêu đề bài học về hóa học với chữ vàng cam nổi bật và dòng chữ xanh đậm bên dưới, cùng thông tin giảng viên.",
+        "caption_en": "A blue screen displaying a chemistry lesson title with prominent orange text and dark blue text below, along with instructor information."
+      },
+      "loi": null
+    },
+    "017.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "thầy giáo nam",
+          "laptop",
+          "sơ đồ sinh thái",
+          "cây cối",
+          "cỏ",
+          "biểu đồ khoa học"
+        ],
+        "mau_sac": [
+          "xanh lục",
+          "vàng",
+          "xanh dương",
+          "hồng"
+        ],
+        "hanh_dong": "đang giảng dạy khái niệm sinh thái",
+        "boi_canh": "lớp học trực tuyến với bảng kê kiến thức",
+        "caption_chi_tiet": "Một thầy giáo mặc áo tím đang giảng dạy tại laptop với một sơ đồ sinh thái hiển thị trên bảng, gồm các khái niệm về môi trường, nhân tố sinh thái và quy luật tác động, xung quanh là các hình ảnh thiên nhiên xanh tươi.",
+        "caption_en": "A male teacher in purple shirt teaching at a laptop with an ecology diagram displayed on the board, showing environmental concepts and ecological factors, surrounded by lush nature imagery."
+      },
+      "loi": null
+    },
+    "025.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "cô giáo nữ",
+          "laptop",
+          "bảng trắng",
+          "bảng chữ cái",
+          "đồng hồ",
+          "tranh vẽ"
+        ],
+        "mau_sac": [
+          "trắng",
+          "xanh dương",
+          "nâu"
+        ],
+        "hanh_dong": "đang giảng dạy pháp luật",
+        "boi_canh": "phòng học lớp cấp 2",
+        "caption_chi_tiet": "Một cô giáo mặc áo trắng ngồi tại laptop trong lớp học, phía sau là bảng kê chi tiết các khái niệm về pháp luật với quyền học tập, kèm bảng chữ cái và đồng hồ treo tường.",
+        "caption_en": "A female teacher in white clothing sitting at a laptop in a classroom, with a detailed board behind showing legal concepts and learning rights, along with an alphabet chart and wall clock."
+      },
+      "loi": null
+    },
+    "034.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "người phụ nữ",
+          "người đàn ông",
+          "bàn họp",
+          "tài liệu",
+          "ly nước",
+          "laptop"
+        ],
+        "mau_sac": [
+          "trắng",
+          "đen",
+          "hồng"
+        ],
+        "hanh_dong": "đang thảo luận tài liệu kinh doanh",
+        "boi_canh": "phòng họp công ty hiện đại",
+        "caption_chi_tiet": "Một nữ nhân viên mặc áo trắng và một nam nhân viên mặc áo hồng nhạt đang ngồi tại bàn họp, xem xét các tài liệu và thảo luận trong một phòng họp với nội thất hiện đại.",
+        "caption_en": "A female employee in white and a male employee in light pink are seated at a conference table, reviewing documents and discussing in a modern office meeting room."
+      },
+      "loi": null
+    },
+    "043.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "tòa nhà đại học",
+          "khung cửa sổ",
+          "con đường"
+        ],
+        "mau_sac": [
+          "xanh lục nhạt",
+          "trắng",
+          "nâu"
+        ],
+        "hanh_dong": "hiển thị cảnh toàn cảnh tòa nhà",
+        "boi_canh": "khuôn viên đại học Saigon International",
+        "caption_chi_tiet": "Một tòa nhà đại học lớn với khung cửa sổ kính xanh lục nhạt nằm phía sau, có con đường dẫn đến và cây xanh bao quanh trong khuôn viên trường đại học.",
+        "caption_en": "A large university building with light greenish glass window frames in the background, with a pathway leading to it and green vegetation surrounding the campus grounds."
+      },
+      "loi": null
+    },
+    "049.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nhà thờ cổ",
+          "sân đất nện",
+          "người dân",
+          "cây cối",
+          "sông nước"
+        ],
+        "mau_sac": [
+          "đỏ gạch",
+          "xanh lục",
+          "xám"
+        ],
+        "hanh_dong": "tụ tập tại sân đất của nhà thờ",
+        "boi_canh": "khuôn viên thánh đường ngoài miền sông nước",
+        "caption_chi_tiet": "Một nhà thờ cổ với mái ngói đỏ gạch nằm giữa sân đất nện rộng, xung quanh là cây xanh tươi và dòng sông chảy quanh khuôn viên, có người dân tụ tập tại đó.",
+        "caption_en": "An ancient temple with red-brick roof tiles standing in a broad earthen courtyard, surrounded by lush green vegetation and a river flowing around the grounds, with local people gathered there."
+      },
+      "loi": null
+    },
+    "060.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "năm người phụ nữ",
+          "chứng chỉ",
+          "bàn",
+          "màn hình chiếu",
+          "rèm đỏ",
+          "biểu tượng đại học"
+        ],
+        "mau_sac": [
+          "đỏ",
+          "xanh lục",
+          "trắng",
+          "hồng"
+        ],
+        "hanh_dong": "nhận chứng chỉ tại lễ ký kết",
+        "boi_canh": "sân khấu hội thảo đại học",
+        "caption_chi_tiet": "Năm người phụ nữ đứng trên sân khấu có rèm đỏ nổi bật đang nhận chứng chỉ, phía sau là màn hình chiếu hiển thị tiêu đề bài học và logo đại học, mỗi người mặc áo sắc sở khác nhau.",
+        "caption_en": "Five women standing on a stage with prominent red curtains receiving certificates, with a projection screen behind displaying the lesson title and university logo, each wearing different colored attire."
+      },
+      "loi": null
+    },
+    "063.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "học sinh nữ",
+          "thầy giáo nam",
+          "bảng trắng",
+          "công thức toán học",
+          "ghế xanh",
+          "bàn học"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "trắng",
+          "đen"
+        ],
+        "hanh_dong": "tay giáo đang ghi công thức trên bảng",
+        "boi_canh": "lớp học trong phòng học đại học",
+        "caption_chi_tiet": "Nhiều học sinh nữ ngồi trên ghế xanh dương trong lớp học, với thầy giáo nam mặc áo sơ mi đỏ đang ghi viết công thức toán học trên bảng trắng, một số học sinh giơ tay để trả lời câu hỏi.",
+        "caption_en": "Multiple female students seated on blue chairs in the classroom, with a male teacher in a red shirt writing mathematical formulas on a white board, with some students raising their hands to answer questions."
+      },
+      "loi": null
+    },
+    "067.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "trẻ em",
+          "nước bơi",
+          "mũ bơi",
+          "áo bơi",
+          "bầu nước",
+          "kính bơi"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "hồng",
+          "vàng",
+          "đen"
+        ],
+        "hanh_dong": "tập luyện kỹ năng bơi lội",
+        "boi_canh": "hồ bơi trong nhà",
+        "caption_chi_tiet": "Nhiều trẻ em mặc áo bơi đen và mũ bơi hồng, xanh đang tập luyện trong hồ bơi xanh dương, cầm theo dụng cụ hỗ trợ bơi lội màu vàng và xanh lá.",
+        "caption_en": "Multiple children in black swimwear and pink/blue swim caps practicing in a blue swimming pool, holding yellow and green swimming training equipment."
+      },
+      "loi": null
+    },
+    "081.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "bảng vẽ",
+          "công thức vật lý",
+          "biểu tượng sáng",
+          "chữ đỏ",
+          "hình vẽ minh họa"
+        ],
+        "mau_sac": [
+          "trắng",
+          "xanh dương",
+          "đỏ"
+        ],
+        "hanh_dong": "hiển thị khái niệm vật lý về ánh sáng",
+        "boi_canh": "slide bài giảng khoa học",
+        "caption_chi_tiet": "Một trang slide trắng với tiêu đề 'Kiến thức trong tầm' hiển thị khái niệm vật lý về truyền năng lượng ánh sáng, gồm các công thức khoa học, hình vẽ minh họa và phần chữ đỏ nhấn mạnh các điểm chính.",
+        "caption_en": "A white slide page titled 'Knowledge in Scope' displaying physics concepts about light energy transmission, comprising scientific formulas, illustrative diagrams, and red highlighted text emphasizing key points."
+      },
+      "loi": null
+    },
+    "094.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "hoa",
+          "lá"
+        ],
+        "mau_sac": [
+          "hồng",
+          "tím",
+          "trắng"
+        ],
+        "hanh_dong": "nở hoa",
+        "boi_canh": "vườn hoa trong tự nhiên",
+        "caption_chi_tiet": "Một bông hoa nở rộ với cánh màu hồng, tím và trắng, lá xanh phía sau trong ánh sáng tự nhiên, tạo hiệu ứng mờ chuyển động.",
+        "caption_en": "A blooming flower with pink, purple and white petals and green leaves in soft natural light with motion blur effect."
+      },
+      "loi": null
+    },
+    "104.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "giảng viên",
+          "laptop",
+          "bảng trắng",
+          "hộp khẩu hiệu",
+          "cây cảnh"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "hồng",
+          "vàng",
+          "nâu"
+        ],
+        "hanh_dong": "giảng dạy qua bài chiếu điện tử",
+        "boi_canh": "phòng học hoặc phòng họp với bảng trắng và máy chiếu",
+        "caption_chi_tiet": "Một giảng viên đang trình bày bài học về kiến thức di truyền trên bảng trắng với các sơ đồ và thông tin liên quan đến NST thương trong một lớp học có trang trí lá cây xanh.",
+        "caption_en": "A lecturer presenting a genetics lesson on a whiteboard with diagrams about hereditary traits in a decorated classroom."
+      },
+      "loi": null
+    },
+    "108.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "giáo viên",
+          "bảng đen",
+          "dòng chữ tiêu đề",
+          "cây cảnh",
+          "tủ sách"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "vàng",
+          "hồng",
+          "be"
+        ],
+        "hanh_dong": "giảng dạy ngữ pháp tiếng Anh",
+        "boi_canh": "lớp học trang trí với bảng đen và bản tin",
+        "caption_chi_tiet": "Một nữ giáo viên mặc áo hồng đứng trước bảng đen có tiêu đề bài giảng về sự thay đổi trong lời nói gián tiếp trong môi trường lớp học trang trí.",
+        "caption_en": "A female teacher in pink clothing standing in front of a blackboard with lesson title about changes in reported speech in a decorated classroom."
+      },
+      "loi": null
+    },
+    "115.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "giáo viên",
+          "bảng thông tin",
+          "bảng xanh",
+          "bảng màu",
+          "sinh viên"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "hồng",
+          "vàng",
+          "trắng"
+        ],
+        "hanh_dong": "giảng dạy bài tập địa lý",
+        "boi_canh": "phòng học với bảng chiếu và bảng thông tin",
+        "caption_chi_tiet": "Một giáo viên nam mặc áo sơ mi hồng trình bày bài tập về diễn tích rừng nước Việt Nam từ 2015 đến 2020 trên bảng thông tin trong lớp học.",
+        "caption_en": "A male teacher in pink shirt presenting a geography exercise about forest area changes in Vietnam from 2015 to 2020 on an information board."
+      },
+      "loi": null
+    },
+    "135.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nồi nước",
+          "nồi mèm",
+          "ly trà",
+          "lọc cà phê",
+          "tay người"
+        ],
+        "mau_sac": [
+          "xanh lá",
+          "trắng",
+          "nâu",
+          "đỏ"
+        ],
+        "hanh_dong": "so sánh quá trình lọc nước",
+        "boi_canh": "bảng thông tin giáo dục với hình ảnh minh họa các loại nước",
+        "caption_chi_tiet": "Một bảng thông tin giáo dục màu xanh lá cây hiển thị các hình ảnh so sánh nước mèm, nước cứng, quá trình lọc và kết quả của hai loại nước khác nhau.",
+        "caption_en": "An educational green board displaying comparison images of soft water, hard water, filtration process and results of different water types."
+      },
+      "loi": null
+    },
+    "151.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "giáo viên",
+          "bảng bài tập",
+          "công thức toán",
+          "tam giác hình học",
+          "máy tính"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "vàng",
+          "trắng",
+          "đỏ"
+        ],
+        "hanh_dong": "giảng dạy bài toán hình học",
+        "boi_canh": "lớp học với bảng bài tập toán và máy chiếu",
+        "caption_chi_tiet": "Một bài tập toán hình học được hiển thị trên màn hình tương tác với công thức tính toán, sơ đồ tam giác và các lựa chọn trắc nghiệm trong bối cảnh lớp học.",
+        "caption_en": "A geometry math exercise displayed on interactive screen with calculation formulas, triangle diagrams and multiple choice options in classroom setting."
+      },
+      "loi": null
+    },
+    "158.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "học sinh",
+          "piano",
+          "violon",
+          "quả bóng trang trí",
+          "sân khấu",
+          "cờ"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "hồng",
+          "đỏ",
+          "vàng",
+          "cam"
+        ],
+        "hanh_dong": "biểu diễn âm nhạc nhạc cụ",
+        "boi_canh": "sân khấu hội trường với đạo cụ trang trí tông lửa ấm",
+        "caption_chi_tiet": "Một nhóm học sinh mặc áo trắng và quần đỏ đang biểu diễn âm nhạc trên sân khấu với các nhạc cụ piano và violon, quanh sân khấu trang trí bởi những quả bóng đầy màu sắc.",
+        "caption_en": "A group of students in white shirts and red pants performing music on stage with piano and violin instruments, surrounded by colorful decorative balloons."
+      },
+      "loi": null
+    },
+    "169.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "giáo viên",
+          "bảng thông tin",
+          "bảng so sánh",
+          "sinh viên"
+        ],
+        "mau_sac": [
+          "xanh lá",
+          "xanh lam",
+          "trắng",
+          "nâu"
+        ],
+        "hanh_dong": "giảng dạy bài học về thiên nhiên phân hóa đa dạng",
+        "boi_canh": "phòng học với bảng thông tin và bảng so sánh loài cây",
+        "caption_chi_tiet": "Một bảng thông tin được trình bày bởi một giáo viên nam trong lớp học, hiển thị so sánh giữa hai loại nhóm đặt chính (nhóm đặt phù sa và nhóm đặt feralit vùng đồi núi phía Bắc).",
+        "caption_en": "An information board presented by a male teacher in classroom displaying comparison between two groups of soil types (alluvial soil and laterite soil in northern highlands)."
+      },
+      "loi": null
+    },
+    "180.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "tòa nhà học đường",
+          "biển hiệu quảng cáo",
+          "người phụ nữ",
+          "cầu thang"
+        ],
+        "mau_sac": [
+          "xanh lá",
+          "xanh lam",
+          "hồng",
+          "vàng",
+          "trắng"
+        ],
+        "hanh_dong": "đứng xem biển hiệu",
+        "boi_canh": "phía ngoài tòa nhà giáo dục quốc tế",
+        "caption_chi_tiet": "Một cô gái mặc áo tím đứng trước biển hiệu quảng cáo về trường học quốc tế Á Châu có hình ảnh trẻ em vui vẻ, với tòa nhà học đường nhiều tầng phía sau.",
+        "caption_en": "A girl in purple shirt standing in front of advertisement banner for Asian International School with images of happy children, with multi-storey building in background."
+      },
+      "loi": null
+    },
+    "187.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "xe đạp",
+          "sơn nhà",
+          "cây hàng rào",
+          "con đường"
+        ],
+        "mau_sac": [
+          "xanh lá",
+          "xanh lam",
+          "vàng",
+          "nâu"
+        ],
+        "hanh_dong": "đi xe đạp trên đường",
+        "boi_canh": "khu vực dân cư với những ngôi nhà và hàng rào cây xanh",
+        "caption_chi_tiet": "Một người đi xe đạp trên con đường trong khu dân cư, quanh là những ngôi nhà sơn màu xanh và vàng với hàng rào cây xanh tươi tắn.",
+        "caption_en": "A person riding bicycle on a road in residential area surrounded by blue and yellow painted houses with green hedge fences."
+      },
+      "loi": null
+    },
+    "189.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "các ống nghiệm thủy tinh",
+          "chất lỏng màu xanh lá cây",
+          "chất lỏng màu vàng",
+          "chất lỏng màu hồng",
+          "người mặc áo trắng",
+          "kính lúp",
+          "giá đỡ kim loại"
+        ],
+        "mau_sac": [
+          "xanh lá cây",
+          "vàng",
+          "hồng",
+          "trắng",
+          "trong suốt"
+        ],
+        "hanh_dong": "đang tiến hành thí nghiệm hóa học",
+        "boi_canh": "phòng thí nghiệm khoa học",
+        "caption_chi_tiet": "Một số ống nghiệm thủy tinh chứa các dung dịch hóa học màu xanh lá cây, vàng và hồng được đặt trên giá đỡ kim loại, với các nhà khoa học mặc áo trắng đang quan sát các phản ứng hóa học trong phòng thí nghiệm.",
+        "caption_en": "Several glass test tubes containing green, yellow, and pink chemical solutions are placed on a metal stand while scientists in white coats observe the chemical reactions in a laboratory."
+      },
+      "loi": null
+    },
+    "206.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "áo sơ mi xanh",
+          "bảng đen",
+          "chữ viết trên bảng",
+          "logo thanh niên",
+          "nền hồng san hô"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "hồng",
+          "vàng",
+          "trắng",
+          "đen"
+        ],
+        "hanh_dong": "đang giảng dạy trước lớp học",
+        "boi_canh": "phòng học của trường trung học phổ thông",
+        "caption_chi_tiet": "Một giáo viên nam mặc áo sơ mi xanh dương đang đứng trước bảng đen trong lớp học có nền hồng san hô, với các tài liệu giáo dục và biểu tượng thanh niên hiển thị trên màn hình.",
+        "caption_en": "A male teacher in a blue shirt stands in front of a blackboard in a classroom with a coral-pink background, with educational materials and youth symbols displayed on screen."
+      },
+      "loi": null
+    },
+    "230.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nữ giáo viên",
+          "màn hình chiếu",
+          "bài tập tiếng Anh",
+          "các lựa chọn trắc nghiệm",
+          "sách vở trên bàn",
+          "tờ giấy"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "xanh lá cây",
+          "nâu",
+          "vàng",
+          "trắng"
+        ],
+        "hanh_dong": "đang giảng dạy bài tập tiếng Anh",
+        "boi_canh": "lớp học ở trường trung học phổ thông với trang trí đầy màu sắc",
+        "caption_chi_tiet": "Một giáo viên nữ đang đứng bên cạnh chiếc bàn gỗ có sách vở, giải thích bài tập trắc nghiệm tiếng Anh được chiếu trên màn hình phía sau có nền xanh lá cây.",
+        "caption_en": "A female teacher stands next to a wooden desk with books while explaining an English multiple-choice exercise displayed on a green-background screen behind her."
+      },
+      "loi": null
+    },
+    "239.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nhóm học sinh nữ",
+          "tai nghe chơi game xanh xám",
+          "máy tính để bàn",
+          "bàn làm việc gỗ",
+          "phòng máy tính",
+          "cây cảnh",
+          "tường đỏ nâu"
+        ],
+        "mau_sac": [
+          "đỏ tía",
+          "xanh dương",
+          "xám",
+          "đen",
+          "be"
+        ],
+        "hanh_dong": "đang tham gia lớp học máy tính hoặc khóa học trực tuyến",
+        "boi_canh": "phòng máy tính của trường học",
+        "caption_chi_tiet": "Một nhóm học sinh nữ mặc áo đỏ tía đang ngồi tại các máy tính để bàn, đeo tai nghe xanh xám và tập trung vào màn hình trong phòng máy tính của nhà trường.",
+        "caption_en": "A group of female students in red shirts sit at desktop computers wearing blue-gray headphones and focus on their screens in a school computer room."
+      },
+      "loi": null
+    },
+    "252.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "sân khấu",
+          "đàn piano màu đen",
+          "hệ thống đèn sân khấu",
+          "ghế xem phim",
+          "rèm sân khấu",
+          "khán phòng"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "vàng",
+          "đen",
+          "xám",
+          "trắng"
+        ],
+        "hanh_dong": "chuẩn bị cho buổi biểu diễn âm nhạc",
+        "boi_canh": "nhà hát hoặc khán phòng âm nhạc",
+        "caption_chi_tiet": "Một chiếc đàn piano màu đen đứng giữa sân khấu được chiếu sáng bởi hệ thống đèn chuyên nghiệp với các tia sáng xanh dương và vàng, khán phòng trống rỗi ngồi phía dưới.",
+        "caption_en": "A black grand piano sits center stage illuminated by a professional lighting system with blue and yellow light beams, with an empty auditorium seating area in the foreground."
+      },
+      "loi": null
+    },
+    "258.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nữ giáo viên",
+          "bảng viết trắng",
+          "bảng chữ cái nhiều màu",
+          "đồng hồ treo tường",
+          "sách vở",
+          "bàn giáo viên",
+          "nền lớp học"
+        ],
+        "mau_sac": [
+          "nâu",
+          "xanh dương",
+          "vàng cam",
+          "xanh lá cây",
+          "trắng"
+        ],
+        "hanh_dong": "đang giảng dạy bài học về pháp luật và quyền công dân",
+        "boi_canh": "lớp học tiểu học có trang trí ấm áp",
+        "caption_chi_tiet": "Một giáo viên nữ mặc áo xám đứng cạnh bàn làm việc gỗ nâu có sách vở, pointing tới bảng viết lớn, với bảng chữ cái đầy màu sắc treo trên tường phía sau.",
+        "caption_en": "A female teacher in a gray shirt stands next to a brown wooden desk with books, pointing to a writing board, with a colorful alphabet chart hanging on the wall behind her."
+      },
+      "loi": null
+    },
+    "269.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "áo sơ mi xanh và cà vạt xanh",
+          "bảng viết trắng",
+          "sơ đồ hình học",
+          "đồng hồ treo tường",
+          "bảng chữ cái",
+          "bàn giáo viên"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "xanh lục",
+          "vàng cam",
+          "nâu",
+          "trắng"
+        ],
+        "hanh_dong": "đang giảng dạy bài thực hiện pháp luật",
+        "boi_canh": "lớp học tiểu học có trang trí tiêu chuẩn",
+        "caption_chi_tiet": "Một giáo viên nam mặc áo sơ mi xanh và cà vạt xanh đang chỉ vào sơ đồ hình học trên bảng viết trắng, với bảng chữ cái nhiều màu trên tường và các tài liệu giáo dục khác.",
+        "caption_en": "A male teacher in a blue shirt and blue tie points to a geometric diagram on a whiteboard while colorful alphabet charts and other educational materials are displayed on the wall."
+      },
+      "loi": null
+    },
+    "291.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "áo sơ mi xanh",
+          "chiếc laptop",
+          "bản đồ Việt Nam",
+          "bảng chứa thông tin",
+          "nền xanh dương"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "vàng cam",
+          "nâu",
+          "đỏ",
+          "xanh lam"
+        ],
+        "hanh_dong": "đang trình bày thông tin về hạ tầng giao thông và dịch vụ Việt Nam",
+        "boi_canh": "lớp học hoặc phòng hội thảo có trang trí liên quan đến địa lý và công nghiệp Việt Nam",
+        "caption_chi_tiet": "Một giáo viên nam mặc áo sơ mi xanh dương đang trình bày bên cạnh bản đồ Việt Nam được in nhiều màu, với các thông tin chi tiết về đường sắt và các tuyến vận tải khác.",
+        "caption_en": "A male teacher in a blue shirt presents beside a colorful map of Vietnam with detailed information about railway routes and other transportation networks."
+      },
+      "loi": null
+    },
+    "313.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "áo sơ mi trắng và cà vạt xanh",
+          "bảng viết trắng",
+          "sơ đồ minh họa ngành nghề",
+          "đồng hồ treo tường",
+          "bàn giáo viên"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "trắng",
+          "nâu",
+          "xanh lá cây",
+          "cam"
+        ],
+        "hanh_dong": "đang giảng dạy về các lĩnh vực công nghiệp và dịch vụ",
+        "boi_canh": "lớp học trung học phổ thông với trang trí giáo dục",
+        "caption_chi_tiet": "Một giáo viên nam mặc áo sơ mi trắng và cà vạt xanh dương đang chỉ vào sơ đồ minh họa về các ngành công nghiệp trên bảng viết, với đồng hồ và các tài liệu giáo dục khác trên tường.",
+        "caption_en": "A male teacher in a white shirt and blue tie points to an industrial sector diagram on a whiteboard with a clock and other educational materials displayed on the wall."
+      },
+      "loi": null
+    },
+    "193.jpg": {
+      "thanh_cong": false,
+      "ket_qua": null,
+      "loi": "agent bỏ sót"
+    }
+  }
+}

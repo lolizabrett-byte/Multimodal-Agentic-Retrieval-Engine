@@ -1,0 +1,100 @@
+{
+ "model_key": "qwen2vl-2b-v2",
+ "da_xong": {
+  "009.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "009.jpg",
+    "doi_tuong": [
+     "Trainer",
+     "Lê Minh Huy"
+    ],
+    "mau_sac": [
+     "Đen",
+     "Xanh"
+    ],
+    "hanh_dong": "Đang giảng dạy",
+    "boi_canh": "Giảng viên đang giảng dạy",
+    "caption_chi_tiet": "Trainer Lê Minh Huy đang giảng dạy tại phòng học với hình vẽ toán học trên màn hình."
+   }
+  },
+  "010.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "010.jpg",
+    "doi_tuong": [
+     "người đang giảng dạy",
+     "laptop",
+     "màn hình máy tính"
+    ],
+    "mau_sac": [
+     "xanh dương",
+     "xanh"
+    ],
+    "hanh_dong": "giảng dạy",
+    "boi_canh": "giảng dạy",
+    "caption_chi_tiet": "Một người đang giảng dạy trên màn hình máy tính với một laptop ở trước mặt họ."
+   }
+  },
+  "014.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "014.jpg",
+    "doi_tuong": [
+     "enjoy",
+     "admit",
+     "avoid",
+     "deny",
+     "fancy",
+     "keep",
+     "mind",
+     "spend",
+     "suggest",
+     "tolerate"
+    ],
+    "mau_sac": [
+     "xanh dương",
+     "bạc"
+    ],
+    "hanh_dong": "Giáo viên đang giảng dạy",
+    "boi_canh": "Trường học",
+    "caption_chi_tiet": "Một giáo viên đang giảng dạy tại một phòng học với bảng đen và máy tính."
+   }
+  },
+  "019.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "019.jpg",
+    "doi_tuong": [
+     "Trợ lý",
+     "Học sinh"
+    ],
+    "mau_sac": [
+     "Xanh",
+     "Đen"
+    ],
+    "hanh_dong": "Giám sát",
+    "boi_canh": "Giám sát",
+    "caption_chi_tiet": "Trợ lý đang giám sát học sinh trong một lớp học sinh tại Trường THPT chuyên Lê Hồng Phong."
+   }
+  },
+  "025.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "025.jpg",
+    "doi_tuong": [
+     "mô phỏng",
+     "robot",
+     "lớp học"
+    ],
+    "mau_sac": [
+     "xám",
+     "trắng"
+    ],
+    "hanh_dong": "và một nhân viên đang chụp hình",
+    "boi_canh": "khu vực học tập",
+    "caption_chi_tiet": "Một nhân viên đang chụp hình một robot trong lớp học với các biểu trưng về máy tính và trí tuệ nhân tạo."
+   }
+  }
+ }
+}

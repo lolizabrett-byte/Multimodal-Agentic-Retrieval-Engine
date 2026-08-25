@@ -854,6 +854,7 @@ def _process_video_flow(
                 client=caption_client,
                 model_config=models["shot_caption"],
                 max_concurrency=int(phase01["api"]["max_concurrency_per_video"]),
+                caption_config=phase01.get("shot_captions", {}),
             )
             _write_parquet(captions_path, caption_rows)
             manager.promote_stage(
@@ -1660,7 +1661,7 @@ def _string_list(payload: Mapping[str, Any], key: str) -> list[str]:
 def _build_captions(
     *, video_id: str, shots: list[dict[str, Any]], keyframes: list[dict[str, Any]],
     ocr_rows: list[dict[str, Any]], stage_dir: Path, client, model_config: Mapping[str, Any],
-    max_concurrency: int,
+    max_concurrency: int, caption_config: Mapping[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     if max_concurrency < 1:
         raise ValueError("caption max_concurrency must be positive")
@@ -1721,35 +1722,78 @@ def _build_captions(
             )
         )
         request_context.append((shot, keyframe, keyframe_id))
-    responses = client.request_many(requests)
+    responses: list[dict[str, Any] | None] = [None] * len(requests)
+    errors: dict[int, Exception] = {}
+    if requests:
+        try:
+            responses = list(client.request_many(requests))
+        except BatchRequestError as exc:
+            responses = list(exc.results)
+            errors = dict(exc.errors)
+        except Exception as exc:  # noqa: BLE001 - preserve per-shot degradation
+            errors = {index: exc for index in range(len(requests))}
     if len(responses) != len(request_context):
         raise ValueError(
             "caption client returned a different number of responses than requests"
         )
     rows: list[dict[str, Any]] = []
-    for response, context in zip(responses, request_context, strict=True):
+    for index, context in enumerate(request_context):
         shot, keyframe, keyframe_id = context
-        caption_vi = _required_text(response, "caption_vi")
-        caption_en = _required_text(response, "caption_en")
-        provider = str(response.get("__provider", model_config["provider"]))
-        model_name = str(response.get("__model_id", model_config["model_id"]))
-        model_version = str(response.get("__model_revision", model_config["model_revision"]))
+        response = responses[index] if index < len(responses) else None
+        try:
+            if index in errors:
+                raise errors[index]
+            if response is None:
+                raise RuntimeError("caption request returned no response")
+            caption_vi = _required_text(response, "caption_vi")
+            caption_en = _required_text(response, "caption_en")
+            objects_vi = _string_list(response, "objects_vi")
+            objects_en = _string_list(response, "objects_en")
+            actions_vi = _string_list(response, "actions_vi")
+            actions_en = _string_list(response, "actions_en")
+            visible_text_summary_vi = str(response.get("visible_text_summary_vi", ""))
+            visible_text_summary_en = str(response.get("visible_text_summary_en", ""))
+            scene_type = str(response.get("scene_type", ""))
+            provider = str(response.get("__provider", model_config["provider"]))
+            model_name = str(response.get("__model_id", model_config["model_id"]))
+            model_version = str(response.get("__model_revision", model_config["model_revision"]))
+            status = "pass"
+        except Exception:  # noqa: BLE001 - preserve per-shot degradation
+            caption_vi = ""
+            caption_en = ""
+            objects_vi = []
+            objects_en = []
+            actions_vi = []
+            actions_en = []
+            visible_text_summary_vi = ""
+            visible_text_summary_en = ""
+            scene_type = ""
+            provider = str(model_config["provider"])
+            model_name = str(model_config["model_id"])
+            model_version = str(model_config["model_revision"])
+            status = "failed"
         rows.append({
             "shot_caption_id": f"{shot['shot_id']}_caption", "video_id": video_id,
             "shot_id": shot["shot_id"], "representative_keyframe_id": keyframe_id,
             "representative_timestamp_sec": keyframe["timestamp_sec"],
             "caption_vi": caption_vi, "caption_en": caption_en,
-            "objects_vi": _string_list(response, "objects_vi"),
-            "objects_en": _string_list(response, "objects_en"),
-            "actions_vi": _string_list(response, "actions_vi"),
-            "actions_en": _string_list(response, "actions_en"),
-            "visible_text_summary_vi": str(response.get("visible_text_summary_vi", "")),
-            "visible_text_summary_en": str(response.get("visible_text_summary_en", "")),
-            "scene_type": str(response.get("scene_type", "")),
+            "objects_vi": objects_vi, "objects_en": objects_en,
+            "actions_vi": actions_vi, "actions_en": actions_en,
+            "visible_text_summary_vi": visible_text_summary_vi,
+            "visible_text_summary_en": visible_text_summary_en,
+            "scene_type": scene_type,
             "provider": provider, "model_name": model_name,
             "model_version": model_version, "prompt_version": model_config["prompt_version"],
-            "schema_version": model_config["response_schema_version"], "confidence": None, "status": "pass",
+            "schema_version": model_config["response_schema_version"], "confidence": None, "status": status,
         })
+    failed_count = sum(1 for row in rows if row["status"] == "failed")
+    if rows:
+        max_failed_ratio = float((caption_config or {}).get("max_failed_ratio", 0.5))
+        if failed_count / len(rows) > max_failed_ratio:
+            raise RuntimeError(
+                f"shot_captions stage exceeded max_failed_ratio: "
+                f"{failed_count}/{len(rows)} shots failed"
+            )
     return rows
 
 
@@ -1792,7 +1836,11 @@ def _build_scene_evidence(shots, keyframes, ocr_rows, captions, asr_rows, links,
             for row in ordered_segments
             if str(row["text"]).strip()
         )
-        caption = caption_by_shot[shot_id]
+        caption = caption_by_shot.get(shot_id)
+        if caption is None or caption.get("status") == "failed":
+            # Shot's caption request failed the batch — skip it from evidence
+            # instead of raising, so the rest of the video still packages.
+            continue
         shot_ocr = [
             ocr_by_keyframe[str(row["keyframe_id"])]
             for row in frames
@@ -1854,7 +1902,11 @@ def _build_scene_summaries(*, video_id, scenes, shots, keyframes, ocr_rows, capt
         shot_evidence = []
         for shot in scene_shots:
             shot_id = str(shot["shot_id"])
-            caption = captions_by_shot[shot_id]
+            caption = captions_by_shot.get(shot_id)
+            if caption is None or caption.get("status") == "failed":
+                # Shot's caption request failed the batch — skip it from
+                # summary evidence instead of raising.
+                continue
             shot_evidence.append({
                 "shot_id": shot_id,
                 "caption_vi": caption["caption_vi"],

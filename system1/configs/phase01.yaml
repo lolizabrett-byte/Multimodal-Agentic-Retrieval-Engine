@@ -92,6 +92,13 @@ ocr:
     enabled: false
     hamming_threshold: 4
 
+shot_captions:
+  failed_status: failed
+  # A batch that is mostly failures signals a systemic outage (provider down,
+  # bad prompt) rather than isolated per-shot flakiness — fail the stage loudly
+  # instead of shipping a mostly-empty caption table.
+  max_failed_ratio: 0.5
+
 api:
   max_concurrency_per_video: 2
   request_cache_backend: stage_local

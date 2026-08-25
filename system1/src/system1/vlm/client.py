@@ -12,6 +12,7 @@ from typing import Any, Protocol
 
 import numpy as np
 from jsonschema import validate
+from jsonschema.exceptions import ValidationError
 from PIL import Image
 
 from system1.gemini import StructuredRequest, build_request_hash
@@ -306,6 +307,31 @@ class LocalVisionStructuredClient:
         self._model_lock = threading.Lock()
         self._loaded: tuple[Any, ...] | None = None
 
+    def generation_config(self) -> dict[str, Any]:
+        """Sampling settings handed to the model, built from model_config.
+
+        Optional keys are omitted rather than passed as None, so a config that
+        says nothing keeps the model's own defaults.
+        """
+        config: dict[str, Any] = {
+            "max_new_tokens": int(self.model_config.get("max_new_tokens", 768)),
+            "do_sample": False,
+        }
+        penalty = self.model_config.get("repetition_penalty")
+        if penalty is not None:
+            try:
+                value = float(penalty)
+            except (TypeError, ValueError) as exc:
+                raise ValueError(
+                    f"repetition_penalty must be a number, got {penalty!r}"
+                ) from exc
+            if value <= 0:
+                raise ValueError(
+                    f"repetition_penalty must be positive, got {value!r}"
+                )
+            config["repetition_penalty"] = value
+        return config
+
     def request(self, request: StructuredRequest) -> dict[str, Any]:
         try:
             return self.request_many([request])[0]
@@ -319,6 +345,7 @@ class LocalVisionStructuredClient:
             return []
         results: list[dict[str, Any] | None] = [None] * len(requests)
         errors: dict[int, Exception] = {}
+        failure_samples: list[dict[str, Any]] = []
         misses: list[int] = []
         cache_paths: dict[int, Path] = {}
         for index, request in enumerate(requests):
@@ -449,6 +476,7 @@ class LocalVisionStructuredClient:
                     results[index] = self._with_metadata(normalized)
                 except Exception as exc:  # noqa: BLE001 - request-scoped fallback
                     errors[index] = exc
+                    _record_failure_sample(failure_samples, exc, raw_text)
             cursor += len(batch_indices)
             batch_one_oom_attempts = 0
             systemic_attempts = 0
@@ -462,6 +490,7 @@ class LocalVisionStructuredClient:
             cache_misses=len(misses),
             oom_reductions=oom_reductions,
             failed_request_count=len(errors),
+            failure_samples=failure_samples,
             quantization_mode=self._quantization_mode(),
         )
         if errors:
@@ -589,11 +618,7 @@ class LocalVisionStructuredClient:
                 key: value.to(device) if hasattr(value, "to") else value
                 for key, value in inputs.items()
             }
-            generated_ids = model.generate(
-                **inputs,
-                max_new_tokens=int(self.model_config.get("max_new_tokens", 768)),
-                do_sample=False,
-            )
+            generated_ids = model.generate(**inputs, **self.generation_config())
             input_ids = inputs.get("input_ids")
             if input_ids is not None:
                 generated_ids = generated_ids[:, input_ids.shape[1] :]
@@ -639,10 +664,7 @@ class LocalVisionStructuredClient:
                 else "<image>\n" + request.prompt
                 for request in requests
             ]
-            generation_config = {
-                "max_new_tokens": int(self.model_config.get("max_new_tokens", 768)),
-                "do_sample": False,
-            }
+            generation_config = self.generation_config()
             with torch.no_grad():
                 if len(requests) > 1:
                     outputs = native_batch(
@@ -926,9 +948,39 @@ def _complete_batch_or_raise(
     return [result for result in results if result is not None]
 
 
+_MAX_FAILURE_SAMPLES = 3
+_MAX_RAW_TEXT_CHARS = 2000
+
+
+def _record_failure_sample(
+    samples: list[dict[str, Any]], exc: BaseException, raw_text: str
+) -> None:
+    """Keep what the model actually returned, not just the exception.
+
+    Without this the raw text dies with the exception, so a batch that fails
+    schema validation is indistinguishable from one that returned prose. Capped
+    because a repeating model can emit thousands of characters per request.
+    """
+    if len(samples) >= _MAX_FAILURE_SAMPLES:
+        return
+    text = str(raw_text)
+    samples.append(
+        {
+            "reason": _fallback_reason(exc),
+            "error": str(exc)[:200],
+            "raw_text": text[:_MAX_RAW_TEXT_CHARS],
+            "raw_text_length": len(text),
+        }
+    )
+
+
 def _fallback_reason(exc: BaseException) -> str:
     if isinstance(exc, SystemicProviderError):
         return "systemic_local_runtime"
+    if isinstance(exc, json.JSONDecodeError):
+        return "json_decode_error"
+    if isinstance(exc, ValidationError):
+        return "schema_validation_error"
     name = type(exc).__name__.lower()
     if "validation" in name or "json" in name or isinstance(
         exc, (ValueError, TypeError)

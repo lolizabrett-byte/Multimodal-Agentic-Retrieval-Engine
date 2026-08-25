@@ -88,6 +88,10 @@ phase01:
     prompt_version: keyframe_ocr_v2
     response_schema_version: keyframe_ocr_response_v1
     max_new_tokens: 512
+    # Vintern ships repetition_penalty 1.0, i.e. no penalty at all. The 355-image
+    # benchmark that measured 97% valid JSON ran at 1.05, and still saw the model
+    # repeat a phrase until it hit the token ceiling in 5 of its 9 failures.
+    repetition_penalty: 1.05
     # Model config caps dynamic tiling at 4. A 16:9 keyframe becomes 2 tiles,
     # so small on-screen text keeps twice the pixels it had when squashed to one.
     max_dynamic_patch: 4
@@ -107,6 +111,9 @@ phase01:
     prompt_version: shot_caption_v3
     response_schema_version: shot_caption_response_v2
     max_new_tokens: 768
+    # Same reason as the OCR model above. Captions ask for nine bilingual fields,
+    # so an unpenalised repeat runs further before the ceiling stops it.
+    repetition_penalty: 1.05
     max_dynamic_patch: 4
     fallbacks:
       - provider: gemini

@@ -1,0 +1,2117 @@
+{
+  "model_key": "qwen2vl-2b",
+  "da_xong": {
+    "001.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "JsonParseError: Không tìm thấy JSON hợp lệ trong output (dài 296 ký tự)"
+    },
+    "009.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.1,
+      "ket_qua": {
+        "doi_tuong": [
+          "Trainer",
+          "Lê Minh Huy"
+        ],
+        "mau_sac": [
+          "Đen",
+          "Xanh"
+        ],
+        "hanh_dong": "Đang giảng dạy",
+        "boi_canh": "Giảng viên đang giảng dạy",
+        "caption_chi_tiet": "Trainer Lê Minh Huy đang giảng dạy tại phòng học với hình vẽ toán học trên màn hình.",
+        "caption_en": "Trainer Lê Minh Huy is teaching in a classroom with mathematical diagrams displayed on the screen.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.1,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "010.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.991,
+      "ket_qua": {
+        "doi_tuong": [
+          "người đang giảng dạy",
+          "laptop",
+          "màn hình máy tính"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "xanh"
+        ],
+        "hanh_dong": "giảng dạy",
+        "boi_canh": "giảng dạy",
+        "caption_chi_tiet": "Một người đang giảng dạy trên màn hình máy tính với một laptop ở trước mặt họ.",
+        "caption_en": "A teacher is teaching online using a laptop in front of them.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.991,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "014.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.855,
+      "ket_qua": {
+        "doi_tuong": [
+          "enjoy",
+          "admit",
+          "avoid",
+          "deny",
+          "fancy",
+          "keep",
+          "mind",
+          "spend",
+          "suggest",
+          "tolerate"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "bạc"
+        ],
+        "hanh_dong": "Giáo viên đang giảng dạy",
+        "boi_canh": "Trường học",
+        "caption_chi_tiet": "Một giáo viên đang giảng dạy tại một phòng học với bảng đen và máy tính.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.855,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "019.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.193,
+      "ket_qua": {
+        "doi_tuong": [
+          "Trợ lý",
+          "Học sinh"
+        ],
+        "mau_sac": [
+          "Xanh",
+          "Đen"
+        ],
+        "hanh_dong": "Giám sát",
+        "boi_canh": "Giám sát",
+        "caption_chi_tiet": "Trợ lý đang giám sát học sinh trong một lớp học sinh tại Trường THPT chuyên Lê Hồng Phong.",
+        "caption_en": "Teacher monitoring student in a class at Le Hong Phong High School.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.193,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "025.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.498,
+      "ket_qua": {
+        "doi_tuong": [
+          "mô phỏng",
+          "robot",
+          "lớp học"
+        ],
+        "mau_sac": [
+          "xám",
+          "trắng"
+        ],
+        "hanh_dong": "và một nhân viên đang chụp hình",
+        "boi_canh": "khu vực học tập",
+        "caption_chi_tiet": "Một nhân viên đang chụp hình một robot trong lớp học với các biểu trưng về máy tính và trí tuệ nhân tạo.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.498,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "027.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.213,
+      "ket_qua": {
+        "doi_tuong": [
+          "buiding",
+          "sky"
+        ],
+        "mau_sac": [
+          "white",
+          "blue"
+        ],
+        "hanh_dong": "blurry",
+        "boi_canh": "no",
+        "caption_chi_tiet": "Một bức ảnh模糊 của một tòa nhà trắng và bầu trời xanh trong ngày trời.",
+        "caption_en": "A blurry image of a white building and blue sky on a sunny day.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.213,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "028.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 5.848,
+      "ket_qua": {
+        "doi_tuong": [
+          "người đứng"
+        ],
+        "mau_sac": [
+          "trắng"
+        ],
+        "hanh_dong": "đang nói chuyện",
+        "boi_canh": "khu vực làm việc",
+        "caption_chi_tiet": "Một người đàn ông đang nói chuyện tại khu vực làm việc.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 5.848,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "032.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 9.177,
+      "ket_qua": {
+        "doi_tuong": [
+          "nồi",
+          "bếp gas"
+        ],
+        "mau_sac": [
+          "bạc",
+          "xanh dương"
+        ],
+        "hanh_dong": "đang đun sôi",
+        "boi_canh": "gian bếp gia đình",
+        "caption_chi_tiet": "Một chiếc nồi kim loại màu bạc đang đun sôi trên bếp gas với ngọn lửa xanh trong gian bếp gia đình.",
+        "caption_en": "A silver metal pot boils on a gas stove with a blue flame in a home kitchen.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 9.177,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "055.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.925,
+      "ket_qua": {
+        "doi_tuong": [
+          "bơi lội",
+          "bơi lội học tập"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "trắng"
+        ],
+        "hanh_dong": "bơi lội học tập",
+        "boi_canh": "bơi lội học tập",
+        "caption_chi_tiet": "Một nhóm học sinh đang học cách bơi lội trong một lớp học bơi lội tại một trung tâm đào tạo bơi lội.",
+        "caption_en": "A group of students are learning to swim in a swimming class at a swimming school.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.925,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "056.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "ValidationError: 1 validation error for KeyframeMetadata\ncaption_chi_tiet\n  Field required [type=missing, input_value={'doi_tuong': ['Đoạn v...u người tham dự'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "061.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.379,
+      "ket_qua": {
+        "doi_tuong": [
+          "người mặc áo sơ mi vàng",
+          "người mặc áo sơ mi đỏ"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "xanh dương"
+        ],
+        "hanh_dong": "Đặt bàn giao nhau",
+        "boi_canh": "Bàn giao nhau",
+        "caption_chi_tiet": "Một người mặc áo sơ mi đỏ và một người mặc áo sơ mi vàng đang đặt bàn giao nhau tại một sự kiện.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.379,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "063.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.241,
+      "ket_qua": {
+        "doi_tuong": [
+          "phòng bóng rổ"
+        ],
+        "mau_sac": [
+          "xanh"
+        ],
+        "hanh_dong": "đang chơi bóng rổ",
+        "boi_canh": "phòng bóng rổ",
+        "caption_chi_tiet": "Một đội bóng rổ đang chơi bóng rổ trên sân bóng rổ xanh.",
+        "caption_en": "A basketball game is taking place on a green court.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.241,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "065.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.652,
+      "ket_qua": {
+        "doi_tuong": [
+          "trên sân khấu",
+          "màn nhạc",
+          "guitar"
+        ],
+        "mau_sac": [
+          "giáu vàng",
+          "giáu vàng"
+        ],
+        "hanh_dong": "màn nhạc",
+        "boi_canh": "trên sân khấu",
+        "caption_chi_tiet": "Một màn nhạc trên sân khấu với những người chơi đàn guitar đang biểu diễn.",
+        "caption_en": "A group of guitar players performing on stage.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.652,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "066.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.87,
+      "ket_qua": {
+        "doi_tuong": [
+          "phát biểu",
+          "trình diễn"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "đỏ"
+        ],
+        "hanh_dong": "phát biểu",
+        "boi_canh": "một người phụ nữ đang phát biểu",
+        "caption_chi_tiet": "Một người phụ nữ đang phát biểu tại một sự kiện với một hoa tươi xanh dương và đỏ đặt lên bàn phát biểu.",
+        "caption_en": "A woman is speaking at an event with a bouquet of yellow and red flowers placed on the podium.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.87,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "075.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.992,
+      "ket_qua": {
+        "doi_tuong": [
+          "bảng sân bóng rổ",
+          "bảng màu xanh lá cây"
+        ],
+        "mau_sac": [
+          "xanh lá cây",
+          "xanh dương"
+        ],
+        "hanh_dong": "Đoạn bóng rổ đang diễn ra",
+        "boi_canh": "Bảng sân bóng rổ",
+        "caption_chi_tiet": "Một đội bóng rổ đang chơi bóng rổ trên sân bóng rổ màu xanh lá cây. Các cầu thủ đang cố gắng đánh bại đội đối phương.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.992,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "076.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.667,
+      "ket_qua": {
+        "doi_tuong": [
+          "barman",
+          "sang thung"
+        ],
+        "mau_sac": [
+          "xanh",
+          "trắng"
+        ],
+        "hanh_dong": "sang thung",
+        "boi_canh": "sang thung",
+        "caption_chi_tiet": "Barman đang làm việc tại bar với nhiều loại rượu vang và ly uống.",
+        "caption_en": "A bartender is working at a bar with various bottles of wine and glasses.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.667,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "079.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "JsonParseError: Không tìm thấy JSON hợp lệ trong output (dài 1224 ký tự)"
+    },
+    "081.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 6.939,
+      "ket_qua": {
+        "doi_tuong": [
+          "phát biểu",
+          "trải nghiệm"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "đỏ"
+        ],
+        "hanh_dong": "đang phát biểu",
+        "boi_canh": "một người đang phát biểu",
+        "caption_chi_tiet": "Một người đang phát biểu tại một buổi lễ hội với một hoa tươi xanh dương và đỏ.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 6.939,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "088.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.484,
+      "ket_qua": {
+        "doi_tuong": [
+          "barman",
+          "bottle"
+        ],
+        "mau_sac": [
+          "black",
+          "white"
+        ],
+        "hanh_dong": "bottle",
+        "boi_canh": "barman",
+        "caption_chi_tiet": "Barman đang làm việc tại một bar với nhiều chai rượu và bouteilles de vin.",
+        "caption_en": "A bartender is working at a bar with many bottles of wine and bottles of liquor.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.484,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "091.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.916,
+      "ket_qua": {
+        "doi_tuong": [
+          "Thầy Đồ Đức Anh",
+          "Trường THPT Bùi Thị Xuân, TP.HCM"
+        ],
+        "mau_sac": [
+          "xanh",
+          "trắng"
+        ],
+        "hanh_dong": "Đoàn học đang thảo luận",
+        "boi_canh": "Hội thảo luận",
+        "caption_chi_tiet": "Hội thảo luận giữa thầy giáo và học sinh tại Trường THPT Bùi Thị Xuân, TP.HCM.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.916,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "094.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 11.839,
+      "ket_qua": {
+        "doi_tuong": [
+          "Bộ đội bóng rổ đang thi đấu trên sân bóng rổ",
+          "Hàng đội bóng rổ gồm các cầu thủ mặc áo màu xanh lá cây và đen"
+        ],
+        "mau_sac": [
+          "Xanh lá cây",
+          "Đen"
+        ],
+        "hanh_dong": "Bộ đội bóng rổ đang thi đấu trên sân bóng rổ",
+        "boi_canh": "Sân bóng rổ",
+        "caption_chi_tiet": "Bộ đội bóng rổ đang thi đấu trên sân bóng rổ. Các cầu thủ mặc áo màu xanh lá cây và đen đang chơi bóng rổ. Sân bóng rổ rộng lớn, có hàng đội bóng rổ gồm các cầu thủ mặc áo màu xanh lá cây và đen.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 11.839,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "099.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.833,
+      "ket_qua": {
+        "doi_tuong": [
+          "người",
+          "laptop",
+          "màn hình"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "xanh dương"
+        ],
+        "hanh_dong": "làm việc",
+        "boi_canh": "khoang làm việc",
+        "caption_chi_tiet": "Một người đang làm việc tại bàn làm việc với màn hình và laptop.",
+        "caption_en": "A man working at a desk with a laptop and monitor.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.833,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "109.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 10.417,
+      "ket_qua": {
+        "doi_tuong": [
+          "Học bổng đồng hành xây dựng nhân lực chất lượng cao cho thành phố Thủ Đức",
+          "Saigon International University"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Bạc"
+        ],
+        "hanh_dong": "Đưa ra quyết định",
+        "boi_canh": "Học bổng đồng hành",
+        "caption_chi_tiet": "Học bổng đồng hành xây dựng nhân lực chất lượng cao cho thành phố Thủ Đức tại Đại học Sài Gòn Quốc tế",
+        "caption_en": "The signing of the agreement to build a high-quality human resources for the city of Thu Duc",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 10.417,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "110.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 11.197,
+      "ket_qua": {
+        "doi_tuong": [
+          "khoảng vận i",
+          "vị trí vận sang",
+          "vị trí vận tôi"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "xanh dương"
+        ],
+        "hanh_dong": "giải thích",
+        "boi_canh": "mảng phân tích",
+        "caption_chi_tiet": "Một hình ảnh phân tích về khoảng vận i, vị trí vận sang và vị trí vận tôi trong một hệ thống ánh sáng. Nó mô tả về cách tính toán và phân tích các thành phần của ánh sáng trong một hệ thống ánh sáng.",
+        "caption_en": "A diagram explaining the components of light in a system. It describes how to calculate and analyze the components of light in a system.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 11.197,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "111.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 17.342,
+      "ket_qua": {
+        "doi_tuong": [
+          "Thầy Nguyễn Việt Đăng Du",
+          "28/02/1946",
+          "28/02/1946",
+          "28/02/1946",
+          "28/02/1946"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Xanh dương",
+          "Xanh dương",
+          "Xanh dương",
+          "Xanh dương"
+        ],
+        "hanh_dong": "Đoàn học sinh đang học tập, Đoàn học sinh đang học tập, Đoàn học sinh đang học tập, Đoàn học sinh đang học tập, Đoàn học sinh đang học tập",
+        "boi_canh": "Bảng trắng, Bảng trắng, Bảng trắng, Bảng trắng, Bảng trắng",
+        "caption_chi_tiet": "Một giáo viên đang giảng dạy tại lớp học, với bảng trắng làm nền và hình ảnh học sinh đang học tập.",
+        "caption_en": "A teacher is teaching in a classroom with a whiteboard as the background and students are learning.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 17.342,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "112.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 6.742,
+      "ket_qua": {
+        "doi_tuong": [
+          "bơm"
+        ],
+        "mau_sac": [
+          "trắng"
+        ],
+        "hanh_dong": "Đóng bơm",
+        "boi_canh": "giường",
+        "caption_chi_tiet": "Một bơm màu trắng đóng trên một giường.",
+        "caption_en": "A clear beaker is placed on a table.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 6.742,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "114.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 12.217,
+      "ket_qua": {
+        "doi_tuong": [
+          "Thầy Đồ Đức Anh",
+          "Trường THPT Bùi Thị Xuân, TP.HCM"
+        ],
+        "mau_sac": [
+          "xanh",
+          "trắng"
+        ],
+        "hanh_dong": "Đào tạo văn học",
+        "boi_canh": "Trường THPT Bùi Thị Xuân, TP.HCM",
+        "caption_chi_tiet": "Trường THPT Bùi Thị Xuân, TP.HCM tổ chức chương trình đào tạo văn học cho sinh viên năm 2024.",
+        "caption_en": "Anh Thầy Đồ Đức Anh, giáo viên tại Trường THPT Bùi Thị Xuân, TP.HCM, tổ chức chương trình đào tạo văn học cho sinh viên năm 2024.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 12.217,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "118.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.81,
+      "ket_qua": {
+        "doi_tuong": [
+          "Thầy giáo",
+          "giáo trình"
+        ],
+        "mau_sac": [
+          "xanh",
+          "trắng"
+        ],
+        "hanh_dong": "Giáo trình",
+        "boi_canh": "giáo trình",
+        "caption_chi_tiet": "Một giáo trình được giảng dạy bởi thầy giáo đang ngồi trước bàn và sử dụng laptop.",
+        "caption_en": "A teacher is teaching a lesson using a laptop and a whiteboard.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.81,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "120.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "JsonParseError: Không tìm thấy JSON hợp lệ trong output (dài 766 ký tự)"
+    },
+    "125.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.513,
+      "ket_qua": {
+        "doi_tuong": [
+          "Trường học",
+          "Học sinh",
+          "Giảng viên"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Đen"
+        ],
+        "hanh_dong": "Giảng viên đang giảng dạy",
+        "boi_canh": "Bàn học tập và bảng chữ cái",
+        "caption_chi_tiet": "Trường học với giáo viên và học sinh trong phòng học, bảng chữ cái và hình ảnh hiển thị năm 2024.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.513,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "127.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "ValidationError: 1 validation error for KeyframeMetadata\ncaption_chi_tiet\n  Input should be a valid string [type=string_type, input_value=['Một người giảng ...Quyền Đơn, TP.HCM.'], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type"
+    },
+    "131.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "ValidationError: 1 validation error for KeyframeMetadata\ncaption_chi_tiet\n  Input should be a valid string [type=string_type, input_value=['Một chiếc nồi kim...gian bếp gia đình.'], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type"
+    },
+    "132.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 16.912,
+      "ket_qua": {
+        "doi_tuong": [
+          "Thầy giáo",
+          "laptop",
+          "giáo trình"
+        ],
+        "mau_sac": [
+          "xanh",
+          "trắng"
+        ],
+        "hanh_dong": "Đào tạo",
+        "boi_canh": "Giáo trình",
+        "caption_chi_tiet": "Trong hình, thầy giáo đang giảng dạy tại phòng học. Trong phòng học có một màn hình lớn hiển thị một bài giảng. Bài giảng được thực hiện bởi hai người giảng viên khác nhau. Một người giảng viên đang ngồi trước màn hình và giảng dạy, còn một người giảng viên đang ngồi phía sau màn hình và đang sử dụng laptop để làm việc. Trong phòng học cũng có một số sách và đồ chơi trẻ em. Tổng thể, hình ảnh này phản ánh một buổi giảng dạy tại một trường học.",
+        "caption_en": "In the picture, a teacher is teaching in a classroom. In the classroom, there is a large screen displaying a lecture. The lecture is being delivered by two different teachers. One teacher is sitting in front of the screen and teaching, while another teacher is sitting behind the screen and using a laptop to work. In the classroom, there are some books and toys. Overall, the image reflects a teaching session at a school.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 16.912,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "135.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 9.774,
+      "ket_qua": {
+        "doi_tuong": [
+          "Thầy Đồ Đức Anh",
+          "Trường THPT Bùi Thị Xuân, TP.HCM"
+        ],
+        "mau_sac": [
+          "Đồ",
+          "Xanh dương"
+        ],
+        "hanh_dong": "Đào tạo",
+        "boi_canh": "Bàn giao",
+        "caption_chi_tiet": "Thầy Đồ Đức Anh đang giảng dạy tại Trường THPT Bùi Thị Xuân, TP.HCM.",
+        "caption_en": "Dr. Đồ Đức Anh is teaching at Bui Thi Xuân High School, HCM.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 9.774,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "136.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.105,
+      "ket_qua": {
+        "doi_tuong": [
+          "bức tranh vẽ"
+        ],
+        "mau_sac": [
+          "xanh",
+          "tím"
+        ],
+        "hanh_dong": "làm việc vẽ",
+        "boi_canh": "trường học",
+        "caption_chi_tiet": "Một bức tranh vẽ màu xanh và tím, có hình người vẽ và nhiều cây hoa trên nền màu tím.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.105,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "140.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.349,
+      "ket_qua": {
+        "doi_tuong": [
+          "tính chất hóa học"
+        ],
+        "mau_sac": [
+          "xanh dương"
+        ],
+        "hanh_dong": "Đại diện giảng dạy đang trình bày về tính chất hóa học",
+        "boi_canh": "Bài giảng dạy hiện tại",
+        "caption_chi_tiet": "Đại diện giảng dạy đang trình bày về tính chất hóa học, đặc biệt là về phản ứng giữa sắt và khí",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.349,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "146.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "JsonParseError: Không tìm thấy JSON hợp lệ trong output (dài 1184 ký tự)"
+    },
+    "152.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 10.204,
+      "ket_qua": {
+        "doi_tuong": [
+          "mẹo giáo dục",
+          "cảm hứng học tập"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "đen"
+        ],
+        "hanh_dong": "Đào tạo",
+        "boi_canh": "khoảnh khắc giáo viên đang giảng dạy",
+        "caption_chi_tiet": "Một giáo viên đang giảng dạy trong một phòng học, mặc áo trắng và áo sơ mi đỏ, cầm điện thoại di động trong tay.",
+        "caption_en": "Educational Meme: A teacher is teaching in a classroom, wearing a white shirt and a red tie, holding a mobile phone in his hand.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 10.204,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "153.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.514,
+      "ket_qua": {
+        "doi_tuong": [
+          "Trường THPT Marie Curie - TP.HCM"
+        ],
+        "mau_sac": [
+          "Xanh dương"
+        ],
+        "hanh_dong": "Đang giảng dạy",
+        "boi_canh": "Giảng viên đang giảng dạy",
+        "caption_chi_tiet": "Một giáo viên đang giảng dạy tại Trường THPT Marie Curie - TP.HCM.",
+        "caption_en": "A teacher is teaching at the Marie Curie High School - HCM.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.514,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "154.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "JsonParseError: Không tìm thấy JSON hợp lệ trong output (dài 590 ký tự)"
+    },
+    "172.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "ValidationError: 1 validation error for KeyframeMetadata\ncaption_chi_tiet\n  Field required [type=missing, input_value={'doi_tuong': ['Thầy gi...c bàn và máy tính'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "174.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.304,
+      "ket_qua": {
+        "doi_tuong": [
+          "Trợ lý",
+          "Học viên"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Đen"
+        ],
+        "hanh_dong": "Luyện học",
+        "boi_canh": "Luyện học",
+        "caption_chi_tiet": "Trợ lý đang luyện học với nhiều hình ảnh về cộng đồng và thế giới",
+        "caption_en": "A student is practicing learning with various images about communities and the world.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.304,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "177.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 10.382,
+      "ket_qua": {
+        "doi_tuong": [
+          "Trợ lý giáo viên đang giảng dạy tại phòng học",
+          "Giáo viên đang đứng trước bàn và sử dụng laptop"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Bạc"
+        ],
+        "hanh_dong": "Giáo viên đang giảng dạy",
+        "boi_canh": "Giảng viên đang giảng dạy",
+        "caption_chi_tiet": "Trợ lý giáo viên đang giảng dạy tại phòng học. Giáo viên đang đứng trước bàn và sử dụng laptop.",
+        "caption_en": "The teacher is teaching in the classroom. The teacher is standing in front of the desk and using a laptop.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 10.382,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "178.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 9.306,
+      "ket_qua": {
+        "doi_tuong": [
+          "cảm nhận",
+          "lớp học",
+          "tự học"
+        ],
+        "mau_sac": [
+          "xanh",
+          "trắng"
+        ],
+        "hanh_dong": "làm việc",
+        "boi_canh": "khoảng thời gian",
+        "caption_chi_tiet": "Trong lớp học tự học, một cô giáo đang hướng dẫn học sinh làm việc và học tập.",
+        "caption_en": "In class self-study, a teacher is teaching students how to work and study.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 9.306,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "185.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 5.954,
+      "ket_qua": {
+        "doi_tuong": [
+          "mẹo"
+        ],
+        "mau_sac": [
+          "xanh"
+        ],
+        "hanh_dong": "đã bắt đầu",
+        "boi_canh": "mẹo đang cười",
+        "caption_chi_tiet": "Mẹo đang cười trước bức hình của mình.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 5.954,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "192.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 9.369,
+      "ket_qua": {
+        "doi_tuong": [
+          "Thầy Đồ Đức Anh",
+          "Trường THPT Bùi Thị Xuân, TP.HCM"
+        ],
+        "mau_sac": [
+          "Đỏ",
+          "Xanh"
+        ],
+        "hanh_dong": "Đào tạo",
+        "boi_canh": "Bài học",
+        "caption_chi_tiet": "Một người đàn ông đang giảng dạy tại Trường THPT Bùi Thị Xuân, TP.HCM.",
+        "caption_en": "A man is teaching at Bui Thi Xuân High School, HCM.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 9.369,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "194.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.229,
+      "ket_qua": {
+        "doi_tuong": [
+          "trẻ em",
+          "kho sách",
+          "màu đỏ"
+        ],
+        "mau_sac": [
+          "màu đỏ"
+        ],
+        "hanh_dong": "Đọc sách",
+        "boi_canh": "Trẻ em đang đứng trước hàng sách",
+        "caption_chi_tiet": "Trẻ em đang đọc sách trong kho sách",
+        "caption_en": "Children are reading books in the library.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.229,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "207.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 12.533,
+      "ket_qua": {
+        "doi_tuong": [],
+        "mau_sac": [],
+        "hanh_dong": "",
+        "boi_canh": "",
+        "caption_chi_tiet": "Một hình vẽ hàm số y = f(x) được vẽ trên đoạn [-2; 6] với hình dạng như hình chữ nhật. Biệt điểm giữa A, B, C có độ dài là 32, 2 và 3. Tính toán phân I = ∫(3x - 4)(1 + f(-3x^2 + 2x + 5)) dx từ -2 đến 6.",
+        "caption_en": "A graph of the function y = f(x) is drawn on the interval [-2; 6]. The distance between points A, B, and C is 32, 2, and 3 units respectively. The integral I = ∫(3x - 4)(1 + f(-3x^2 + 2x + 5)) dx from -2 to 6.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 12.533,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "215.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.202,
+      "ket_qua": {
+        "doi_tuong": [
+          "phát biểu",
+          "viết nhạc"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "đen"
+        ],
+        "hanh_dong": "viết nhạc",
+        "boi_canh": "viết nhạc",
+        "caption_chi_tiet": "Một người đàn ông đang viết nhạc tại bàn piano với một bức ảnh của quốc kỳ Mỹ trong hình nền.",
+        "caption_en": "A man is writing music at the piano with an American flag as the background.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.202,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "230.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 9.159,
+      "ket_qua": {
+        "doi_tuong": [
+          "nói chuyện với giáo viên",
+          "giáo viên đang giảng dạy",
+          "một giáo viên đang giảng dạy"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "đen"
+        ],
+        "hanh_dong": "giáo viên đang giảng dạy",
+        "boi_canh": "giáo viên đang giảng dạy",
+        "caption_chi_tiet": "Giáo viên hồng nhung đang giảng dạy tại phòng học với bảng đen và máy tính bảng.",
+        "caption_en": "The teacher is teaching in the classroom with a blackboard and a laptop.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 9.159,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "231.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 16.965,
+      "ket_qua": {
+        "doi_tuong": [
+          "vì dụ 3"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "trắng"
+        ],
+        "hanh_dong": "vì dụ 3",
+        "boi_canh": "vì dụ 3",
+        "caption_chi_tiet": "Vì dụ 3. Cho hình tròn xoay có hai đỉnh là hai hình tròn (O; R) và (O'; R). Tôn tại đây cung AB thuộc đường tròn (O) sao cho ∆O'AB là tam giác đều và mặt phẳng (O'AB) hợp với mặt phẳng chứa đường tròn (O) một góc 60°. Khi độ dịch xung quanh Sxq hình tròn là",
+        "caption_en": "Example 3. Given a right circular cylinder with two vertices as two circles (O; R) and (O'; R). The tangent line AB is the line segment connecting the center O of the cylinder to the center O' of the cylinder. The tangent line AB is perpendicular to the plane (O'AB), which is parallel to the plane containing the circle O. When the tangent line is rotated around the axis OQ, the surface area of the cylinder is",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 16.965,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "237.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.546,
+      "ket_qua": {
+        "doi_tuong": [
+          "Trợ lý",
+          "Trợ lý"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Xanh dương"
+        ],
+        "hanh_dong": "Đưa ra công thức tính để giải thích",
+        "boi_canh": "Chương trình học trực tuyến",
+        "caption_chi_tiet": "Một người đang giảng dạy tại một lớp học trực tuyến.",
+        "caption_en": "A teacher is teaching in an online class.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.546,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "238.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 12.599,
+      "ket_qua": {
+        "doi_tuong": [
+          "thầy giáo",
+          "laptop",
+          "tấm blackboard"
+        ],
+        "mau_sac": [
+          "blackboard",
+          "tấm blackboard"
+        ],
+        "hanh_dong": "thầy giáo đang giảng dạy",
+        "boi_canh": "tấm blackboard",
+        "caption_chi_tiet": "Thầy giáo đang giảng dạy tại một lớp học với một tấm blackboard lớn và một laptop đặt trước mặt. Trên tấm blackboard, có một hình vẽ của ba đỉnh của một hình tam giác và một biểu đồ số liệu liên quan đến hình tam giác đó.",
+        "caption_en": "The teacher is teaching in a classroom with a large blackboard and a laptop in front of him. On the blackboard, there is an illustration of three vertices of a triangle and a graph related to the triangle.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 12.599,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "247.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.11,
+      "ket_qua": {
+        "doi_tuong": [
+          "búp bê",
+          "búp bê"
+        ],
+        "mau_sac": [
+          "xanh",
+          "trắng"
+        ],
+        "hanh_dong": "Đọc sách",
+        "boi_canh": "Trung tâm thư viện",
+        "caption_chi_tiet": "Một chú bê đang đọc sách tại Trung tâm thư viện.",
+        "caption_en": "A small dog is reading a book at the library.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.11,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "259.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 9.989,
+      "ket_qua": {
+        "doi_tuong": [
+          "Trợ lý",
+          "Trợ lý",
+          "Trợ lý"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Xanh dương",
+          "Xanh dương"
+        ],
+        "hanh_dong": "Đang giảng dạy",
+        "boi_canh": "Bàn ghế và máy tính",
+        "caption_chi_tiet": "Trợ lý đang giảng dạy môn học về chuyển đổi dữ liệu và phân tích dữ liệu trong lĩnh vực công nghệ thông tin.",
+        "caption_en": "An instructor is teaching the topic of data transformation and data analysis in the field of information technology.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 9.989,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "264.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 12.433,
+      "ket_qua": {
+        "doi_tuong": [
+          "cảm ơn",
+          "cảm ơn bạn"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "xanh dương"
+        ],
+        "hanh_dong": "cảm ơn bạn",
+        "boi_canh": "cảm ơn bạn",
+        "caption_chi_tiet": "Cảm ơn bạn đã tham dự buổi học trực tuyến hôm qua. Tôi rất vui khi được giúp đỡ bạn trong việc giải quyết bài tập của bạn. Hãy nhớ rằng, nếu bạn cần thêm sự hỗ trợ nào đó, hãy không ngần ngại liên hệ với tôi. Chúc bạn thành công trong bài học hôm nay!",
+        "caption_en": "Thank you for joining our online class yesterday. I'm glad to help you with your math problems. Please feel free to contact me if you need any assistance. Good luck with your class today!",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 12.433,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "266.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "JsonParseError: Không tìm thấy JSON hợp lệ trong output (dài 1031 ký tự)"
+    },
+    "274.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.599,
+      "ket_qua": {
+        "doi_tuong": [
+          "Người phục vụ đang mang đồ ăn đến bàn ăn của khách hàng",
+          "Người khách hàng đang sử dụng điện thoại"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "trắng"
+        ],
+        "hanh_dong": "Đặt bàn ăn",
+        "boi_canh": "Bàn ăn gỗ và đồ ăn",
+        "caption_chi_tiet": "Người phục vụ đang mang đồ ăn đến bàn ăn của khách hàng. Khách hàng đang sử dụng điện thoại đặt bàn ăn.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.599,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "277.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.419,
+      "ket_qua": {
+        "doi_tuong": [
+          "bìa sách",
+          "bìa cuốn sách"
+        ],
+        "mau_sac": [
+          "xanh",
+          "trắng"
+        ],
+        "hanh_dong": "Đọc sách",
+        "boi_canh": "Bìa cuốn sách",
+        "caption_chi_tiet": "Một người đang đọc một cuốn sách ở thư viện.",
+        "caption_en": "A man is reading a book in the library.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.419,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "283.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "JsonParseError: Không tìm thấy JSON hợp lệ trong output (dài 740 ký tự)"
+    },
+    "291.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.324,
+      "ket_qua": {
+        "doi_tuong": [
+          "câu toán điện tử"
+        ],
+        "mau_sac": [
+          "xanh dương"
+        ],
+        "hanh_dong": "câu toán điện tử",
+        "boi_canh": "câu toán điện tử",
+        "caption_chi_tiet": "Câu toán điện tử phân tích về sự tương tác giữa điện áp và dòng điện trong một mạch điện. Trong hình ảnh này, chúng ta được hướng dẫn cách giải quyết một vấn đề về điện trở và dòng điện trong một mạch điện phức tạp.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.324,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "293.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "ValidationError: 1 validation error for KeyframeMetadata\ncaption_chi_tiet\n  Field required [type=missing, input_value={'doi_tuong': ['Trợ lý...n ghế và máy tính'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "303.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.948,
+      "ket_qua": {
+        "doi_tuong": [
+          "bìa sách",
+          "bìa cuốn sách"
+        ],
+        "mau_sac": [
+          "xanh",
+          "trắng"
+        ],
+        "hanh_dong": "Đưa sách ra khỏi tủ sách",
+        "boi_canh": "Trong thư viện",
+        "caption_chi_tiet": "Một người đang đưa một cuốn sách ra khỏi tủ sách trong thư viện.",
+        "caption_en": "A man is taking a book out of the library bookshelf.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.948,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "304.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.665,
+      "ket_qua": {
+        "doi_tuong": [
+          "bảng chữ"
+        ],
+        "mau_sac": [
+          "xanh"
+        ],
+        "hanh_dong": "đưa lên bàn",
+        "boi_canh": "bảng chữ",
+        "caption_chi_tiet": "Một bảng chữ được vẽ trên bàn trắng, chứa hai hình dạng: một hình vuông và một hình tam giác. Hình vuông có góc cạnh dài 6 và hình tam giác có góc cạnh dài 4.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.665,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "306.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.464,
+      "ket_qua": {
+        "doi_tuong": [],
+        "mau_sac": [],
+        "hanh_dong": "Đang di chuyển",
+        "boi_canh": "Không có gì rõ ràng trong ảnh",
+        "caption_chi_tiet": "Một bức ảnh bị nhấp nháy và模糊, khiến nó trở nên khó hiểu.",
+        "caption_en": "A blurry image is moving around and it's hard to understand what's happening.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.464,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "311.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 6.697,
+      "ket_qua": {
+        "doi_tuong": [
+          "basketball court"
+        ],
+        "mau_sac": [
+          "xanh lá"
+        ],
+        "hanh_dong": "phòng tập bóng rổ",
+        "boi_canh": "không có bóng rổ",
+        "caption_chi_tiet": "Một đội bóng rổ đang tập luyện tại sân bóng rổ xanh lá cây xanh lá.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 6.697,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "327.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.686,
+      "ket_qua": {
+        "doi_tuong": [
+          "mô phỏng",
+          "robot",
+          "lý thuyết"
+        ],
+        "mau_sac": [
+          "xám",
+          "trắng"
+        ],
+        "hanh_dong": "phát triển",
+        "boi_canh": "lý thuyết",
+        "caption_chi_tiet": "Một cô gái đang chụp hình một robot mô phỏng trong một phòng học máy tính và khoa học kỹ thuật.",
+        "caption_en": "A girl is taking a picture of a humanoid robot model in a computer science and engineering classroom.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.686,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "333.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.943,
+      "ket_qua": {
+        "doi_tuong": [
+          "phát biểu",
+          "trình diễn"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "đỏ"
+        ],
+        "hanh_dong": "phát biểu",
+        "boi_canh": "một người phụ nữ đang phát biểu",
+        "caption_chi_tiet": "Một người phụ nữ đang phát biểu tại một sự kiện với một hoa tươi xanh dương và đỏ đặt lên bàn phát biểu.",
+        "caption_en": "A woman is speaking at an event with a bouquet of yellow and red flowers placed on the podium.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.943,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "335.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.981,
+      "ket_qua": {
+        "doi_tuong": [
+          "trung thu",
+          "dàn vũ công nghệ"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "đen"
+        ],
+        "hanh_dong": "dàn vũ công nghệ đang biểu diễn",
+        "boi_canh": "trung thu",
+        "caption_chi_tiet": "Dàn vũ công nghệ biểu diễn trong một màn trình diễn trung thu với hình ảnh của Van Gogh trên nền",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.981,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "339.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.901,
+      "ket_qua": {
+        "doi_tuong": [
+          "Trợ lý",
+          "Trợ lý",
+          "Trợ lý"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Xanh dương",
+          "Xanh dương"
+        ],
+        "hanh_dong": "Đang trình bày",
+        "boi_canh": "Bàn làm việc",
+        "caption_chi_tiet": "Trợ lý đang trình bày về các công ty điện thoại thông tin tại Việt Nam.",
+        "caption_en": "An instructor is presenting about telecommunications companies in Vietnam.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.901,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "350.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 10.582,
+      "ket_qua": {
+        "doi_tuong": [
+          "The gold ring was expensive. I couldn’t afford to buy it.",
+          "If the gold ring had been cheaper, I couldn’t have afforded to buy it.",
+          "If the gold ring had been more expensive, I could have afforded to buy it.",
+          "If the gold ring had been less expensive, I could have afforded to buy it."
+        ],
+        "mau_sac": [],
+        "hanh_dong": "Giáo viên Hồng Nhung đang giảng dạy",
+        "boi_canh": "Trường học",
+        "caption_chi_tiet": "Một giáo viên đang giảng dạy tại trường học với bảng đen và biểu tượng của năm học 2023.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 10.582,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "353.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 13.387,
+      "ket_qua": {
+        "doi_tuong": [
+          "câu 5"
+        ],
+        "mau_sac": [
+          "không có màu sắc"
+        ],
+        "hanh_dong": "Không có hành động chính đang diễn ra",
+        "boi_canh": "Không có nơi chốn và hoàn cảnh tổng thể",
+        "caption_chi_tiet": "Chương 5 của bài học môn toán học lớp 9 của Trường THPT X gồm 9 học sinh, trong đó có 3 học sinh nữ chia thành 3 tổ đều nhau (mỗi tổ 3 học sinh) để làm công tác biểu diễn văn nghệ. Tổng số suất cho mỗi tổ có đúng 1 suất.",
+        "caption_en": "Chapter 5 of the lesson on mathematics class 9 at THPT X consists of 9 students, among which there are 3 female students divided into 3 equal groups (each group has 3 students). The total number of seats for each group is exactly one seat.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 13.387,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "359.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.977,
+      "ket_qua": {
+        "doi_tuong": [
+          "phát biểu sự phân tích về hình ảnh và câu hỏi"
+        ],
+        "mau_sac": [
+          "xanh dương"
+        ],
+        "hanh_dong": "Đang phân tích hình ảnh và câu hỏi",
+        "boi_canh": "Câu hỏi về phân tích hình ảnh và câu hỏi",
+        "caption_chi_tiet": "Một người đang phát biểu về hình ảnh và câu hỏi.",
+        "caption_en": "A man is presenting about the image and question.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.977,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "361.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 11.162,
+      "ket_qua": {
+        "doi_tuong": [
+          "Thầy Trần Ngọc Anh",
+          "Trường THPT chuyên Trần Đại Nghĩa, TP.HCM"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Bạc"
+        ],
+        "hanh_dong": "Chương trình diễn ra tại Trường THPT chuyên Trần Đại Nghĩa, TP.HCM",
+        "boi_canh": "Trường THPT chuyên Trần Đại Nghĩa, TP.HCM",
+        "caption_chi_tiet": "Một người đàn ông đang giảng dạy tại Trường THPT chuyên Trần Đại Nghĩa, TP.HCM.",
+        "caption_en": "A man is teaching at the School of Technology and Science, HCMC.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 11.162,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "365.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 9.106,
+      "ket_qua": {
+        "doi_tuong": [
+          "Đào tạo",
+          "Giáo dục",
+          "Lớp học"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Trắng"
+        ],
+        "hanh_dong": "Đào tạo",
+        "boi_canh": "Giáo viên đang giảng dạy",
+        "caption_chi_tiet": "Một lớp học tại trường đại học với giáo viên đang giảng dạy và học sinh đang lắng nghe.",
+        "caption_en": "A class at a university with a teacher teaching and students listening.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 9.106,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "367.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.915,
+      "ket_qua": {
+        "doi_tuong": [
+          "buiding",
+          "flags",
+          "flags of different countries"
+        ],
+        "mau_sac": [
+          "red",
+          "white",
+          "blue"
+        ],
+        "hanh_dong": "flag poles",
+        "boi_canh": "flags",
+        "caption_chi_tiet": "Buiding with flags of different countries including the American flag and the Vietnamese flag.",
+        "caption_en": "The building has flags of different countries such as the American flag and the Vietnamese flag.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.915,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "375.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 10.793,
+      "ket_qua": {
+        "doi_tuong": [
+          "một cuộc họp",
+          "cơ hội hợp tác",
+          "thỏa thuận hợp tác"
+        ],
+        "mau_sac": [
+          "đồ họa màu",
+          "đồ họa màu sắc",
+          "đồ họa màu sắc"
+        ],
+        "hanh_dong": "một cuộc họp",
+        "boi_canh": "một cuộc họp",
+        "caption_chi_tiet": "Một cuộc họp giữa hai tổ chức lớn, Sài Gòn Quốc tế Đại học và Michael Dukakis Institute for Leadership & Innovation, Mỹ, đã được ký kết vào ngày 22 tháng 1 năm 2021 tại khách sạn Marriott International.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 10.793,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "384.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.506,
+      "ket_qua": {
+        "doi_tuong": [
+          "cảm ơn",
+          "trợ lý",
+          "vui lòng"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "xanh"
+        ],
+        "hanh_dong": "trợ lý đang nói chuyện với bạn",
+        "boi_canh": "cảm ơn bạn đã giúp tôi",
+        "caption_chi_tiet": "Trợ lý đang nói chuyện với bạn và cảm ơn bạn đã giúp tôi.",
+        "caption_en": "The teacher is talking to you and thanking you for helping me.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.506,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "388.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 11.386,
+      "ket_qua": {
+        "doi_tuong": [
+          "du học sinh",
+          "đặt lên",
+          "và bắt đầu"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "xanh dương"
+        ],
+        "hanh_dong": "đặt lên và bắt đầu",
+        "boi_canh": "du học sinh đang mặc áo dài màu xanh dương và bắt đầu đặt lên và bắt đầu",
+        "caption_chi_tiet": "Một nhóm du học sinh đang mặc áo dài màu xanh dương và bắt đầu đặt lên và bắt đầu trên sân trường, họ đang vui vẻ và hạnh phúc khi kết thúc khóa học.",
+        "caption_en": "A group of students wearing blue gowns are standing on the stage and throwing their caps into the air, they are happy and excited to finish their studies.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 11.386,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "393.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 8.003,
+      "ket_qua": {
+        "doi_tuong": [
+          "phát biểu",
+          "mikrofon"
+        ],
+        "mau_sac": [
+          "áo phong cách",
+          "áo hoa"
+        ],
+        "hanh_dong": "phát biểu",
+        "boi_canh": "áo phong cách",
+        "caption_chi_tiet": "Một người đang phát biểu với một mic và áo phong cách hoa trên người.",
+        "caption_en": "A man is speaking into a microphone and wearing a floral shirt.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 8.003,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "402.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 10.481,
+      "ket_qua": {
+        "doi_tuong": [
+          "Thầy Đồ Đức Anh",
+          "Trường THPT Bùi Thị Xuân, TP.HCM"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "bạc"
+        ],
+        "hanh_dong": "Đoàn người đang làm việc trong đồng cỏ",
+        "boi_canh": "Bảo tàng văn hóa Việt Nam",
+        "caption_chi_tiet": "Một nhóm người đang làm việc trong đồng cỏ, bảo tồn văn hóa Việt Nam qua hình ảnh và câu chuyện.",
+        "caption_en": "A group of people working in a rice field, preserving Vietnam's culture through images and stories.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 10.481,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "406.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.245,
+      "ket_qua": {
+        "doi_tuong": [
+          "bơi lội"
+        ],
+        "mau_sac": [
+          "xanh"
+        ],
+        "hanh_dong": "bơi lội",
+        "boi_canh": "bơi lội",
+        "caption_chi_tiet": "Một người đang bơi lội trong nước xanh trong một cảnh bơi lội.",
+        "caption_en": "A swimmer is swimming in a blue pool.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.245,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "435.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 10.478,
+      "ket_qua": {
+        "doi_tuong": [
+          "Thầy Đồ Đức Anh",
+          "Trương THPT Bùi Thị Xuân, TP.HCM"
+        ],
+        "mau_sac": [
+          "xanh",
+          "tím"
+        ],
+        "hanh_dong": "Đào tạo",
+        "boi_canh": "Trường THPT Bùi Thị Xuân, TP.HCM",
+        "caption_chi_tiet": "Trong hình, thầy Đồ Đức Anh đang giảng dạy môn ngữ văn tại Trường THPT Bùi Thị Xuân, TP.HCM.",
+        "caption_en": "In the picture, Teacher Do Duc Anh is teaching the subject of Vietnamese language at Bui Thi Xuân High School, HCM City.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 10.478,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "437.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.747,
+      "ket_qua": {
+        "doi_tuong": [
+          "bìa sách",
+          "bìa sách màu xanh"
+        ],
+        "mau_sac": [
+          "xanh"
+        ],
+        "hanh_dong": "Đọc sách",
+        "boi_canh": "Trường học",
+        "caption_chi_tiet": "Một người đang đọc sách ở giữa các hàng sách màu xanh trong một thư viện.",
+        "caption_en": "A man is reading books in between bookshelves in a library.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.747,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "440.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 9.572,
+      "ket_qua": {
+        "doi_tuong": [],
+        "mau_sac": [],
+        "hanh_dong": "",
+        "boi_canh": "",
+        "caption_chi_tiet": "Một màn hình hiển thị tên lớp học và năm học của một học sinh. Tên lớp học là 'CD 3: Kiến thức cơ bản lớp 11' và năm học là năm 2024.",
+        "caption_en": "A screen displaying the name of the class and year of study for a student. The class name is 'CD 3: Basic knowledge class 11' and the year is 2024.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 9.572,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "455.jpg": {
+      "thanh_cong": false,
+      "latency_sec": null,
+      "ket_qua": null,
+      "loi": "ValidationError: 1 validation error for KeyframeMetadata\ncaption_chi_tiet\n  Field required [type=missing, input_value={'doi_tuong': ['Bài gi...i_canh': 'Bài giảng'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "484.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.091,
+      "ket_qua": {
+        "doi_tuong": [
+          "logo"
+        ],
+        "mau_sac": [
+          "xanh"
+        ],
+        "hanh_dong": "đang hiển thị logo",
+        "boi_canh": "không có hình ảnh hoặc sự kiện",
+        "caption_chi_tiet": "Một logo màu xanh đang hiển thị trên nền trắng.",
+        "caption_en": "A blue logo is displayed on a white background.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.091,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "514.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 5.557,
+      "ket_qua": {
+        "doi_tuong": [],
+        "mau_sac": [],
+        "hanh_dong": "Không có hình ảnh nào được hiển thị",
+        "boi_canh": "",
+        "caption_chi_tiet": "Không có hình ảnh nào được hiển thị",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 5.557,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "528.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 7.235,
+      "ket_qua": {
+        "doi_tuong": [
+          "logo"
+        ],
+        "mau_sac": [
+          "xanh"
+        ],
+        "hanh_dong": "đang hiển thị logo",
+        "boi_canh": "không có hình ảnh hoặc sự kiện",
+        "caption_chi_tiet": "Một logo màu xanh đang hiển thị trên nền màu xám.",
+        "caption_en": "A blue logo is displayed on a gray background.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 7.235,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "566.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 10.057,
+      "ket_qua": {
+        "doi_tuong": [
+          "Nhóm nhân viên đang họp mặt trong phòng họp",
+          "Họ đang đọc sách và thảo luận"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Đen"
+        ],
+        "hanh_dong": "Họ đang thảo luận về vấn đề công việc",
+        "boi_canh": "Giường họp",
+        "caption_chi_tiet": "Nhóm nhân viên đang họp mặt trong phòng họp, họ đang đọc sách và thảo luận về vấn đề công việc.",
+        "caption_en": "The group of employees are meeting in a conference room, reading books and discussing work-related issues.",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 10.057,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    },
+    "611.jpg": {
+      "thanh_cong": true,
+      "latency_sec": 11.657,
+      "ket_qua": {
+        "doi_tuong": [
+          "Học bổng đồng hành xây dựng nhân lực chất lượng cao cho thành phố Thủ Đức",
+          "Saigon International University"
+        ],
+        "mau_sac": [
+          "Xanh dương",
+          "Bạc"
+        ],
+        "hanh_dong": "Đại diện của Saigon International University và đại diện của Thành phố Thủ Đức đang thực hiện nghi thức ký kết hợp tác giáo dục",
+        "boi_canh": "Trung tâm hội nghị và sự kiện",
+        "caption_chi_tiet": "Họ đại diện của hai tổ chức, Saigon International University và Thành phố Thủ Đức, đã ký kết hợp tác giáo dục tại Trung tâm hội nghị và sự kiện. Họ đang thực hiện nghi thức ký kết trong không khí trang trọng và lịch sự.",
+        "caption_en": "",
+        "_model": "Qwen/Qwen2-VL-2B-Instruct",
+        "_model_key": "qwen2vl-2b",
+        "_backend": "transformers-4bit",
+        "_latency_sec": 11.657,
+        "_prompt_version": "v2",
+        "_schema_version": "v1",
+        "_vram_peak_gb": 1.946
+      },
+      "loi": null
+    }
+  }
+}

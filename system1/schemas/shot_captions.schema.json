@@ -31,8 +31,8 @@
     "shot_id": {"type": "string", "minLength": 1},
     "representative_keyframe_id": {"type": "string", "pattern": "^.+:[0-9]+$"},
     "representative_timestamp_sec": {"type": "number", "minimum": 0},
-    "caption_vi": {"type": "string", "minLength": 1},
-    "caption_en": {"type": "string", "minLength": 1},
+    "caption_vi": {"type": "string"},
+    "caption_en": {"type": "string"},
     "objects_vi": {"type": "array", "items": {"type": "string"}},
     "objects_en": {"type": "array", "items": {"type": "string"}},
     "actions_vi": {"type": "array", "items": {"type": "string"}},
@@ -46,7 +46,14 @@
     "prompt_version": {"type": "string", "minLength": 1},
     "schema_version": {"type": "string", "minLength": 1},
     "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
-    "status": {"const": "pass"}
+    "status": {"enum": ["pass", "failed"]}
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "if": {"properties": {"status": {"const": "pass"}}},
+  "then": {
+    "properties": {
+      "caption_vi": {"type": "string", "minLength": 1},
+      "caption_en": {"type": "string", "minLength": 1}
+    }
+  }
 }

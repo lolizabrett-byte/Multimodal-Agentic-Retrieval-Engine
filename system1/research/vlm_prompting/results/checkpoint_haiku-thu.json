@@ -1,0 +1,49 @@
+{
+ "model_key": "haiku-thu",
+ "da_xong": {
+  "000000000285.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "000000000285.jpg",
+    "doi_tuong": [
+     "gấu nâu",
+     "cỏ xanh"
+    ],
+    "mau_sac": [
+     "nâu vàng",
+     "đen",
+     "xanh lá"
+    ],
+    "hanh_dong": "nhìn thẳng về phía trước",
+    "boi_canh": "trong rừng hoặc công viên, giữa cỏ dại",
+    "caption_chi_tiet": "Một chú gấu nâu với bộ lông dày màu nâu vàng đang nhìn thẳng vào máy ảnh, đứng giữa thảm cỏ xanh tươi tốt.",
+    "caption_en": "A brown bear with thick golden-brown fur stares directly at the camera while standing in lush green grass."
+   }
+  },
+  "000000017627.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "000000017627.jpg",
+    "doi_tuong": [
+     "xe taxi",
+     "xe ô tô",
+     "đèn giao thông",
+     "cột đèn",
+     "tòa nhà",
+     "con đường"
+    ],
+    "mau_sac": [
+     "xanh lam",
+     "vàng",
+     "trắng",
+     "đen",
+     "xám"
+    ],
+    "hanh_dong": "đậu xe trên đường phố",
+    "boi_canh": "khu phố thành phố, ngoài trời, thời tiết nắng",
+    "caption_chi_tiet": "Nhiều xe taxi và ô tô đang đậu trên con đường phố có nắng, với tòa nhà màu trắng đáng chú ý ở phía sau và các cột đèn giao thông xung quanh.",
+    "caption_en": "Multiple taxis and cars are parked on a sunny street with a notable white building in the background and traffic lights and utility poles visible around."
+   }
+  }
+ }
+}

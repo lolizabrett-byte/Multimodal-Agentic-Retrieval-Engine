@@ -1,0 +1,649 @@
+{
+  "model_key": "haiku-thu30",
+  "da_xong": {
+    "001.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "chữ 'THANHNIEN' màu xanh lam"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "xám nhạt"
+        ],
+        "hanh_dong": "hiển thị văn bản",
+        "boi_canh": "nền xám trơn, không gian trắng",
+        "caption_chi_tiet": "Chữ 'THANHNIEN' in đậm màu xanh lam hiển thị trên nền xám nhạt, tạo hiệu ứng tiêu đề hoặc logo của một tổ chức báo chí.",
+        "caption_en": "The text 'THANHNIEN' in bold cyan blue displayed on a light gray background, creating a header or logo effect for a news organization."
+      },
+      "loi": null
+    },
+    "005.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "người đàn ông",
+          "kính mắt",
+          "áo sơ mi trắng",
+          "cà vạt xanh",
+          "laptop",
+          "bản đồ thế giới"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "trắng",
+          "xám"
+        ],
+        "hanh_dong": "ngồi làm việc tại laptop",
+        "boi_canh": "phòng họp hoặc studio với nền công nghệ xanh lam toàn cảnh",
+        "caption_chi_tiet": "Một người đàn ông mặc áo sơ mi trắng và cà vạt xanh, đeo kính mắt, ngồi tại bàn làm việc với laptop, được bao quanh bởi hiệu ứng công nghệ và bản đồ thế giới trên nền xanh lam tươi sáng.",
+        "caption_en": "A man wearing a white shirt and blue tie with glasses sits at a desk working on a laptop, surrounded by technology effects and a world map on a bright blue background."
+      },
+      "loi": null
+    },
+    "006.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nữ giáo viên",
+          "máy tính bảng",
+          "bảng trắng",
+          "bảng chữ cái"
+        ],
+        "mau_sac": [
+          "đen",
+          "trắng",
+          "xanh lam",
+          "nâu"
+        ],
+        "hanh_dong": "giảng dạy chuyên đề lịch sử",
+        "boi_canh": "lớp học trong phòng với bảng chữ cái và đồ dùng giáo dục",
+        "caption_chi_tiet": "Một nữ giáo viên mặc áo đen ngồi tại bàn học với máy tính bảng, trước bảng trắng lớn hiển thị tiêu đề 'CHUYÊN ĐỀ 6 - PHÁP LUẬT VÀ QUYỀN BÌNH ĐẲNG CỦA CÔNG DÂN' trong lớp học được trang trí bằng bảng chữ cái.",
+        "caption_en": "A female teacher in black clothing sits at a desk with a tablet in front of a large white board displaying 'TOPIC 6 - LAWS AND RIGHTS OF CITIZENS' in a classroom decorated with an alphabet chart."
+      },
+      "loi": null
+    },
+    "032.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "các quan chức",
+          "cờ Việt Nam",
+          "cờ Đức",
+          "bàn hội thảo",
+          "hoa trắng",
+          "máy tính để bàn"
+        ],
+        "mau_sac": [
+          "đỏ",
+          "vàng",
+          "đen",
+          "trắng",
+          "nâu"
+        ],
+        "hanh_dong": "họp báo hoặc hội thảo quốc tế",
+        "boi_canh": "phòng họp chính thức với các cờ quốc gia",
+        "caption_chi_tiet": "Các quan chức ngồi quanh bàn hội thảo dài với cờ Việt Nam và Đức, hoa trắng trang trí, tham gia một cuộc họp báo hoặc hội thảo ngoại giao trong phòng gỗ nâu sang trọng.",
+        "caption_en": "Officials sit around a long conference table with Vietnamese and German flags and white flowers, participating in a press conference or diplomatic forum in an elegant brown wooden room."
+      },
+      "loi": null
+    },
+    "037.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "các quan chức",
+          "cờ Việt Nam",
+          "cờ Đức",
+          "bàn hội thảo",
+          "hoa trắng",
+          "máy tính để bàn"
+        ],
+        "mau_sac": [
+          "đỏ",
+          "vàng",
+          "đen",
+          "trắng",
+          "nâu"
+        ],
+        "hanh_dong": "họp báo hoặc hội thảo quốc tế",
+        "boi_canh": "phòng họp chính thức với các cờ quốc gia",
+        "caption_chi_tiet": "Các quan chức ngồi quanh bàn hội thảo dài với cờ Việt Nam và Đức, hoa trắng trang trí, tham gia một cuộc họp báo hoặc hội thảo ngoại giao trong phòng gỗ nâu sang trọng.",
+        "caption_en": "Officials sit around a long conference table with Vietnamese and German flags and white flowers, participating in a press conference or diplomatic forum in an elegant brown wooden room."
+      },
+      "loi": null
+    },
+    "047.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "hai người",
+          "đàn guitar",
+          "ghế",
+          "ánh sáng따뜻"
+        ],
+        "mau_sac": [
+          "cam",
+          "hồng",
+          "vàng",
+          "trắng"
+        ],
+        "hanh_dong": "biểu diễn nhạc guitar",
+        "boi_canh": "phòng sáng với ánh sáng ấm áp, cây lá phía sau",
+        "caption_chi_tiet": "Hai người đang biểu diễn nhạc guitar ngồi trên ghế, được bao quanh bởi ánh sáng ấm áp màu cam vàng, tạo không khí thân mật và thoải mái trong phòng sáng với cây xanh phía sau.",
+        "caption_en": "Two people perform guitar music while sitting on chairs, surrounded by warm orange and yellow lighting, creating an intimate and comfortable atmosphere in a bright room with greenery behind."
+      },
+      "loi": null
+    },
+    "073.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nền mờ",
+          "ánh sáng"
+        ],
+        "mau_sac": [
+          "cam",
+          "vàng",
+          "trắng",
+          "nâu"
+        ],
+        "hanh_dong": "chuyển cảnh",
+        "boi_canh": "nền mờ nhẹ nhàng, không xác định",
+        "caption_chi_tiet": "Ảnh với nền mờ nhẹ nhàng sử dụng các tông màu ấm áp, tạo hiệu ứng chuyển cảnh hoặc kết nối giữa các cảnh trong một bộ phim hoặc video.",
+        "caption_en": "An image with a soft blurred background using warm tones, creating a transition effect or scene connection in a film or video."
+      },
+      "loi": null
+    },
+    "092.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "laptop Dell",
+          "bảng trắng",
+          "vòng tròn biểu đồ",
+          "bảng xanh hồng"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "hồng",
+          "cam",
+          "trắng",
+          "đen"
+        ],
+        "hanh_dong": "giảng dạy trực tuyến hoặc thuyết trình",
+        "boi_canh": "phòng studio với nền công nghệ xanh lam và hồng",
+        "caption_chi_tiet": "Một nam giáo viên mặc áo sơ mi trắng ngồi tại laptop Dell, trước bảng trắng lớn hiển thị vòng tròn biểu đồ màu cam, vàng, xanh lam, tham gia một buổi giảng dạy trực tuyến trong phòng studio hiện đại.",
+        "caption_en": "A male teacher in a white shirt sits at a Dell laptop in front of a large white board displaying colored circular charts in orange, yellow, and blue, conducting an online teaching session in a modern studio."
+      },
+      "loi": null
+    },
+    "097.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nền trắng",
+          "ánh sáng"
+        ],
+        "mau_sac": [
+          "trắng",
+          "xám"
+        ],
+        "hanh_dong": "chuyển cảnh hoặc fade",
+        "boi_canh": "nền trắng sáng mờ",
+        "caption_chi_tiet": "Ảnh fade trắng tạo hiệu ứng chuyển cảnh mịn màng, được sử dụng như một khoảng trắng hoặc phân cách giữa các phần nội dung trong video hoặc trình thuyết trình.",
+        "caption_en": "A white fade image creating a smooth transition effect, used as a spacer or divider between content sections in a video or presentation."
+      },
+      "loi": null
+    },
+    "119.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "laptop",
+          "bảng trắng",
+          "hộp chữ màu",
+          "công thức toán học"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "vàng",
+          "cam",
+          "trắng",
+          "đen",
+          "hồng"
+        ],
+        "hanh_dong": "giảng dạy vật lý hoặc toán học",
+        "boi_canh": "studio giáo dục với bảng trắng và các yếu tố đồ họa",
+        "caption_chi_tiet": "Một nam giáo viên mặc áo trắng ngồi tại laptop, đằng sau bảng trắng lớn hiển thị công thức toán học về năng lượng dao động điều hòa, với thanh tiêu đề vàng cam và xanh lam ở trên cùng.",
+        "caption_en": "A male teacher in white clothing sits at a laptop in front of a large white board displaying harmonic motion energy formulas, with yellow, orange, and blue header bars at the top."
+      },
+      "loi": null
+    },
+    "121.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "máy tính xách tay",
+          "bảng trắng",
+          "sách",
+          "đồ trang trí"
+        ],
+        "mau_sac": [
+          "tím nhạt",
+          "xanh dương",
+          "vàng",
+          "nâu"
+        ],
+        "hanh_dong": "đang giảng dạy câu hỏi trắc nghiệm",
+        "boi_canh": "lớp học trực tuyến với nền trang trí đầy màu sắc",
+        "caption_chi_tiet": "Một nam giáo viên mặc áo tím nhạt đang ngồi trước máy tính xách tay, trình bày câu hỏi trắc nghiệm số 4 về động năng lượng trong hệ sinh thái trên bảng trắng.",
+        "caption_en": "A male teacher wearing a light purple shirt sits in front of a laptop, presenting a multiple-choice question number 4 about energy in the ecosystem on a whiteboard."
+      },
+      "loi": null
+    },
+    "127.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "máy tính xách tay",
+          "bảng trắng",
+          "sơ đồ di truyền",
+          "biểu đồ"
+        ],
+        "mau_sac": [
+          "tím nhạt",
+          "xanh dương",
+          "nâu",
+          "trắng"
+        ],
+        "hanh_dong": "đang giải thích sơ đồ di truyền",
+        "boi_canh": "lớp học trực tuyến về sinh học phân tử",
+        "caption_chi_tiet": "Một nam giáo viên mặc áo tím nhạt ngồi trước máy tính, trình bày sơ đồ di truyền và biểu đồ chi tiết về cơ chế di truyền của vi khuẩn E.coli trên bảng trắng.",
+        "caption_en": "A male teacher wearing a light purple shirt sits before a laptop, presenting a genetic diagram and detailed chart explaining the inheritance mechanism of E.coli bacteria on a whiteboard."
+      },
+      "loi": null
+    },
+    "131.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "máy tính xách tay",
+          "biểu đồ tư duy",
+          "hình ảnh nền xanh"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "tím",
+          "cam",
+          "vàng",
+          "xám"
+        ],
+        "hanh_dong": "đang trình bày nội dung lịch sử",
+        "boi_canh": "lớp học trực tuyến với nền đồ họa kỹ thuật số",
+        "caption_chi_tiet": "Một nam giáo viên mặc áo trắng ngồi trước lớp học ảo, trình bày biểu đồ tư duy về các quyết định lịch sử và hiệp ước nước Việt Nam từ năm 1945 đến 1975.",
+        "caption_en": "A male teacher wearing a white shirt sits before a virtual classroom, presenting a mind map about historical decisions and treaties of Vietnam from 1945 to 1975."
+      },
+      "loi": null
+    },
+    "138.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "máy tính xách tay",
+          "cuốn sách",
+          "nền mờ có hoa"
+        ],
+        "mau_sac": [
+          "hồng san hô",
+          "xanh lá cây",
+          "nâu",
+          "trắng"
+        ],
+        "hanh_dong": "đang nói chuyện và chỉ dẫn",
+        "boi_canh": "lớp học trực tuyến về ngôn văn và văn học",
+        "caption_chi_tiet": "Một nam giáo viên mặc áo đen ngồi trước máy tính, giải thích nội dung về nhân định văn học và bối cảnh hoàn cảnh sáng tạo tác phẩm trên nền hồng san hô.",
+        "caption_en": "A male teacher wearing a black shirt sits before a laptop, explaining the content about literary perspectives and contextual background of literary works on a coral pink background."
+      },
+      "loi": null
+    },
+    "142.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "bảng trắng",
+          "phương trình toán học",
+          "con trỏ chuột"
+        ],
+        "mau_sac": [
+          "vàng nhạt",
+          "tím",
+          "xanh dương",
+          "đen"
+        ],
+        "hanh_dong": "trình bày bài toán số phức",
+        "boi_canh": "màn hình máy tính hiển thị bài giảng toán học",
+        "caption_chi_tiet": "Một màn hình hiển thị bảng trắng điện tử với phương trình số phức z/(z-4) = (i+1)z - (3z+4)i để giải, cùng với bốn đáp án trắc nghiệm được đánh dấu A, B, C, D.",
+        "caption_en": "A screen displays an electronic whiteboard with a complex number equation z/(z-4) = (i+1)z - (3z+4)i to solve, along with four multiple-choice answers marked A, B, C, D."
+      },
+      "loi": null
+    },
+    "147.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nữ giáo viên",
+          "máy tính xách tay",
+          "bảng trắng",
+          "thẻ ghi chú"
+        ],
+        "mau_sac": [
+          "tím nhạt",
+          "xanh dương",
+          "cam",
+          "vàng"
+        ],
+        "hanh_dong": "đang giảng dạy bài tiếng Anh",
+        "boi_canh": "lớp học trực tuyến môn tiếng Anh quốc tế",
+        "caption_chi_tiet": "Một nữ giáo viên mặc áo hồng ngồi trước máy tính, trình bày bài tập tiếng Anh về kết hợp câu với các tùy chọn trắc nghiệm A, B, C, D liên quan đến sự kiện của Hoa.",
+        "caption_en": "A female teacher wearing a pink shirt sits before a laptop, presenting an English exercise about sentence combining with multiple-choice options A, B, C, D related to Hoa's event."
+      },
+      "loi": null
+    },
+    "157.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nữ sinh",
+          "tòa nhà cao tầng",
+          "biển quảng cáo",
+          "cây xanh"
+        ],
+        "mau_sac": [
+          "xanh lá cây",
+          "hồng",
+          "trắng",
+          "vàng"
+        ],
+        "hanh_dong": "đang nhìn lên phía biển quảng cáo",
+        "boi_canh": "đường phố thành phố với các tòa nhà hiện đại",
+        "caption_chi_tiet": "Một cô gái mặc áo tím đứng trước tòa nhà cao tầng có kiến trúc hiện đại, nhìn lên phía trên nơi có biển quảng cáo màu hồng về giáo dục quốc tế.",
+        "caption_en": "A girl wearing a purple shirt stands in front of a modern high-rise building, looking up at a pink advertisement banner promoting international education."
+      },
+      "loi": null
+    },
+    "159.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nữ giáo viên",
+          "máy tính xách tay",
+          "bảng trắng",
+          "hình minh họa"
+        ],
+        "mau_sac": [
+          "cam",
+          "tím",
+          "xanh lá cây",
+          "nâu",
+          "đỏ"
+        ],
+        "hanh_dong": "đang giảng dạy kỹ năng ngôn ngữ",
+        "boi_canh": "lớp học trực tuyến môn ngôn văn",
+        "caption_chi_tiet": "Một nữ giáo viên mặc áo đen ngồi trước máy tính, giải thích khái niệm về phong cách ngôn ngữ và các yếu tố liên quan như báo chí, khoa học, nghệ thuật, sinh hoạt trên nền nâu.",
+        "caption_en": "A female teacher wearing a black shirt sits before a laptop, explaining concepts about language style and related elements such as journalism, science, art, daily life on a brown background."
+      },
+      "loi": null
+    },
+    "216.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "máy tính xách tay",
+          "bảng trắng",
+          "dòng chữ"
+        ],
+        "mau_sac": [
+          "hồng san hô",
+          "xanh dương",
+          "nâu",
+          "vàng"
+        ],
+        "hanh_dong": "đang giải thích bài học sinh học",
+        "boi_canh": "lớp học trực tuyến môn sinh học",
+        "caption_chi_tiet": "Một nam giáo viên mặc áo trắng ngồi trước máy tính, trình bày nội dung về alen, gen và các thuộc tính di truyền trong câu hỏi trắc nghiệm số 2 về sinh vật.",
+        "caption_en": "A male teacher wearing a white shirt sits before a laptop, presenting content about alleles, genes, and hereditary traits in multiple-choice question number 2 about organisms."
+      },
+      "loi": null
+    },
+    "231.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "nam giáo viên",
+          "máy tính xách tay",
+          "bảng trắng",
+          "dòng chữ"
+        ],
+        "mau_sac": [
+          "hồng san hô",
+          "xanh dương",
+          "nâu",
+          "vàng nhạt"
+        ],
+        "hanh_dong": "đang trình bày câu hỏi di truyền học",
+        "boi_canh": "lớp học trực tuyến môn sinh học",
+        "caption_chi_tiet": "Một nam giáo viên mặc áo sơ mi hoa văn ngồi trước máy tính, trình bày câu hỏi di truyền học số 2 về số lượng loại giao tử và kiểu hình trong quá trình tạo sinh sản.",
+        "caption_en": "A male teacher wearing a patterned shirt sits before a laptop, presenting genetics question number 2 about the number of gamete types and phenotypes in the reproductive process."
+      },
+      "loi": null
+    },
+    "279.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "màn hình chiếu",
+          "công thức hóa học",
+          "chữ viết"
+        ],
+        "mau_sac": [
+          "xanh lục",
+          "vàng",
+          "trắng"
+        ],
+        "hanh_dong": "hiển thị nội dung giáo dục",
+        "boi_canh": "lớp học trực tuyến, slide bài giảng hóa học",
+        "caption_chi_tiet": "Một màn hình chiếu hiển thị bài giảng hóa học về amino axit với các công thức phản ứng hóa học viết bằng chữ vàng trên nền xanh lục, bao gồm các phương trình tính toán và hướng dẫn giải bài tập.",
+        "caption_en": "A projection screen displays a chemistry lesson about amino acids with chemical reaction formulas in yellow text on a green background, including calculation equations and problem-solving instructions."
+      },
+      "loi": null
+    },
+    "289.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "đề thi",
+          "câu hỏi",
+          "văn bản"
+        ],
+        "mau_sac": [
+          "trắng",
+          "xanh lam",
+          "đen"
+        ],
+        "hanh_dong": "trình bày đề thi",
+        "boi_canh": "tài liệu thi trắc nghiệm vật lý năm 2019",
+        "caption_chi_tiet": "Một trang đề thi trắc nghiệm vật lý năm 2019 với khung viền xanh lam chứa nhiều câu hỏi về laser, hiện tượng quang điện và tính năng lượng của các chất, mỗi câu có bốn phương án trả lời A, B, C, D.",
+        "caption_en": "An exam paper for physics multiple-choice test in 2019 with a blue border containing several questions about lasers, photoelectric effects, and energy of substances, each question with four answer options A, B, C, D."
+      },
+      "loi": null
+    },
+    "297.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "biển hiệu đại học",
+          "tòa nhà",
+          "cây cối"
+        ],
+        "mau_sac": [
+          "trắng",
+          "xám",
+          "xanh lục"
+        ],
+        "hanh_dong": "chụp ảnh biển hiệu",
+        "boi_canh": "khuôn viên trường đại học quốc tế Sài Gòn",
+        "caption_chi_tiet": "Một biển hiệu trắng lớn ghi chữ 'THE SAIGON INTERNATIONAL UNIVERSITY' được gắn trên tường của tòa nhà đại học với kiến trúc hiện đại, cây xanh và các tòa nhà khác nhìn thấy ở lối vào khuôn viên.",
+        "caption_en": "A large white sign reading 'THE SAIGON INTERNATIONAL UNIVERSITY' mounted on the wall of a modern university building with green trees and other buildings visible at the entrance of the campus."
+      },
+      "loi": null
+    },
+    "316.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "slide trình chiếu",
+          "bảng so sánh",
+          "hình ảnh minh họa"
+        ],
+        "mau_sac": [
+          "xanh lục",
+          "vàng",
+          "trắng"
+        ],
+        "hanh_dong": "trình bày bài học",
+        "boi_canh": "bài giảng liên kết hóa học, dùng dụng chất với nước",
+        "caption_chi_tiet": "Một slide bài giảng về luyện tập với hai cột so sánh bảng A và bảng B, hiển thị các phương án đúng sai về cách sử dụng hóa chất an toàn, bao gồm hình ảnh minh họa về tính chất của các chất liệu trong nền xanh lục.",
+        "caption_en": "A lesson slide about practice with two comparison columns of table A and table B, showing correct and incorrect options for safe chemical usage, with illustrative images of material properties on a green background."
+      },
+      "loi": null
+    },
+    "327.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "hai người đàn ông",
+          "tấm bảng quảng cáo",
+          "nền hoa"
+        ],
+        "mau_sac": [
+          "đỏ",
+          "xanh dương",
+          "hồng"
+        ],
+        "hanh_dong": "trình bày thông báo học bổng",
+        "boi_canh": "sân vườn của trường đại học, lễ công bố học bổng",
+        "caption_chi_tiet": "Hai người đàn ông mặc áo tây trang chính thức đứng cầm một tấm bảng quảng cáo xanh dương với thông tin về quỹ học bổng tài năng trẻ từ Trường Đại Học Quốc Tế Sài Gòn, nền sau là hoa hồng đỏ và lá cờ đỏ.",
+        "caption_en": "Two men in formal business attire holding a blue promotional banner with information about a young talent scholarship fund from Saigon International University, with red roses and a red flag visible in the background."
+      },
+      "loi": null
+    },
+    "342.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "giáo viên nam",
+          "laptop",
+          "bảng trắng"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "trắng",
+          "xám"
+        ],
+        "hanh_dong": "giảng dạy bài toán",
+        "boi_canh": "phòng học trực tuyến, nền lũa sáng trong nhà",
+        "caption_chi_tiet": "Một giáo viên nam mặc áo vest xanh tối ngồi trước laptop ASUS đang giảng dạy bài toán, với bảng trắng ở phía sau hiển thị công thức toán học và dòng chữ 'THANHMEN', bối cảnh nền là những hình ảnh mờ của tòa nhà.",
+        "caption_en": "A male teacher in a dark blue blazer sits in front of an ASUS laptop teaching a math lesson, with a whiteboard behind showing mathematical formulas and the text 'THANHMEN', with blurred building images in the background."
+      },
+      "loi": null
+    },
+    "348.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "bảng thông tin hóa học",
+          "phương trình hóa học",
+          "các ký hiệu"
+        ],
+        "mau_sac": [
+          "xanh lam",
+          "vàng",
+          "trắng"
+        ],
+        "hanh_dong": "trình bày phản ứng hóa học",
+        "boi_canh": "bài giảng về hóa hóp và hidrôxit, phương pháp điện phân",
+        "caption_chi_tiet": "Một bảng thông tin hóa học chia làm hai phần giới thiệu các phương pháp điện phân hợp chất sắt (II) và sắt (III), với các phương trình phản ứng được viết bằng chữ vàng trên nền xanh, bao gồm ký hiệu điều kiện phản ứng như nhiệt độ và xúc tác.",
+        "caption_en": "A chemistry information table divided into two sections introducing electrolysis methods for iron (II) and iron (III) compounds, with reaction equations written in yellow text on a blue background, including reaction condition symbols such as temperature and catalyst."
+      },
+      "loi": null
+    },
+    "361.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "giáo viên nam",
+          "laptop",
+          "thẻ ghi chú"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "trắng",
+          "vàng"
+        ],
+        "hanh_dong": "giảng dạy và trình bày vấn đề",
+        "boi_canh": "phòng học trực tuyến, nền xanh dương",
+        "caption_chi_tiet": "Một giáo viên nam mặc áo sơ mi trắng và kính mắt đang ngồi trước laptop giảng dạy, bên cạnh là thẻ ghi chú màu vàng nhạt hiển thị nội dung bài giảng về âm thanh với các thông tin kỹ thuật âm nhạc và độ dB.",
+        "caption_en": "A male teacher wearing a white shirt and glasses sits in front of a laptop teaching, with a light yellow note card beside showing lesson content about sound with technical audio information and dB levels."
+      },
+      "loi": null
+    },
+    "374.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "hai người đàn ông",
+          "tấm bảng quảng cáo",
+          "hoa hồng"
+        ],
+        "mau_sac": [
+          "đỏ",
+          "xanh dương",
+          "hồng"
+        ],
+        "hanh_dong": "trình bày thông báo học bổng",
+        "boi_canh": "sân vườn của trường đại học, lễ công bố",
+        "caption_chi_tiet": "Hai người đàn ông mặc áo vest tây trang chính thức đứng cầm một tấm bảng quảng cáo xanh dương của Trường Đại Học Quốc Tế Sài Gòn với nội dung về quỹ học bổng, nền sau là các hoa hồng màu hồng tươi sáng.",
+        "caption_en": "Two men in formal business suits holding a blue promotional banner from Saigon International University about a scholarship fund, with vibrant pink roses visible in the background."
+      },
+      "loi": null
+    },
+    "375.jpg": {
+      "thanh_cong": true,
+      "ket_qua": {
+        "doi_tuong": [
+          "giáo viên nam",
+          "laptop",
+          "nền trang trí"
+        ],
+        "mau_sac": [
+          "xanh dương",
+          "trắng",
+          "hồng"
+        ],
+        "hanh_dong": "giảng dạy bài học hóa",
+        "boi_canh": "lớp học trực tuyến, nền gradient tím xanh",
+        "caption_chi_tiet": "Một giáo viên nam mặc áo vest màu kem ngồi trước laptop trong phòng học ảo với nền gradient tím xanh, hiển thị nội dung bài giảng về phương pháp điện phân với các công thức phản ứng hóa học được trình bày trên slide bên phải.",
+        "caption_en": "A male teacher in a cream-colored blazer sits in front of a laptop in a virtual classroom with a purple-blue gradient background, displaying lesson content about electrolysis methods with chemical reaction formulas presented on the slide to the right."
+      },
+      "loi": null
+    }
+  }
+}

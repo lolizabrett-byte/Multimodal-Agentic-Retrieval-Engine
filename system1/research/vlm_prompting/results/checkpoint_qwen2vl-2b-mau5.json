@@ -1,0 +1,87 @@
+{
+ "model_key": "qwen2vl-2b",
+ "da_xong": {
+  "001.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "001.jpg",
+    "doi_tuong": [],
+    "mau_sac": [],
+    "hanh_dong": "",
+    "boi_canh": "",
+    "caption_chi_tiet": "Caption Chi tiết: Một người đàn ông mặc áo mưa đỏ đang chạy xe máy qua đoạn đường ngập nước dưới cơn mưa tầm tã."
+   }
+  },
+  "009.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "009.jpg",
+    "doi_tuong": [
+     "người",
+     "laptop",
+     "bìa đen"
+    ],
+    "mau_sac": [
+     "xanh"
+    ],
+    "hanh_dong": "Đang giảng dạy",
+    "boi_canh": "Trung tâm học tập",
+    "caption_chi_tiet": "Người giảng dạy đang giảng dạy tại Trung tâm học tập."
+   }
+  },
+  "010.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "010.jpg",
+    "doi_tuong": [
+     "người"
+    ],
+    "mau_sac": [
+     "xanh"
+    ],
+    "hanh_dong": "giới thiệu",
+    "boi_canh": "trong phòng học",
+    "caption_chi_tiet": "Người giới thiệu đang trình bày trong phòng học với một màn hình hiển thị hình ảnh khoa học kỹ thuật."
+   }
+  },
+  "014.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "014.jpg",
+    "doi_tuong": [
+     "enjoy",
+     "admit",
+     "avoid",
+     "deny",
+     "fancy",
+     "keep",
+     "mind",
+     "spend",
+     "suggest",
+     "tolerate"
+    ],
+    "mau_sac": [
+     "xanh"
+    ],
+    "hanh_dong": "Trung tâm giáo dục",
+    "boi_canh": "Trung tâm giáo dục",
+    "caption_chi_tiet": "Trung tâm giáo dục đang tổ chức một buổi học trực tuyến với nhiều hoạt động thú vị."
+   }
+  },
+  "019.jpg": {
+   "thanh_cong": true,
+   "ket_qua": {
+    "image": "019.jpg",
+    "doi_tuong": [
+     "bạn giảng dạy"
+    ],
+    "mau_sac": [
+     "xanh"
+    ],
+    "hanh_dong": "giải thích",
+    "boi_canh": "trường học",
+    "caption_chi_tiet": "Bà giảng dạy về phân tích một cấu trúc gen học."
+   }
+  }
+ }
+}
