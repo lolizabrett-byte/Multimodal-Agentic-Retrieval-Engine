@@ -136,27 +136,8 @@ phase01:
         response_schema_version: shot_caption_response_v2
 
   scene_boundary:
-    # Vintern-3B khong bam noi schema nay: lan chay 26/08 tra mang tran, go sai
-    # ten khoa, va bia shot id cua video khac -> ca 3 video chet o stage scenes.
-    # Qwen2.5-VL-7B dat 99,72% JSON hop le tren benchmark 355 anh (Vintern-3B
-    # 97,46%) va duong qwen_local nhan nhieu anh mot request, nen judge lay lai
-    # duoc sheet tong quan. Stage nay chi goi vai chuc lan moi video nen doi
-    # model o day gan nhu khong dung toi tong thoi gian.
-    provider: qwen_local
-    sdk: transformers
-    model_id: Qwen/Qwen2.5-VL-7B-Instruct
-    model_revision: cc594898137f460bfe9f0759e9844b3ce807cfb5
-    trust_remote_code: false
-    torch_dtype: float16
-    device_map: cuda
-    quantization:
-      method: bitsandbytes
-      package_version: 0.47.0
-      mode: 4bit
-      quant_type: nf4
-      compute_dtype: float16
-      double_quant: true
-    max_new_tokens: 768
+    provider: vintern_local
+    model_key: shot_caption
     prompt_version: scene_boundary_primary_v2
     focused_prompt_version: scene_boundary_focused_v2
     consistency_prompt_version: scene_boundary_consistency_v2
