@@ -81,30 +81,33 @@ phase01:
     model_id: 5CD-AI/Vintern-1B-v3_5
     model_revision: b98f263eab246eb5269ade64edbdca8a887dc44d
     trust_remote_code: true
-    torch_dtype: auto
-    device_map: auto
+    # Checkpoint is fp32 (3.75 GB); fp16 halves that. device_map "auto" would
+    # shard a model that fits on one card, adding cross-GPU hops for nothing.
+    torch_dtype: float16
+    device_map: cuda:0
     prompt_version: keyframe_ocr_v1
     response_schema_version: keyframe_ocr_response_v1
     max_new_tokens: 512
+    # Model config caps dynamic tiling at 4. A 16:9 keyframe becomes 2 tiles,
+    # so small on-screen text keeps twice the pixels it had when squashed to one.
+    max_dynamic_patch: 4
 
   shot_caption:
-    provider: qwen_local
+    # Qwen2.5-VL-7B needs 16.6 GB at fp16, so a 16 GB T4 forced NF4 on it.
+    # Vintern-3B fits in 7.4 GB unquantised: faster, no quantisation damage to
+    # the vision tower, and Vietnamese-native. Shares the InternVL tiling path
+    # with the OCR model.
+    provider: vintern_local
     sdk: transformers
-    model_id: Qwen/Qwen2.5-VL-7B-Instruct
-    model_revision: cc594898137f460bfe9f0759e9844b3ce807cfb5
-    trust_remote_code: false
+    model_id: 5CD-AI/Vintern-3B-R-beta
+    model_revision: 4fd34d713dfca446cdecc00d921f5038909e3efb
+    trust_remote_code: true
     torch_dtype: float16
-    device_map: cuda
-    quantization:
-      method: bitsandbytes
-      package_version: 0.47.0
-      mode: 4bit
-      quant_type: nf4
-      compute_dtype: float16
-      double_quant: true
+    device_map: cuda:0
     prompt_version: shot_caption_v2
     response_schema_version: shot_caption_response_v2
     max_new_tokens: 768
+    max_dynamic_patch: 4
     fallbacks:
       - provider: gemini
         sdk: google-genai
@@ -116,7 +119,7 @@ phase01:
         response_schema_version: shot_caption_response_v2
 
   scene_boundary:
-    provider: qwen_local
+    provider: vintern_local
     model_key: shot_caption
     prompt_version: scene_boundary_primary_v1
     focused_prompt_version: scene_boundary_focused_v1
@@ -131,7 +134,7 @@ phase01:
         thinking_level: medium
 
   scene_summary:
-    provider: qwen_local
+    provider: vintern_local
     model_key: shot_caption
     prompt_version: scene_summary_v1
     response_schema_version: scene_summary_response_v1

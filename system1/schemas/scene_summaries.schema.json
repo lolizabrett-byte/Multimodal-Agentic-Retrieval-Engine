@@ -8,7 +8,7 @@
     "video_id": {"type": "string", "minLength": 1},
     "summary_vi": {"type": "string", "minLength": 1},
     "summary_en": {"type": "string", "minLength": 1},
-    "provider": {"enum": ["gemini", "qwen_local"]},
+    "provider": {"enum": ["gemini", "qwen_local", "vintern_local"]},
     "model_name": {"type": "string", "minLength": 1},
     "model_version": {"type": "string", "minLength": 1},
     "prompt_version": {"type": "string", "minLength": 1},

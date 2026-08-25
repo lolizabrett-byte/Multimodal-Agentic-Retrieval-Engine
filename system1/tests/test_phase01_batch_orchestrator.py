@@ -466,10 +466,9 @@ def test_eight_videos_load_each_heavy_model_once_per_chunk(
     payload = json.loads(report.read_text(encoding="utf-8"))
     progress = capsys.readouterr().out
     assert payload["counts"]["complete_local"] == 8
-    assert ChunkLocalStructuredClient.load_counts == {
-        "vintern_local": 2,
-        "qwen_local": 2,
-    }
+    # OCR and captioning both run Vintern now, so each chunk loads the shared
+    # runtime once per model stage: 2 chunks x (ocr + shot_captions) = 4.
+    assert ChunkLocalStructuredClient.load_counts == {"vintern_local": 4}
     assert ChunkLocalStructuredClient.resident == set()
     assert progress.count('"event": "chunk",') == 4
     assert progress.count('"event": "model",') == 8
@@ -543,7 +542,7 @@ def test_interruption_during_second_chunk_resumes_completed_stages(
 
     payload = json.loads(report.read_text(encoding="utf-8"))
     assert payload["counts"]["complete_local"] == 8
-    assert ChunkLocalStructuredClient.load_counts == {"qwen_local": 1}
+    assert ChunkLocalStructuredClient.load_counts == {"vintern_local": 1}
     resumed_state = checkpoint_store.read_json(
         f"phase01_checkpoints/canonical_release_v001/{video_ids[4]}/state.json"
     )

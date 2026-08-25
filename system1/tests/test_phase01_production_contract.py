@@ -92,18 +92,20 @@ def test_phase01_config_encodes_one_fixed_production_pipeline() -> None:
     assert models["phase01"]["asr"]["model_id"] == "nvidia/parakeet-ctc-0.6b-vi"
     assert models["phase01"]["ocr"]["provider"] == "vintern_local"
     assert models["phase01"]["ocr"]["model_id"] == "5CD-AI/Vintern-1B-v3_5"
-    assert models["phase01"]["shot_caption"]["provider"] == "qwen_local"
-    assert models["phase01"]["shot_caption"]["model_id"] == "Qwen/Qwen2.5-VL-7B-Instruct"
-    assert models["phase01"]["shot_caption"]["quantization"] == {
-        "method": "bitsandbytes",
-        "package_version": "0.47.0",
-        "mode": "4bit",
-        "quant_type": "nf4",
-        "compute_dtype": "float16",
-        "double_quant": True,
-    }
-    assert models["phase01"]["scene_boundary"]["provider"] == "qwen_local"
-    assert models["phase01"]["scene_summary"]["provider"] == "qwen_local"
+    assert models["phase01"]["shot_caption"]["provider"] == "vintern_local"
+    assert models["phase01"]["shot_caption"]["model_id"] == "5CD-AI/Vintern-3B-R-beta"
+    # Vintern-3B fits a 16 GB T4 at fp16, so captioning runs unquantised.
+    assert "quantization" not in models["phase01"]["shot_caption"]
+    assert models["phase01"]["shot_caption"]["torch_dtype"] == "float16"
+    # Scene stages inherit the captioning model via model_key. Their declared
+    # provider must track it — a stale one would load Vintern weights through
+    # the Qwen code path.
+    for stage in ("scene_boundary", "scene_summary"):
+        assert models["phase01"][stage]["model_key"] == "shot_caption"
+        assert (
+            models["phase01"][stage]["provider"]
+            == models["phase01"]["shot_caption"]["provider"]
+        )
     assert set(models["phase01"]["asr_providers"]) == {"faster_whisper", "nemo"}
 
 
@@ -277,13 +279,11 @@ def test_semantic_policies_change_only_relevant_stage_hashes() -> None:
     assert ocr_hashes["ocr"] != resolved.stage_config_hashes["ocr"]
     assert ocr_hashes["shots"] == resolved.stage_config_hashes["shots"]
 
-    quant_changed = copy.deepcopy(resolved.payload)
-    quant_changed["models"]["shot_caption"]["quantization"][
-        "double_quant"
-    ] = False
-    quant_hashes = _stage_config_hashes(quant_changed)
+    caption_runtime_changed = copy.deepcopy(resolved.payload)
+    caption_runtime_changed["models"]["shot_caption"]["max_dynamic_patch"] = 1
+    caption_hashes = _stage_config_hashes(caption_runtime_changed)
     for stage in ("shot_captions", "scenes", "scene_summaries"):
-        assert quant_hashes[stage] != resolved.stage_config_hashes[stage]
+        assert caption_hashes[stage] != resolved.stage_config_hashes[stage]
 
     boundary_changed = copy.deepcopy(resolved.payload)
     boundary_changed["models"]["scene_boundary"]["provider"] = "gemini"
@@ -605,3 +605,31 @@ def test_package_assembly_backfills_scene_ids_and_passes_strict_validation(
     assert (artifact / "errors.jsonl").read_text(encoding="utf-8") == ""
     assert pd.read_parquet(artifact / "shots.parquet").iloc[0]["scene_id"] == scene_id
     assert pd.read_parquet(artifact / "scenes.parquet").iloc[0]["keyframe_count"] == 1
+
+
+def test_semantic_stages_resolve_to_one_consistent_local_provider() -> None:
+    """A stage's provider must match the model it actually loads.
+
+    Overriding `provider` on a stage that inherits its model via `model_key`
+    silently pairs one architecture's loader with another's weights.
+    """
+    models = load_configs(CONFIG_DIR)["models"]["phase01"]
+
+    for stage_name in ("scene_boundary", "scene_summary"):
+        stage = copy.deepcopy(models[stage_name])
+        model_key = stage.pop("model_key")
+        resolved = {**copy.deepcopy(models[model_key]), **stage}
+
+        assert resolved["provider"] == models[model_key]["provider"]
+        assert resolved["model_id"] == models[model_key]["model_id"]
+
+
+def test_local_vlm_stages_share_the_same_runtime_family() -> None:
+    models = load_configs(CONFIG_DIR)["models"]["phase01"]
+
+    providers = {
+        models["ocr"]["provider"],
+        models["shot_caption"]["provider"],
+    }
+
+    assert providers == {"vintern_local"}
