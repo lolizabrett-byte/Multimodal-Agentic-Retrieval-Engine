@@ -8,11 +8,12 @@ import tempfile
 import time
 import weakref
 import zipfile
-from collections.abc import Generator, Mapping
+from collections.abc import Callable, Generator, Mapping
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+import numpy as np
 import pandas as pd
 
 from system1.artifacts.checkpoint import sha256_file
@@ -1330,13 +1331,32 @@ def _build_ocr(
         "gate_no_text": 0,
         "gate_failures": 0,
         "vintern_processed": 0,
+        "dedup_reused": 0,
     }
+
+    def _image_for(keyframe: Mapping[str, Any]) -> Path:
+        return stage_dir / "keyframes" / Path(str(keyframe["keyframe_ref"])).name
+
+    dedup_config = ocr_config.get("dedup", {})
+    representative_of: dict[str, str] = {}
+    if isinstance(dedup_config, Mapping) and dedup_config.get("enabled", False):
+        representative_of = _dedup_groups(
+            selected_keyframes,
+            _image_for,
+            int(dedup_config.get("hamming_threshold", 4)),
+        )
+        counts["dedup_reused"] = len(representative_of)
+
     rows_by_keyframe: dict[str, dict[str, Any]] = {}
     requests: list[StructuredRequest] = []
     request_keyframes: list[dict[str, Any]] = []
+    deduped_keyframes: list[dict[str, Any]] = []
     for keyframe in selected_keyframes:
         keyframe_id = str(keyframe["keyframe_id"])
-        image = stage_dir / "keyframes" / Path(str(keyframe["keyframe_ref"])).name
+        if keyframe_id in representative_of:
+            deduped_keyframes.append(keyframe)
+            continue
+        image = _image_for(keyframe)
         gate_decision = "uncertain"
         if gate_enabled:
             counts["gate_checked"] += 1
@@ -1419,9 +1439,30 @@ def _build_ocr(
             confidence=confidence,
             status=status,
         )
+    for keyframe in deduped_keyframes:
+        keyframe_id = str(keyframe["keyframe_id"])
+        source = rows_by_keyframe.get(representative_of[keyframe_id])
+        if source is None:
+            continue
+        rows_by_keyframe[keyframe_id] = _ocr_row(
+            video_id=video_id,
+            keyframe=keyframe,
+            text=str(source["text"]),
+            provider=str(source["provider"]),
+            model_name=str(source["model_name"]),
+            model_version=str(source["model_version"]),
+            language=str(source["language"]),
+            confidence=source["confidence"],
+            status=str(source["status"]),
+        )
+
     if diagnostics is not None:
         diagnostics.update(counts)
-    return [rows_by_keyframe[str(row["keyframe_id"])] for row in selected_keyframes]
+    return [
+        rows_by_keyframe[str(row["keyframe_id"])]
+        for row in selected_keyframes
+        if str(row["keyframe_id"]) in rows_by_keyframe
+    ]
 
 
 def _ocr_row(
@@ -1503,6 +1544,66 @@ def _text_presence_gate(
     ):
         return "no_text"
     return "uncertain"
+
+
+def _perceptual_hash(image_path: Path) -> int | None:
+    """64-bit DCT hash. Returns None when the image cannot be read."""
+    import cv2
+
+    grayscale = cv2.imread(str(image_path), cv2.IMREAD_GRAYSCALE)
+    if grayscale is None or grayscale.size == 0:
+        return None
+    resized = cv2.resize(grayscale, (32, 32), interpolation=cv2.INTER_AREA)
+    coefficients = cv2.dct(resized.astype("float32"))[:8, :8].flatten()
+    # Skip the DC term: it tracks overall brightness, not structure.
+    median = float(np.median(coefficients[1:]))
+    bits = 0
+    for index, value in enumerate(coefficients):
+        if float(value) > median:
+            bits |= 1 << index
+    return bits
+
+
+def _hamming_distance(left: int, right: int) -> int:
+    return int(left ^ right).bit_count()
+
+
+def _dedup_groups(
+    keyframes: list[dict[str, Any]],
+    image_for: Callable[[dict[str, Any]], Path],
+    threshold: int,
+) -> dict[str, str]:
+    """Map keyframe_id -> representative keyframe_id within the same shot.
+
+    The three role keyframes of one shot usually show the same on-screen text
+    (subtitles, logos, signage hold still), so OCRing all three re-reads the same
+    characters. Grouping only ever happens inside a shot — never across shots.
+    """
+    representative_of: dict[str, str] = {}
+    by_shot: dict[str, list[dict[str, Any]]] = {}
+    for keyframe in keyframes:
+        by_shot.setdefault(str(keyframe.get("shot_id")), []).append(keyframe)
+
+    for shot_keyframes in by_shot.values():
+        seen: list[tuple[int, str]] = []
+        for keyframe in shot_keyframes:
+            keyframe_id = str(keyframe["keyframe_id"])
+            digest = _perceptual_hash(image_for(keyframe))
+            if digest is None:
+                continue
+            match = next(
+                (
+                    other_id
+                    for other_hash, other_id in seen
+                    if _hamming_distance(digest, other_hash) <= threshold
+                ),
+                None,
+            )
+            if match is None:
+                seen.append((digest, keyframe_id))
+            else:
+                representative_of[keyframe_id] = match
+    return representative_of
 
 
 def _ocr_text(payload: Mapping[str, Any]) -> str:

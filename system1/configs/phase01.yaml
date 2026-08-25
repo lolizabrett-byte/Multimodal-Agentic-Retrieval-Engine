@@ -11,6 +11,8 @@ execution:
     medium_free_disk_gb: 35
     medium_max_chunk_videos: 2
     low_disk_max_chunk_videos: 1
+  # Kaggle shares 13-16 GB of host RAM across both GPU processes, so these are
+  # sized for two concurrent workers (scripts/run_dual_gpu.py), not one.
   inference_batch_size:
     ocr: 4
     shot_captions: 2
@@ -78,8 +80,17 @@ ocr:
     max_long_side: 960
     canny_low: 50
     canny_high: 150
+    # Measured keyframes sit at 0.037-0.164 edge density, so these thresholds
+    # skip almost nothing. Recalibrate with research/ocr_asr/gate_calibration.py
+    # against labelled data before widening them — a wrong threshold drops real text.
     max_no_text_edge_density: 0.0015
     max_no_text_gray_std: 12
+  dedup:
+    # The three role keyframes of a shot usually carry identical on-screen text.
+    # Off until the real duplicate rate is measured on a batch; enabling it blind
+    # risks collapsing frames whose text actually differs.
+    enabled: false
+    hamming_threshold: 4
 
 api:
   max_concurrency_per_video: 2
