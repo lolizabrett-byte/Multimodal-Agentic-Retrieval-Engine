@@ -254,3 +254,26 @@ def test_dedup_never_groups_across_shots(tmp_path: Path) -> None:
 
     assert len(client.requests) == 3
     assert len(rows) == 3
+
+
+def test_ocr_schema_requires_only_the_field_that_is_consumed(tmp_path: Path) -> None:
+    """ocr_blocks is a fallback, not an output.
+
+    _ocr_text reads it only when full_text is empty, and no row stores it. A
+    local model that returns just full_text has done its job; requiring
+    ocr_blocks discarded correct reads on Kaggle.
+    """
+    from system1.handoff.image_text import OCR_RESPONSE_SCHEMA
+    from jsonschema import validate
+
+    validate({"full_text": "ỦY BAN NHÂN DÂN", "language": "vi"}, OCR_RESPONSE_SCHEMA)
+
+    assert OCR_RESPONSE_SCHEMA["required"] == ["full_text"]
+
+
+def test_ocr_text_still_falls_back_to_blocks_when_full_text_is_empty() -> None:
+    text = production._ocr_text(
+        {"full_text": "", "ocr_blocks": [{"text": "Km 12"}, {"text": "Quốc lộ 1A"}]}
+    )
+
+    assert text == "Km 12 Quốc lộ 1A"

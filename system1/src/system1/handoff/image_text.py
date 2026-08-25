@@ -28,7 +28,9 @@ OCR_RESPONSE_SCHEMA: dict[str, Any] = {
         "language": {"type": "string"},
         "confidence": {"type": ["number", "null"]},
     },
-    "required": ["full_text", "ocr_blocks"],
+    # Mirrors the Phase01 schema: ocr_blocks is optional, full_text is the field
+    # every caller reads.
+    "required": ["full_text"],
     "additionalProperties": False,
 }
 

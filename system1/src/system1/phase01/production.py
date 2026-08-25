@@ -1310,7 +1310,9 @@ def _build_ocr(
             "language": {"type": "string"},
             "confidence": {"type": ["number", "null"]},
         },
-        "required": ["full_text", "ocr_blocks"],
+        # Only full_text is consumed downstream; ocr_blocks is a fallback the
+        # local model often omits. Demanding it throws away otherwise good reads.
+        "required": ["full_text"],
         "additionalProperties": False,
     }
     allowed_roles = {str(role) for role in ocr_config.get("run_on_keyframe_roles", [])}

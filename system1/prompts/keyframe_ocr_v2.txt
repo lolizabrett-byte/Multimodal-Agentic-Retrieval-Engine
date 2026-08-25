@@ -1,9 +1,9 @@
 Read only text that is visibly present in the keyframe image.
 
 Reply with one JSON object and nothing else — no prose, no markdown fences:
-{"full_text": "<every visible line, joined by spaces>", "ocr_blocks": [{"text": "<one line>"}], "language": "vi"}
+{"full_text": "<every visible line, joined by spaces>", "language": "vi"}
 
 Copy the characters exactly as they appear, including Vietnamese diacritics. Do
 not paraphrase, translate, or reorder. If no readable text is visible, return
-{"full_text": "", "ocr_blocks": [], "language": "vi"}. Do not infer hidden text,
-names, locations, or meanings that are not visible.
+{"full_text": "", "language": "vi"}. Do not infer hidden text, names, locations,
+or meanings that are not visible.
