@@ -61,3 +61,35 @@ def test_notebook_fails_loudly_when_the_pin_does_not_take():
     assert "must stay below 5.0" in source, (
         "notebook must raise when transformers 5.x survives the install step"
     )
+
+
+def test_torchaudio_is_pinned_alongside_torch():
+    """nemo imports torchaudio, and torchaudio pins an exact torch version.
+
+    Unpinned, pip keeps Kaggle's newer torchaudio against our capped torch and
+    the shared library will not load:
+    libtorchaudio.so: undefined symbol: aoti_torch_create_device_guard.
+    Measured on Kaggle 25/08/2026 — it killed the run before any stage started.
+    """
+    specs = _production_requirements()
+    spec = next((r for r in specs if r.startswith("torchaudio")), None)
+
+    assert spec is not None, "torchaudio must be pinned; nemo imports it"
+    assert "<2.9" in spec, f"torchaudio must track the torch cap, got {spec!r}"
+
+
+def _core_requirements() -> list[str]:
+    data = tomllib.loads((SYSTEM1_ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    return data["project"]["dependencies"]
+
+
+def test_numpy_is_capped_below_two():
+    """nemo_toolkit[asr] requires numpy<2.0, so the runtime always lands on 1.x.
+
+    Without the cap here, pip downgrades numpy underneath wheels that were
+    compiled against 2.x, and importing pandas raises
+    "numpy.dtype size changed ... Expected 96 from C header, got 88".
+    """
+    spec = next(r for r in _core_requirements() if r.startswith("numpy"))
+
+    assert "<2.0" in spec, f"numpy must stay below 2.0 for nemo, got {spec!r}"

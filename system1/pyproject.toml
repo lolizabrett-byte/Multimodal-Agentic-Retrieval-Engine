@@ -6,8 +6,12 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "duckdb>=1.0.0",
-    "numpy>=1.26.0",
-    "pandas>=2.0.0",
+    # nemo_toolkit[asr] caps numpy below 2.0, so the runtime always lands on
+    # 1.x. Say so here instead of letting pip downgrade numpy underneath
+    # prebuilt wheels that were compiled against 2.x — pandas then dies with
+    # "numpy.dtype size changed ... Expected 96 from C header, got 88".
+    "numpy>=1.26.0,<2.0.0",
+    "pandas>=2.0.0,<2.3.0",
     "pyarrow>=15.0.0",
     "typer>=0.12.0",
     "pyyaml>=6.0.0",
@@ -32,6 +36,11 @@ phase01-production = [
     "timm>=1.0.0",
     "torch>=2.2.0,<2.9.0",
     "torchvision>=0.17.0,<0.24.0",
+    # nemo imports torchaudio, and torchaudio pins an exact torch version. Left
+    # unpinned, pip keeps the image's newer build against our older torch and
+    # the shared library fails to load: libtorchaudio.so: undefined symbol
+    # aoti_torch_create_device_guard.
+    "torchaudio>=2.2.0,<2.9.0",
     # InternVL remote code (Vintern OCR + captioning) calls .item() during
     # __init__. transformers 5.x builds models on the meta device, where that
     # raises, so the models cannot load at all above 4.x.
