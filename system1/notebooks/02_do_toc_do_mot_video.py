@@ -236,16 +236,16 @@ def summarise(parsed: dict, *, video_id: str, duration_sec: float,
     ocr_seconds = stages.get("ocr", 0.0)
     sec_per_image = (ocr_seconds / ocr_images) if ocr_images else None
 
-    effective = [
-        int(e["effective_batch_size"])
-        for e in parsed["batch_events"]
-        if e.get("effective_batch_size") is not None
-    ]
-    requested = [
-        int(e["requested_batch_size"])
-        for e in parsed["batch_events"]
-        if e.get("requested_batch_size") is not None
-    ]
+    # Mỗi stage có batch size riêng (ocr=4, shot_captions=2). Gộp chung rồi so
+    # min với max sẽ báo "tụt xuống" cho một hệ thống hoàn toàn bình thường.
+    by_stage: dict[str, dict[str, set[int]]] = {}
+    for event in parsed["batch_events"]:
+        stage = str(event.get("stage") or "?")
+        slot = by_stage.setdefault(stage, {"requested": set(), "effective": set()})
+        for key in ("requested", "effective"):
+            value = event.get(f"{key}_batch_size")
+            if value is not None:
+                slot[key].add(int(value))
 
     print("\n" + "=" * 62)
     print(f"KET QUA DO — {video_id}")
@@ -270,14 +270,14 @@ def summarise(parsed: dict, *, video_id: str, duration_sec: float,
         if sec_per_image > 0:
             print(f"  nhanh hon            : {1.35 / sec_per_image:.2f} lan")
 
-    print("\n-- batch --")
-    if effective:
-        print(f"  requested : {sorted(set(requested))}")
-        print(f"  effective : {sorted(set(effective))}")
-        if min(effective) < max(requested or [0]):
-            print("  !! batch bi tut xuong — kiem tra OOM hoac batch_capability_fallback")
-        else:
-            print("  batch giu nguyen — batch_chat hoat dong")
+    print("\n-- batch (tung stage) --")
+    if by_stage:
+        for stage, slot in sorted(by_stage.items()):
+            want = sorted(slot["requested"])
+            got = sorted(slot["effective"])
+            tut = got and want and min(got) < max(want)
+            note = "TUT XUONG — xem OOM / batch_capability_fallback" if tut else "giu nguyen"
+            print(f"  {stage:16} requested={want} effective={got}  {note}")
     else:
         print("  KHONG thay su kien batch nao trong log")
 
@@ -307,8 +307,13 @@ def summarise(parsed: dict, *, video_id: str, duration_sec: float,
         "stages": stages,
         "counts": counts,
         "ocr_seconds_per_image": sec_per_image,
-        "batch_requested": sorted(set(requested)),
-        "batch_effective": sorted(set(effective)),
+        "batch_by_stage": {
+            stage: {
+                "requested": sorted(slot["requested"]),
+                "effective": sorted(slot["effective"]),
+            }
+            for stage, slot in sorted(by_stage.items())
+        },
         "scene_summaries_completed": scene_ok,
         "projected_hours_88_videos_2gpu": projected,
     }
