@@ -767,10 +767,10 @@ class LocalVisionStructuredClient:
                     ),
                 )
                 device = str(self.model_config.get("device_map", "cuda:0"))
-                # InternVL ships custom modelling code that accelerate cannot
-                # fully dispatch: passing device_map here leaves parameters as
-                # meta tensors and the first forward pass dies. Load on CPU,
-                # then move the whole model to one device ourselves.
+                # InternVisionEncoder.__init__ calls .item() on a torch.linspace
+                # result. low_cpu_mem_usage builds the model under the meta
+                # device, where .item() raises, so it has to stay off for this
+                # architecture. Materialise on CPU, then move to one device.
                 model = AutoModel.from_pretrained(
                     self.model_id,
                     revision=self.model_revision,
@@ -778,7 +778,7 @@ class LocalVisionStructuredClient:
                         self.model_config.get("torch_dtype", "float16"), torch
                     ),
                     low_cpu_mem_usage=bool(
-                        self.model_config.get("low_cpu_mem_usage", True)
+                        self.model_config.get("low_cpu_mem_usage", False)
                     ),
                     trust_remote_code=bool(
                         self.model_config.get("trust_remote_code", True)
