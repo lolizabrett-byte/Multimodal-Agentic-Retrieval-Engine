@@ -766,13 +766,17 @@ class LocalVisionStructuredClient:
                         self.model_config.get("use_fast_tokenizer", False)
                     ),
                 )
+                device = str(self.model_config.get("device_map", "cuda:0"))
+                # InternVL ships custom modelling code that accelerate cannot
+                # fully dispatch: passing device_map here leaves parameters as
+                # meta tensors and the first forward pass dies. Load on CPU,
+                # then move the whole model to one device ourselves.
                 model = AutoModel.from_pretrained(
                     self.model_id,
                     revision=self.model_revision,
                     torch_dtype=_supported_torch_dtype(
                         self.model_config.get("torch_dtype", "float16"), torch
                     ),
-                    device_map=self.model_config.get("device_map", "cuda:0"),
                     low_cpu_mem_usage=bool(
                         self.model_config.get("low_cpu_mem_usage", True)
                     ),
@@ -783,6 +787,12 @@ class LocalVisionStructuredClient:
                         self.model_config.get("use_flash_attn", False)
                     ),
                 )
+                if device not in {"cpu", "auto", "none"}:
+                    if not torch.cuda.is_available():
+                        raise SystemicProviderError(
+                            f"vintern_local needs CUDA for device {device}"
+                        )
+                    model = model.to(device)
                 model.eval()
                 self._loaded = (tokenizer, model)
             except Exception as exc:
