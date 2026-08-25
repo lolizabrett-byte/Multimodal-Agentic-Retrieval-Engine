@@ -77,3 +77,50 @@ def test_mang_tran_kem_fence_markdown():
     raw = '```json\n[{"after_shot_id": "A", "is_scene_boundary": true}]\n```'
 
     assert len(_parse_json_object(raw, BOUNDARY_SCHEMA)["boundaries"]) == 1
+
+
+STRICT_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "boundaries": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "after_shot_id": {"type": "string"},
+                    "is_scene_boundary": {"type": "boolean"},
+                    "evidence_used": {"type": "array", "items": {"type": "string"}},
+                },
+                "required": ["after_shot_id", "is_scene_boundary"],
+                "additionalProperties": False,
+            },
+        }
+    },
+    "required": ["boundaries"],
+}
+
+
+def test_bo_key_la_model_go_sai_ten():
+    """Model gõ `evidences_used`; key này tuỳ chọn nên bỏ đi là an toàn."""
+    raw = '[{"after_shot_id": "A", "is_scene_boundary": true, "evidences_used": []}]'
+
+    result = _parse_json_object(raw, STRICT_SCHEMA)
+
+    assert result["boundaries"] == [{"after_shot_id": "A", "is_scene_boundary": True}]
+
+
+def test_hai_mang_noi_nhau_duoc_gop():
+    raw = (
+        '[{"after_shot_id": "A", "is_scene_boundary": true}], '
+        '[{"after_shot_id": "B", "is_scene_boundary": false}]'
+    )
+
+    result = _parse_json_object(raw, STRICT_SCHEMA)
+
+    assert [item["after_shot_id"] for item in result["boundaries"]] == ["A", "B"]
+
+
+def test_thieu_truong_bat_buoc_van_phai_hong():
+    """Bỏ key thừa được, nhưng thiếu key bắt buộc thì không được bịa ra."""
+    with pytest.raises(Exception):
+        _parse_json_object('[{"after_shot_id": "A"}]', STRICT_SCHEMA)

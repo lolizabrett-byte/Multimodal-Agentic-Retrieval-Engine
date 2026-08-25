@@ -1083,6 +1083,49 @@ def _array_wrapper_property(schema: Mapping[str, Any]) -> str | None:
     return None
 
 
+def _load_concatenated_arrays(text: str) -> list[Any]:
+    """Parse one array, or several the model ran together as `[...], [...]`."""
+    decoder = json.JSONDecoder()
+    items: list[Any] = []
+    index = 0
+    length = len(text)
+    while index < length:
+        while index < length and (text[index].isspace() or text[index] == ","):
+            index += 1
+        if index >= length:
+            break
+        value, index = decoder.raw_decode(text, index)
+        if not isinstance(value, list):
+            raise TypeError("structured local VLM response must be an object")
+        items.extend(value)
+    return items
+
+
+def _drop_unknown_item_keys(
+    items: list[Any], schema: Mapping[str, Any], wrapper: str
+) -> list[Any]:
+    """Drop item keys the schema forbids, e.g. the model's `evidences_used` typo.
+
+    Only safe because every such key is optional; a missing required key still
+    fails validation rather than being invented here.
+    """
+    definition = schema.get("properties", {}).get(wrapper, {})
+    item_schema = definition.get("items") if isinstance(definition, Mapping) else None
+    if not isinstance(item_schema, Mapping):
+        return items
+    if item_schema.get("additionalProperties") is not False:
+        return items
+    allowed = item_schema.get("properties")
+    if not isinstance(allowed, Mapping):
+        return items
+    return [
+        {key: value for key, value in item.items() if key in allowed}
+        if isinstance(item, Mapping)
+        else item
+        for item in items
+    ]
+
+
 def _parse_json_object(raw_text: str, schema: dict[str, Any]) -> dict[str, Any]:
     text = raw_text.strip()
     fence = re.fullmatch(r"```(?:json)?\s*(.*?)\s*```", text, flags=re.DOTALL)
@@ -1093,10 +1136,8 @@ def _parse_json_object(raw_text: str, schema: dict[str, Any]) -> dict[str, Any]:
     # Slicing {...} out of it would mangle the array, so handle it first.
     wrapper = _array_wrapper_property(schema) if text.startswith("[") else None
     if wrapper is not None:
-        items = json.loads(text)
-        if not isinstance(items, list):
-            raise TypeError("structured local VLM response must be an object")
-        payload: Any = {wrapper: items}
+        items = _load_concatenated_arrays(text)
+        payload: Any = {wrapper: _drop_unknown_item_keys(items, schema, wrapper)}
     else:
         if not text.startswith("{"):
             start = text.find("{")
