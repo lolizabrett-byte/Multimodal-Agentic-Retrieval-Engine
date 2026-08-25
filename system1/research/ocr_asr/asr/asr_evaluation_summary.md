@@ -84,3 +84,40 @@ Thời gian cần thiết để hoàn thành xử lý toàn bộ 200,000 mẫu t
 
 1.  **Lựa chọn Tối ưu nhất (Về cả Tốc độ & Dấu câu)**: **NVIDIA FastConformer (`nvidia/parakeet-ctc-0.6b-vi`)**. Mô hình này có tốc độ xử lý nhanh nhất, có sẵn dấu câu/viết hoa tự nhiên và cực kỳ tiết kiệm thời gian khi chạy quy mô lớn.
 2.  **Lựa chọn Khả thi thứ hai (Độ chính xác ngữ cảnh cao nhất)**: **faster-whisper-large-v3 (INT8)**. Nên sử dụng khi độ chính xác tuyệt đối là ưu tiên số một và âm thanh có nhiều tiếng ồn, từ chuyên ngành. Sử dụng cấu hình lượng tử hóa INT8 để tối đa hóa throughput trên GPU.
+
+---
+
+## Bổ sung: CER và hàm bàn giao (cập nhật 25/08/2026)
+
+### Đo CER
+
+Báo cáo trên tập trung vào tốc độ và nhận xét định tính. Đo CER/WER bằng công cụ dùng chung `system1.metrics` — có **chuẩn hoá Unicode NFC**, bắt buộc với tiếng Việt vì chữ có dấu tồn tại ở 2 dạng mã hoá.
+
+```python
+from system1.metrics import compute_cer, compute_wer
+compute_cer(transcript_chuan, transcript_may_doc)
+```
+
+### Hàm bàn giao
+
+```python
+from system1.handoff import extract_audio_text
+
+segments = extract_audio_text("clip.mp4")
+# [{"start": 0.0, "end": 1.5, "text": "xin chào", "language": "vi"}, ...]
+```
+
+Trả về **kèm timestamp** như yêu cầu. File không có tiếng → danh sách rỗng, không báo lỗi. Đổi model bằng `provider="faster_whisper"`.
+
+Hàm này bọc lại `system1.asr.transcribe_video` đã chạy trong pipeline — không viết lại logic, nên hành vi giống hệt bản sản xuất.
+
+### Cấu hình sản xuất
+
+| Mục | Giá trị |
+|---|---|
+| Model chính | `nvidia/parakeet-ctc-0.6b-vi` (NeMo FastConformer) |
+| Dự phòng | `Systran/faster-whisper-large-v3` |
+| Cắt đoạn | theo khoảng lặng ffmpeg, tối đa 12s |
+| Tốc độ đo được | ~268× thời gian thực, ~2,4 GB VRAM |
+
+ASR **không phải nút thắt** của pipeline: 4,7 giây cho 20 phút audio, so với ~40 phút cho OCR + caption cùng video. Tối ưu nên nhắm vào OCR/caption.

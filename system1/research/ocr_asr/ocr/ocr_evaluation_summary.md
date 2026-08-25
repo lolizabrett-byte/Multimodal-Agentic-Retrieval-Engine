@@ -31,3 +31,55 @@ Dưới đây là bảng đánh giá chi tiết về tốc độ (Latency), đ�
 ### ⚠️ Lưu ý về các mô hình lớn đa ngôn ngữ (Qwen2-VL, Florence-2)
 - Các dòng VLM đa ngôn ngữ lớn như **Qwen2-VL** hoặc **Florence-2** không được tối ưu hóa riêng cho bộ ngữ âm tiếng Việt, dẫn đến hiện tượng từ chối trích xuất (refusal) hoặc rơi vào vòng lặp vô hạn (hallucination). Không nên áp dụng trực tiếp các mô hình này trong môi trường sản phẩm (production) trừ khi có sự huấn luyện bổ sung (fine-tuning).
 
+
+---
+
+## 3. Bổ sung: CER và tiền xử lý (cập nhật 25/08/2026)
+
+Bảng trên đo WER. Bản phân công yêu cầu **cả CER** — bổ sung bằng công cụ đo dùng chung.
+
+### Cách đo
+
+```bash
+# baseline
+python ../measure_ocr.py --labels ../ground_truth/labels.jsonl \
+  --out ../ground_truth/baseline-1b.json --label baseline-1b
+
+# so từng kỹ thuật tiền xử lý
+python ../preprocess_experiment.py --labels ../ground_truth/labels.jsonl \
+  --out ../ground_truth/preprocess-comparison.json
+```
+
+Thước đo dùng `system1.metrics`, **chuẩn hoá Unicode NFC** trước khi so. Không chuẩn hoá thì chữ "ề" mã hoá 2 kiểu bị tính là sai dù model đọc đúng.
+
+### Tiền xử lý OpenCV — cảnh báo trước khi áp dụng
+
+Threshold / morphology / grayscale sinh ra cho OCR đời cũ (Tesseract, PaddleOCR). **Vintern là VLM học trên ảnh màu tự nhiên** — ép ảnh về nhị phân đưa nó về dạng chưa từng thấy khi huấn luyện.
+
+Đo trực tiếp trên một keyframe thật (640×360):
+
+| Kỹ thuật | Số màu còn lại | Nhóm |
+|---|---|---|
+| gốc | ~58.000 | — |
+| CLAHE | 58.580 | an toàn |
+| khử nhiễu | 25.474 | an toàn |
+| làm nét | 91.015 | an toàn |
+| phóng to ×2 | 211.104 | an toàn |
+| chuyển xám | 240 | rủi ro |
+| **nhị phân (Otsu)** | **2** | **rủi ro** |
+| **nhị phân thích ứng** | **2** | **rủi ro** |
+| morphology | 236 | rủi ro |
+
+Nhị phân hoá bỏ đi 99,997% thông tin màu. Với OCR đời cũ đó là dọn nhiễu; với VLM đó là mất dữ liệu.
+
+**Quy tắc:** chỉ giữ kỹ thuật nào làm CER **giảm thật** trên tập nhãn. Kỹ thuật làm CER tăng thì ghi lại kèm số và không dùng — đó là kết quả có giá trị, không phải thất bại.
+
+### Cấu hình dùng cho sản xuất
+
+| Mục | Giá trị | Lý do |
+|---|---|---|
+| Model | `5CD-AI/Vintern-1B-v3_5` | thắng bake-off (WER 0,34) |
+| dtype | `float16` | checkpoint là fp32; fp16 giảm nửa VRAM (3,75 → 1,88 GB) |
+| `device_map` | `cuda:0` | `auto` xẻ model dù nó vừa 1 card |
+| `max_dynamic_patch` | 4 | trần của model; keyframe 16:9 thành 2 patch |
+| Tiền xử lý | chưa bật | chờ số đo từ `preprocess-comparison.json` |
