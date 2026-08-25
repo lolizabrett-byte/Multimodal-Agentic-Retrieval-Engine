@@ -6,9 +6,8 @@ from itertools import pairwise
 from pathlib import Path
 from typing import Any
 
-from PIL import Image, ImageDraw, ImageOps
-
 from system1.gemini import StructuredRequest
+from system1.media.contact_sheet import write_contact_sheet
 from system1.vlm import StructuredClient
 
 
@@ -60,8 +59,10 @@ class StructuredSceneBoundaryJudge:
                 self.diagnostics_dir
                 / f"{self.request_index:05d}_{request_kind}_early_late.jpg"
             )
+            # Vintern chấp nhận đúng 1 ảnh mỗi request — chỉ gửi sheet vai
+            # trò khi có, thay cho sheet chính, thay vì gửi cả hai.
             if _write_role_contact_sheet(context, focus_gap_ids, role_sheet):
-                image_paths.append(role_sheet)
+                image_paths = [role_sheet]
         response_schema = {
             "type": "object",
             "properties": {
@@ -121,21 +122,14 @@ class StructuredSceneBoundaryJudge:
 
 
 def _write_contact_sheet(context: Sequence[Mapping[str, Any]], output: Path) -> None:
-    tile_width, tile_height, label_height, columns = 320, 180, 32, 4
-    rows = max(1, (len(context) + columns - 1) // columns)
-    sheet = Image.new("RGB", (columns * tile_width, rows * (tile_height + label_height)), "black")
-    draw = ImageDraw.Draw(sheet)
-    for index, item in enumerate(context):
-        x = (index % columns) * tile_width
-        y = (index // columns) * (tile_height + label_height)
-        image_path = Path(str(item["representative_path"]))
-        with Image.open(image_path) as image:
-            tile = ImageOps.fit(image.convert("RGB"), (tile_width, tile_height), method=Image.Resampling.LANCZOS)
-        sheet.paste(tile, (x, y))
-        label = f"{item['shot_id']} {float(item['start_sec']):.2f}-{float(item['end_sec']):.2f}s"
-        draw.text((x + 4, y + tile_height + 6), label, fill="white")
-    output.parent.mkdir(parents=True, exist_ok=True)
-    sheet.save(output, format="JPEG", quality=90, subsampling=0)
+    tiles = [
+        (
+            Path(str(item["representative_path"])),
+            f"{item['shot_id']} {float(item['start_sec']):.2f}-{float(item['end_sec']):.2f}s",
+        )
+        for item in context
+    ]
+    write_contact_sheet(tiles, output)
 
 
 def _write_role_contact_sheet(
@@ -158,23 +152,10 @@ def _write_role_contact_sheet(
                 tiles.append((shot_id, role, Path(str(value))))
     if not tiles:
         return False
-    tile_width, tile_height, label_height, columns = 320, 180, 32, 4
-    rows = (len(tiles) + columns - 1) // columns
-    sheet = Image.new("RGB", (columns * tile_width, rows * (tile_height + label_height)), "black")
-    draw = ImageDraw.Draw(sheet)
-    for index, (shot_id, role, image_path) in enumerate(tiles):
-        x = (index % columns) * tile_width
-        y = (index // columns) * (tile_height + label_height)
-        with Image.open(image_path) as image:
-            tile = ImageOps.fit(
-                image.convert("RGB"),
-                (tile_width, tile_height),
-                method=Image.Resampling.LANCZOS,
-            )
-        sheet.paste(tile, (x, y))
-        draw.text((x + 4, y + tile_height + 6), f"{shot_id} {role}", fill="white")
-    output.parent.mkdir(parents=True, exist_ok=True)
-    sheet.save(output, format="JPEG", quality=90, subsampling=0)
+    labeled_tiles = [
+        (image_path, f"{shot_id} {role}") for shot_id, role, image_path in tiles
+    ]
+    write_contact_sheet(labeled_tiles, output)
     return True
 
 

@@ -176,5 +176,5 @@ def test_generic_qwen_boundary_judge_receives_existing_multimodal_evidence(
 
     assert result == {"v_SH00000": True}
     assert client.last_request.request_kind == "scene_boundary_focused_review"
-    assert len(client.last_request.image_paths) == 2
+    assert len(client.last_request.image_paths) == 1
     assert "ORDERED SHOT EVIDENCE" in client.last_request.prompt

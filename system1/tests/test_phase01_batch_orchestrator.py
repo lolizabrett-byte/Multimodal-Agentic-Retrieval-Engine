@@ -8,6 +8,7 @@ from typing import ClassVar
 
 import pandas as pd
 import pytest
+from PIL import Image, ImageDraw
 
 from system1.artifacts.checkpoint import sha256_file
 from system1.artifacts.store import ArtifactStore
@@ -16,6 +17,19 @@ from system1.config import resolve_phase01_config
 
 production = importlib.import_module("system1.phase01.production")
 CONFIG_DIR = Path(__file__).resolve().parents[1] / "configs"
+
+
+def _write_fixture_keyframe_image(path: Path) -> None:
+    # Plain-color fixtures read as "no_text" by the OCR presence gate and
+    # get silently skipped -- a checkerboard keeps enough edge density /
+    # contrast to route through the gate like a real keyframe would.
+    image = Image.new("RGB", (16, 16), color=(255, 255, 255))
+    draw = ImageDraw.Draw(image)
+    for y in range(0, 16, 4):
+        for x in range(0, 16, 4):
+            if (x + y) % 8 == 0:
+                draw.rectangle([x, y, x + 3, y + 3], fill=(0, 0, 0))
+    image.save(path)
 
 
 class FakeGeminiClient:
@@ -215,7 +229,7 @@ def _configure_batch_fixture(
         (output_dir / "keyframes").mkdir()
         (output_dir / "thumbnails").mkdir()
         image_name = f"{video_id}_f0000000"
-        (output_dir / "keyframes" / f"{image_name}.jpg").write_bytes(b"jpg")
+        _write_fixture_keyframe_image(output_dir / "keyframes" / f"{image_name}.jpg")
         (output_dir / "thumbnails" / f"{image_name}.webp").write_bytes(b"webp")
         pd.DataFrame(
             [
@@ -324,7 +338,7 @@ def test_single_video_production_orchestrator_checkpoints_and_packages(
         (output_dir / "keyframes").mkdir()
         (output_dir / "thumbnails").mkdir()
         image_name = f"{video_id}_f0000000"
-        (output_dir / "keyframes" / f"{image_name}.jpg").write_bytes(b"jpg")
+        _write_fixture_keyframe_image(output_dir / "keyframes" / f"{image_name}.jpg")
         (output_dir / "thumbnails" / f"{image_name}.webp").write_bytes(b"webp")
         pd.DataFrame([{
             "keyframe_id": f"{video_id}:0", "video_id": video_id,
