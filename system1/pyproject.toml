@@ -32,7 +32,10 @@ phase01-production = [
     "timm>=1.0.0",
     "torch>=2.2.0,<2.9.0",
     "torchvision>=0.17.0,<0.24.0",
-    "transformers>=4.51.0",
+    # InternVL remote code (Vintern OCR + captioning) calls .item() during
+    # __init__. transformers 5.x builds models on the meta device, where that
+    # raises, so the models cannot load at all above 4.x.
+    "transformers>=4.51.0,<5.0.0",
 ]
 
 [project.scripts]
