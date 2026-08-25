@@ -330,6 +330,19 @@ class LocalVisionStructuredClient:
                     f"repetition_penalty must be positive, got {value!r}"
                 )
             config["repetition_penalty"] = value
+        ngram = self.model_config.get("no_repeat_ngram_size")
+        if ngram is not None:
+            try:
+                size = int(ngram)
+            except (TypeError, ValueError) as exc:
+                raise ValueError(
+                    f"no_repeat_ngram_size must be an integer, got {ngram!r}"
+                ) from exc
+            if size < 1:
+                raise ValueError(
+                    f"no_repeat_ngram_size must be positive, got {size!r}"
+                )
+            config["no_repeat_ngram_size"] = size
         return config
 
     def request(self, request: StructuredRequest) -> dict[str, Any]:

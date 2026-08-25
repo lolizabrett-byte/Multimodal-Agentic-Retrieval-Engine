@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+import yaml
 
 from system1.config import load_configs
 from system1.phase01.production import (
@@ -11,6 +12,7 @@ from system1.phase01.production import (
     _build_scene_evidence,
 )
 from system1.phase01.validation import validate_rows
+from system1.scenes import group_scenes
 from system1.vlm.client import BatchRequestError
 
 SYSTEM1_ROOT = Path(__file__).resolve().parents[1]
@@ -148,9 +150,11 @@ def test_partial_batch_failure_keeps_successful_shots_and_marks_the_rest_failed(
     validate_rows("shot_captions", rows)
 
 
-def test_scene_evidence_skips_shots_with_failed_captions_without_raising(
+def test_scene_evidence_keeps_one_row_per_shot_when_captions_fail(
     tmp_path: Path,
 ) -> None:
+    # group_scenes indexes evidence by shot position. Dropping a row would
+    # misalign every later shot, so failed captions become placeholders.
     shots, keyframes, rows = _build(tmp_path, shot_count=12, failing_indexes=set(range(5)))
 
     evidence = _build_scene_evidence(
@@ -163,10 +167,83 @@ def test_scene_evidence_skips_shots_with_failed_captions_without_raising(
         stage_dir=tmp_path,
     )
 
-    assert len(evidence) == 7
-    assert {row["shot_id"] for row in evidence} == {
-        str(shot["shot_id"]) for shot in shots[5:]
-    }
+    assert len(evidence) == len(shots)
+    assert [row["shot_id"] for row in evidence] == [
+        str(shot["shot_id"]) for shot in shots
+    ]
+
+
+def test_scene_evidence_marks_failed_shots_with_empty_text_fields(
+    tmp_path: Path,
+) -> None:
+    shots, keyframes, rows = _build(tmp_path, shot_count=12, failing_indexes={0, 3, 7})
+
+    evidence = _build_scene_evidence(
+        shots=shots,
+        keyframes=keyframes,
+        ocr_rows=[],
+        captions=rows,
+        asr_rows=[],
+        links=[],
+        stage_dir=tmp_path,
+    )
+
+    failed = [row for row in evidence if row["caption_missing"]]
+    assert {row["shot_id"] for row in failed} == {"shot_000", "shot_003", "shot_007"}
+    for row in failed:
+        assert row["caption_vi"] == ""
+        assert row["caption_en"] == ""
+        assert row["objects_vi"] == []
+        assert row["actions_en"] == []
+        # Keyframe evidence survives — the judge can still see the image.
+        assert row["representative_path"] is not None
+
+    for row in evidence:
+        if not row["caption_missing"]:
+            assert row["caption_vi"] != ""
+
+
+def test_scene_grouping_runs_end_to_end_with_failed_captions(
+    tmp_path: Path,
+) -> None:
+    # Regression for the blocking ValueError that killed the L23_V011 run:
+    # 28 shots, 9 failed captions -> 19 evidence rows -> crash at stage `scenes`.
+    shots, keyframes, rows = _build(tmp_path, shot_count=12, failing_indexes={0, 3, 7})
+    for index, shot in enumerate(shots):
+        shot.update(
+            video_id="L23_V011",
+            shot_index=index,
+            start_frame=index * 25,
+            end_frame=(index + 1) * 25,
+        )
+
+    evidence = _build_scene_evidence(
+        shots=shots,
+        keyframes=keyframes,
+        ocr_rows=[],
+        captions=rows,
+        asr_rows=[],
+        links=[],
+        stage_dir=tmp_path,
+    )
+
+    class _NoBoundaryJudge:
+        def judge(self, *, request_kind, focus_gap_ids, context):
+            return {gap_id: False for gap_id in focus_gap_ids}
+
+    config = yaml.safe_load(
+        (CONFIG_DIR / "phase01.yaml").read_text(encoding="utf-8")
+    )["scene_grouping"]
+
+    scenes, _decisions = group_scenes(
+        video_id="L23_V011",
+        shots=shots,
+        evidence=evidence,
+        judge=_NoBoundaryJudge(),
+        config=config,
+    )
+
+    assert sum(int(scene["shot_count"]) for scene in scenes) == len(shots)
 
 
 def test_all_shots_failing_raises_instead_of_shipping_an_empty_table(

@@ -63,3 +63,38 @@ def test_invalid_repetition_penalty_is_rejected_loudly(bad):
     """Giá trị vô nghĩa phải báo lỗi, không được âm thầm bỏ qua."""
     with pytest.raises(ValueError):
         _generation_config({"repetition_penalty": bad})
+
+
+def test_no_repeat_ngram_size_reaches_the_model_when_configured():
+    """Lần chạy L23_V011 cho thấy penalty mềm 1,05 vẫn để model lặp tới hết trần."""
+    config = _generation_config({"no_repeat_ngram_size": 12})
+
+    assert config["no_repeat_ngram_size"] == 12
+
+
+def test_no_repeat_ngram_size_is_absent_when_not_configured():
+    config = _generation_config()
+
+    assert "no_repeat_ngram_size" not in config
+
+
+@pytest.mark.parametrize("bad", ["muoi hai", -1, 0])
+def test_invalid_no_repeat_ngram_size_is_rejected_loudly(bad):
+    with pytest.raises(ValueError):
+        _generation_config({"no_repeat_ngram_size": bad})
+
+
+def test_shipped_config_has_both_repetition_brakes_on_caption_model():
+    """Cấu hình thật phải bật cả hai phanh, không chỉ một."""
+    import yaml
+    from pathlib import Path
+
+    models = yaml.safe_load(
+        (Path(__file__).resolve().parents[1] / "configs" / "models.yaml").read_text(
+            encoding="utf-8"
+        )
+    )
+    caption = models["phase01"]["shot_caption"]
+
+    assert caption["repetition_penalty"] >= 1.1
+    assert caption["no_repeat_ngram_size"] >= 2
