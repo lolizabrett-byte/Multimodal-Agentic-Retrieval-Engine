@@ -1063,17 +1063,47 @@ def _is_cuda_oom(exc: BaseException) -> bool:
     )
 
 
+def _array_wrapper_property(schema: Mapping[str, Any]) -> str | None:
+    """Name of the single array property a bare-array reply should fill.
+
+    Returns None when the schema does not have exactly one required array
+    property, so wrapping stays unambiguous.
+    """
+    properties = schema.get("properties")
+    required = schema.get("required")
+    if not isinstance(properties, Mapping) or not isinstance(required, Sequence):
+        return None
+    names = [str(name) for name in required if str(name) in properties]
+    if len(names) != 1:
+        return None
+    name = names[0]
+    definition = properties.get(name)
+    if isinstance(definition, Mapping) and definition.get("type") == "array":
+        return name
+    return None
+
+
 def _parse_json_object(raw_text: str, schema: dict[str, Any]) -> dict[str, Any]:
     text = raw_text.strip()
     fence = re.fullmatch(r"```(?:json)?\s*(.*?)\s*```", text, flags=re.DOTALL)
     if fence:
         text = fence.group(1).strip()
-    if not text.startswith("{"):
-        start = text.find("{")
-        end = text.rfind("}")
-        if start >= 0 and end > start:
-            text = text[start : end + 1]
-    payload = json.loads(text)
+    # A bare array is the shape Vintern-3B returns most often for the scene
+    # boundary judge: the items are right, only the wrapper object is missing.
+    # Slicing {...} out of it would mangle the array, so handle it first.
+    wrapper = _array_wrapper_property(schema) if text.startswith("[") else None
+    if wrapper is not None:
+        items = json.loads(text)
+        if not isinstance(items, list):
+            raise TypeError("structured local VLM response must be an object")
+        payload: Any = {wrapper: items}
+    else:
+        if not text.startswith("{"):
+            start = text.find("{")
+            end = text.rfind("}")
+            if start >= 0 and end > start:
+                text = text[start : end + 1]
+        payload = json.loads(text)
     if not isinstance(payload, dict):
         raise TypeError("structured local VLM response must be an object")
     validate(payload, schema)
