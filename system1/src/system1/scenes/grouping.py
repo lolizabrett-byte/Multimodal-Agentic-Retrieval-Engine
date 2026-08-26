@@ -5,6 +5,8 @@ from dataclasses import dataclass
 from itertools import pairwise
 from typing import Any, Protocol
 
+from system1.vlm import SystemicProviderError
+
 
 @dataclass(frozen=True)
 class FocusWindow:
@@ -109,16 +111,30 @@ def group_scenes(
     )
     gap_ids = tuple(str(shot["shot_id"]) for shot in shots[:-1])
     votes: dict[int, list[BoundaryVote]] = {index: [] for index in range(len(gap_ids))}
+    failed_gap_indices: set[int] = set()
+    failure_reasons: list[str] = []
     for window_index, window in enumerate(windows):
         focus_ids = tuple(gap_ids[index] for index in window.focus_gap_indices)
-        result = _validate_judgement(
-            judge.judge(
+        try:
+            judgement = judge.judge(
                 request_kind="primary",
                 focus_gap_ids=focus_ids,
                 context=[evidence[index] for index in window.context_shot_indices],
-            ),
-            focus_ids,
-        )
+            )
+        except SystemicProviderError:
+            # The provider says every further request will fail too. Defaulting
+            # here would checkpoint a video nobody actually judged.
+            raise
+        except Exception as exc:  # noqa: BLE001 - isolate the window, not the video
+            # Defaulting to "not a boundary" keeps the scene over-long, which
+            # degrades search less than cutting one at an invented seam.
+            failed_gap_indices.update(window.focus_gap_indices)
+            failure_reasons.append(f"primary window {window_index}: {exc!r}")
+            result = {gap_id: False for gap_id in focus_ids}
+        else:
+            # A judge answering about gaps nobody asked for is a wiring bug, not
+            # a flaky reply — that still stops the run.
+            result = _validate_judgement(judgement, focus_ids)
         for position, gap_index in enumerate(window.focus_gap_indices):
             votes[gap_index].append(
                 BoundaryVote(
@@ -150,16 +166,32 @@ def group_scenes(
                 shot_count=len(shots),
                 each_side=int(config["context_shots_each_side"]),
             )
-            focused = _validate_judgement(
-                judge.judge(
+            try:
+                judgement = judge.judge(
                     request_kind="focused_review",
                     focus_gap_ids=(gap_ids[gap_index],),
                     context=[evidence[index] for index in context_indices],
-                ),
-                (gap_ids[gap_index],),
-            )
-            provisional[gap_index] = focused[gap_ids[gap_index]]
-            routes[gap_index] = "focused_review"
+                )
+            except SystemicProviderError:
+                raise
+            except Exception as exc:  # noqa: BLE001 - isolate the gap, not the video
+                failed_gap_indices.add(gap_index)
+                failure_reasons.append(f"focused_review gap {gap_index}: {exc!r}")
+                provisional[gap_index] = False
+                routes[gap_index] = "default_on_error"
+            else:
+                focused = _validate_judgement(judgement, (gap_ids[gap_index],))
+                provisional[gap_index] = focused[gap_ids[gap_index]]
+                routes[gap_index] = "focused_review"
+
+    # Runs after focused_review, which keeps adding to failed_gap_indices —
+    # gating before it would let those failures past the thresholds entirely.
+    _abort_when_failures_are_systemic(
+        failed_gap_indices,
+        gap_count=len(gap_ids),
+        config=config,
+        reasons=failure_reasons,
+    )
 
     triggered = _consistency_trigger_gaps(provisional, votes, config)
     reviewed: set[int] = set()
@@ -174,14 +206,25 @@ def group_scenes(
             context_end = min(
                 len(shots), region[-1] + 2 + int(config["context_shots_each_side"])
             )
-            result = _validate_judgement(
-                judge.judge(
+            try:
+                judgement = judge.judge(
                     request_kind="consistency_review",
                     focus_gap_ids=region_ids,
                     context=evidence[context_start:context_end],
-                ),
-                region_ids,
-            )
+                )
+            except SystemicProviderError:
+                raise
+            except SystemicProviderError:
+                raise
+            except Exception as exc:  # noqa: BLE001 - keep what the earlier round decided
+                # This round only refines an existing verdict, so a failure is
+                # survivable — but it must leave a mark. review_route says the
+                # refinement never happened instead of claiming it did.
+                failure_reasons.append(f"consistency_review {region_ids}: {exc!r}")
+                for gap_index in region:
+                    routes[gap_index] = "consistency_review_failed"
+                continue
+            result = _validate_judgement(judgement, region_ids)
             for gap_index in region:
                 provisional[gap_index] = result[gap_ids[gap_index]]
                 routes[gap_index] = "consistency_review"
@@ -193,6 +236,9 @@ def group_scenes(
         true_weight = sum(vote.weight for vote in gap_votes if vote.is_boundary)
         false_weight = sum(vote.weight for vote in gap_votes if not vote.is_boundary)
         diagnostics = _diagnostics_for_gap(judge, gap_ids[gap_index])
+        route = routes[gap_index]
+        if gap_index in failed_gap_indices and route == "primary":
+            route = "default_on_error"
         decisions.append(
             BoundaryDecision(
                 gap_index=gap_index,
@@ -202,7 +248,7 @@ def group_scenes(
                 vote_count=len(gap_votes),
                 true_vote_weight=true_weight,
                 false_vote_weight=false_weight,
-                review_route=routes[gap_index],
+                review_route=route,
                 consistency_review_triggered=gap_index in reviewed,
                 reason=diagnostics.get("reason"),
                 confidence=diagnostics.get("confidence"),
@@ -259,6 +305,48 @@ def partition_scenes(
         )
     _validate_partition(shots, scenes)
     return scenes
+
+
+def _abort_when_failures_are_systemic(
+    failed_gap_indices: set[int],
+    *,
+    gap_count: int,
+    config: Mapping[str, Any],
+    reasons: Sequence[str] = (),
+) -> None:
+    """Let stray judge failures pass, but refuse to guess a whole video.
+
+    Both a floor and a ratio must be breached. A ratio alone punishes short
+    videos hardest: on a three-shot video one bad reply is already 50%. The
+    floor counts failed *replies*, not gaps, because one bad reply costs
+    focus_gap_count gaps — counting gaps made the floor scale with a config
+    knob that has nothing to do with how noisy the provider is.
+    """
+    if not failed_gap_indices or gap_count == 0:
+        return
+    minimum = int(config["min_failed_gaps_before_abort"])
+    ratio_ceiling = float(config["max_failed_gap_ratio"])
+    gaps_per_reply = max(1, int(config["focus_gap_count"]))
+    failed = len(failed_gap_indices)
+    failed_replies = -(-failed // gaps_per_reply)  # ceil
+    ratio = failed / gap_count
+    # The floor exists so one stray reply cannot kill a short video. It must not
+    # also excuse a short video where nothing was judged: on a 4-gap video the
+    # floor of 3 replies is unreachable, so total collapse shipped as one clean
+    # scene marked "pass".
+    if failed == gap_count:
+        detail = f" First failures: {'; '.join(reasons[:3])}" if reasons else ""
+        raise ValueError(
+            f"Scene judging failed on every gap: {failed}/{gap_count}.{detail}"
+        )
+    if failed_replies >= minimum and ratio > ratio_ceiling:
+        detail = f" First failures: {'; '.join(reasons[:3])}" if reasons else ""
+        raise ValueError(
+            "Scene judging failed on too many gaps: "
+            f"{failed}/{gap_count} gaps ({ratio:.0%}) across {failed_replies} "
+            f"failed replies exceeded max_failed_gap_ratio={ratio_ceiling:.0%} "
+            f"at or above min_failed_gaps_before_abort={minimum}.{detail}"
+        )
 
 
 def _validate_judgement(

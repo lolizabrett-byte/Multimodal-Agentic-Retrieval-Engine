@@ -122,6 +122,12 @@ scene_grouping:
   focus_gap_count: 2
   context_shots_each_side: 4
   stride: 2
+  # Mot gap khong phan xu duoc thi dung mac dinh "khong phai ranh gioi", thay vi
+  # giet ca video sau khi moi stage truoc da chay xong. Phai vuot CA HAI nguong
+  # moi bo video: san tuyet doi chan viec mot loi le giet video ngan (3 shot,
+  # 1 gap hong da la 50%), ti le chan viec nuot loi hang loat.
+  min_failed_gaps_before_abort: 3
+  max_failed_gap_ratio: 0.25
   boundary_threshold: 0.67
   non_boundary_threshold: 0.33
   dense_boundary_count: 2
