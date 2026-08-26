@@ -111,6 +111,11 @@ def test_dense_boundaries_trigger_bounded_consistency_regions() -> None:
     assert consistency_calls
     cap = config()["consistency_review_max_gaps"]
     assert all(len(call[1]) <= cap for call in consistency_calls)
+    # Both halves of the contract: no request larger than the cap, and no more
+    # requests than the cap requires. Dropping the merge step would keep every
+    # request small while doubling how many of them get sent.
+    reviewed = {gap_id for call in consistency_calls for gap_id in call[1]}
+    assert len(consistency_calls) == -(-len(reviewed) // cap)
     assert any(decision.consistency_review_triggered for decision in decisions)
 
 
