@@ -419,6 +419,8 @@ def _consistency_trigger_gaps(
 def _merge_review_regions(
     triggered: set[int], *, gap_count: int, padding: int, max_gaps: int
 ) -> list[tuple[int, ...]]:
+    if max_gaps < 1:
+        raise ValueError("consistency_review_max_gaps must be positive")
     intervals = [
         (max(0, index - padding), min(gap_count - 1, index + padding))
         for index in sorted(triggered)

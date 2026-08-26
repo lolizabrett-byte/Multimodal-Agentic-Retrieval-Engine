@@ -7,6 +7,8 @@ normal one. It died on a 16 GB card and took the whole video with it.
 
 from __future__ import annotations
 
+import pytest
+
 from system1.scenes.grouping import group_scenes
 
 CONFIG = {
@@ -101,3 +103,10 @@ def test_the_cap_splits_rather_than_drops_gaps():
     judge = _run(60)
     reviews = [r for r in judge.requests if r["kind"] == "consistency_review"]
     assert sum(r["gaps"] for r in reviews) == 59, "every gap must still be reviewed"
+
+
+def test_a_non_positive_cap_is_rejected_rather_than_dropping_gaps():
+    """range(start, end, 0) raises something opaque; a negative step drops gaps silently."""
+    for cap in (0, -1):
+        with pytest.raises(ValueError, match="must be positive"):
+            _run(20, consistency_review_max_gaps=cap)
