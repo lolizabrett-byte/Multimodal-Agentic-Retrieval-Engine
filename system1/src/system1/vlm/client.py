@@ -1083,6 +1083,41 @@ def _array_wrapper_property(schema: Mapping[str, Any]) -> str | None:
     return None
 
 
+def _salvage_wrapper_items(text: str, wrapper: str) -> list[Any] | None:
+    """Collect entries when the model repeats the wrapper object per entry.
+
+    Returns None when the text parses as a normal object, so the ordinary path
+    stays in charge of well-formed replies.
+    """
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError:
+        pass
+    else:
+        return None if isinstance(parsed, dict) else None
+    decoder = json.JSONDecoder()
+    items: list[Any] = []
+    for match in re.finditer(r"[\[{]", text):
+        start = match.start()
+        try:
+            value, _ = decoder.raw_decode(text, start)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(value, dict) and wrapper in value:
+            inner = value[wrapper]
+            if isinstance(inner, list):
+                items.extend(inner)
+        elif isinstance(value, dict) and wrapper not in value:
+            items.append(value)
+    if not items:
+        return None
+    unique: list[Any] = []
+    for item in items:
+        if item not in unique:
+            unique.append(item)
+    return unique
+
+
 def _load_concatenated_arrays(text: str) -> list[Any]:
     """Parse one array, or several the model ran together as `[...], [...]`."""
     decoder = json.JSONDecoder()
@@ -1134,9 +1169,15 @@ def _parse_json_object(raw_text: str, schema: dict[str, Any]) -> dict[str, Any]:
     # A bare array is the shape Vintern-3B returns most often for the scene
     # boundary judge: the items are right, only the wrapper object is missing.
     # Slicing {...} out of it would mangle the array, so handle it first.
-    wrapper = _array_wrapper_property(schema) if text.startswith("[") else None
-    if wrapper is not None:
+    wrapper = _array_wrapper_property(schema)
+    items = None
+    if wrapper is not None and text.startswith("["):
         items = _load_concatenated_arrays(text)
+    elif wrapper is not None and text.startswith("{"):
+        # The model sometimes repeats the wrapper per entry, e.g.
+        # {"boundaries": [a]}, {"b": 1}} — salvage every entry it emitted.
+        items = _salvage_wrapper_items(text, wrapper)
+    if items is not None:
         payload: Any = {wrapper: _drop_unknown_item_keys(items, schema, wrapper)}
     else:
         if not text.startswith("{"):

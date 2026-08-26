@@ -124,3 +124,52 @@ def test_thieu_truong_bat_buoc_van_phai_hong():
     """Bỏ key thừa được, nhưng thiếu key bắt buộc thì không được bịa ra."""
     with pytest.raises(Exception):
         _parse_json_object('[{"after_shot_id": "A"}]', STRICT_SCHEMA)
+
+
+GAP_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "boundaries": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "gap_index": {"type": "integer", "minimum": 0, "maximum": 1},
+                    "is_scene_boundary": {"type": "boolean"},
+                },
+                "required": ["gap_index", "is_scene_boundary"],
+                "additionalProperties": False,
+            },
+        }
+    },
+    "required": ["boundaries"],
+}
+
+
+def test_wrapper_lap_lai_moi_phan_tu():
+    """Model lặp lại lớp bọc cho từng entry — gom lại thay vì bỏ cả câu trả lời."""
+    raw = (
+        '{"boundaries": [{"gap_index": 0, "is_scene_boundary": true}], '
+        '{"gap_index": 1, "is_scene_boundary": false}}'
+    )
+
+    result = _parse_json_object(raw, GAP_SCHEMA)
+
+    assert [item["gap_index"] for item in result["boundaries"]] == [0, 1]
+
+
+def test_object_dung_khong_bi_dong_vao():
+    raw = (
+        '{"boundaries": [{"gap_index": 0, "is_scene_boundary": true}, '
+        '{"gap_index": 1, "is_scene_boundary": false}]}'
+    )
+
+    assert len(_parse_json_object(raw, GAP_SCHEMA)["boundaries"]) == 2
+
+
+def test_thieu_entry_van_phai_hong():
+    """Gom được không có nghĩa là bịa thêm cho đủ."""
+    with pytest.raises(Exception):
+        _parse_json_object('[{"gap_index": 0, "is_scene_boundary": true}]', GAP_SCHEMA)
