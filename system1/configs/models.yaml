@@ -116,7 +116,11 @@ phase01:
     device_map: cuda:0
     prompt_version: shot_caption_v4
     response_schema_version: shot_caption_response_v2
-    max_new_tokens: 768
+    # Judge ranh gioi canh dung chung client nay (production.py:934 truyen
+    # caption_client), nen tran token cua no lay tu day chu khong tu muc
+    # scene_boundary. 768 lam cau tra loi judge dut giua chung o 477-686 ky tu.
+    # Caption 7 truong khong cham tran nay, nen nang len chi noi rong cho judge.
+    max_new_tokens: 1024
     # Same reason as the OCR model above. Captions ask for seven bilingual fields,
     # so an unpenalised repeat runs further before the ceiling stops it.
     repetition_penalty: 1.15
@@ -144,10 +148,6 @@ phase01:
     focused_prompt_version: scene_boundary_focused_v3
     consistency_prompt_version: scene_boundary_consistency_v3
     response_schema_version: scene_boundary_response_v1
-    # Judge ke thua 768 token cua caption, nhung mot cau tra loi 2 gap voi
-    # reason dai hai cau da cham tran va dut giua chung (do duoc 485-631 ky tu).
-    # 1024 cho du cho, con prompt yeu cau reason ngan de khong can toi day.
-    max_new_tokens: 1024
     fallbacks:
       - provider: gemini
         sdk: google-genai
