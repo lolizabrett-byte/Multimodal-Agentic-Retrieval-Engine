@@ -100,9 +100,10 @@ def test_a_dense_video_never_sends_one_request_covering_everything():
 
 
 def test_the_cap_splits_rather_than_drops_gaps():
-    judge = _run(60)
+    shot_count = 60
+    judge = _run(shot_count)
     reviews = [r for r in judge.requests if r["kind"] == "consistency_review"]
-    assert sum(r["gaps"] for r in reviews) == 59, "every gap must still be reviewed"
+    assert sum(r["gaps"] for r in reviews) == shot_count - 1, "every gap must still be reviewed"
 
 
 def test_a_non_positive_cap_is_rejected_rather_than_dropping_gaps():
