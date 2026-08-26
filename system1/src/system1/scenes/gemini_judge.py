@@ -43,8 +43,13 @@ class StructuredSceneBoundaryJudge:
         }[request_kind]
         base_prompt = (self.prompt_dir / f"{prompt_version}.txt").read_text(encoding="utf-8")
         evidence_payload = [_json_safe_evidence(item) for item in context]
+        # Spell out the legal indices. The model kept answering with the
+        # shot's own number (gap_index 2 in a window holding only 0 and 1).
+        index_line = ", ".join(str(i) for i in range(len(focus_gap_ids)))
         prompt = (
             base_prompt
+            + f"\n\nThis request covers {len(focus_gap_ids)} gap(s);"
+            + f" the only valid gap_index values are: {index_line}."
             + "\n\nFOCUS GAPS:\n"
             + json.dumps(focus_gap_ids, ensure_ascii=False)
             + "\n\nORDERED SHOT EVIDENCE:\n"

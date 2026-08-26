@@ -1188,6 +1188,10 @@ def _parse_json_object(raw_text: str, schema: dict[str, Any]) -> dict[str, Any]:
         payload = json.loads(text)
     if not isinstance(payload, dict):
         raise TypeError("structured local VLM response must be an object")
+    # A well-formed object can still carry the model's misspellings, so the
+    # same trimming the salvage paths do applies here too.
+    if wrapper is not None and isinstance(payload.get(wrapper), list):
+        payload[wrapper] = _drop_unknown_item_keys(payload[wrapper], schema, wrapper)
     validate(payload, schema)
     return payload
 

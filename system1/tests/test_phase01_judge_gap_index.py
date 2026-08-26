@@ -154,3 +154,22 @@ def test_prompt_v3_khong_con_nhac_shot_id() -> None:
         text = (PROMPT_DIR / f"scene_boundary_{name}_v3.txt").read_text(encoding="utf-8")
         assert "after_shot_id" not in text
         assert "gap_index" in text
+
+
+def test_prompt_neu_ro_index_hop_le(tmp_path: Path) -> None:
+    """Model từng trả `gap_index: 2` khi cửa sổ chỉ có gap 0 và 1."""
+    gaps = ("L21_V019_SH00000", "L21_V019_SH00001")
+    client = _ScriptedClient(
+        {"boundaries": [{"gap_index": 0, "is_scene_boundary": True},
+                        {"gap_index": 1, "is_scene_boundary": False}]}
+    )
+    judge = StructuredSceneBoundaryJudge(
+        client, video_id="L21_V019", prompt_dir=PROMPT_DIR,
+        diagnostics_dir=tmp_path / "diag", model_config=MODEL_CONFIG,
+    )
+
+    judge.judge(request_kind="primary", focus_gap_ids=gaps, context=_context(3, tmp_path))
+
+    prompt = client.requests[0].prompt
+    assert "covers 2 gap(s)" in prompt
+    assert "valid gap_index values are: 0, 1" in prompt
