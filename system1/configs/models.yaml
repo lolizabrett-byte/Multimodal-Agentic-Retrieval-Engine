@@ -144,6 +144,10 @@ phase01:
     focused_prompt_version: scene_boundary_focused_v3
     consistency_prompt_version: scene_boundary_consistency_v3
     response_schema_version: scene_boundary_response_v1
+    # Judge ke thua 768 token cua caption, nhung mot cau tra loi 2 gap voi
+    # reason dai hai cau da cham tran va dut giua chung (do duoc 485-631 ky tu).
+    # 1024 cho du cho, con prompt yeu cau reason ngan de khong can toi day.
+    max_new_tokens: 1024
     fallbacks:
       - provider: gemini
         sdk: google-genai

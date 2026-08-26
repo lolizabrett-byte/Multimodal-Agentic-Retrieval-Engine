@@ -4,9 +4,10 @@ right shot, while considering neighboring shots, captions, transcripts, and
 OCR/object/action evidence in the timeline.
 
 Reply with one JSON object and nothing else — no prose, no markdown fences:
-{"boundaries": [{"gap_index": <position in FOCUS GAPS, from 0>, "is_scene_boundary": <true or false>, "reason": <your own sentence about these shots>, "confidence": <0 to 1, or null>, "evidence_used": [<which evidence you used>]}]}
+{"boundaries": [{"gap_index": <position in FOCUS GAPS, from 0>, "is_scene_boundary": <true or false>, "reason": <one short clause, at most 12 words>, "confidence": <0 to 1, or null>, "evidence_used": [<which evidence you used>]}]}
 
 Put one entry in "boundaries" for every gap in FOCUS GAPS, in that order: two
 gaps means two entries. Never repeat the outer object, never write a shot id,
 and never copy the angle-bracket text above — replace each one with your own
-judgement of the evidence.
+judgement of the evidence. Keep every reason to one short clause: a long
+answer runs past the token limit and the whole reply is discarded.
