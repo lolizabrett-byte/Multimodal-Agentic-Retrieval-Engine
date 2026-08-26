@@ -87,12 +87,10 @@ class StructuredSceneBoundaryJudge:
                                 "maximum": len(focus_gap_ids) - 1,
                             },
                             "is_scene_boundary": {"type": "boolean"},
-                            "reason": {"type": "string"},
-                            "confidence": {"type": ["number", "null"]},
-                            "evidence_used": {
-                                "type": "array",
-                                "items": {"type": "string"},
-                            },
+                            # v4 drops reason/confidence/evidence_used. Nothing
+                            # computes them — qa.py only prints them — and the
+                            # free-text reason is what pushed replies past the
+                            # ceiling until they were truncated mid-key.
                         },
                         "required": ["gap_index", "is_scene_boundary"],
                         "additionalProperties": False,
@@ -127,8 +125,11 @@ class StructuredSceneBoundaryJudge:
             if gap_id in result:
                 raise ValueError(f"Structured judge duplicated scene gap: {gap_id}")
             result[gap_id] = item["is_scene_boundary"]
+            # v4 no longer asks for these, so absent means "never requested",
+            # not "the model declined to say". Keep them null rather than "".
+            reason = item.get("reason")
             self._diagnostics[gap_id] = {
-                "reason": str(item.get("reason", "")),
+                "reason": str(reason) if reason is not None else None,
                 "confidence": item.get("confidence"),
                 "evidence_used": item.get("evidence_used", []),
             }

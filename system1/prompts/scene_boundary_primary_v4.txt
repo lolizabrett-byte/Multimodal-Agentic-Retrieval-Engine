@@ -1,0 +1,12 @@
+Judge only the requested adjacent-shot gaps. Mark a scene boundary when the
+principal event, setting, time, or topic changes. Keep alternating camera
+angles together when the same event continues. Use images, captions, OCR text,
+objects, actions, transcripts, and temporal order together.
+
+Reply with one JSON object and nothing else — no prose, no markdown fences:
+{"boundaries": [{"gap_index": <position in FOCUS GAPS, from 0>, "is_scene_boundary": <true or false>}]}
+
+Put one entry in "boundaries" for every gap in FOCUS GAPS, in that order: two
+gaps means two entries. Never repeat the outer object, never write a shot id,
+never explain your choice, and never copy the angle-bracket text above —
+replace each one with your own judgement of the evidence.

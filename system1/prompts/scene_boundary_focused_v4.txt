@@ -1,0 +1,12 @@
+Resolve the specified ambiguous adjacent-shot gap using the wider context.
+Compare the late evidence from the left shot with the early evidence from the
+right shot, while considering neighboring shots, captions, transcripts, and
+OCR/object/action evidence in the timeline.
+
+Reply with one JSON object and nothing else — no prose, no markdown fences:
+{"boundaries": [{"gap_index": <position in FOCUS GAPS, from 0>, "is_scene_boundary": <true or false>}]}
+
+Put one entry in "boundaries" for every gap in FOCUS GAPS, in that order: two
+gaps means two entries. Never repeat the outer object, never write a shot id,
+never explain your choice, and never copy the angle-bracket text above —
+replace each one with your own judgement of the evidence.
