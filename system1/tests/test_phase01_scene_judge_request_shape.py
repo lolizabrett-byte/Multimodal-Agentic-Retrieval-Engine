@@ -77,7 +77,7 @@ def test_every_request_reports_its_shape(tmp_path):
         focus_gap_ids=("v_SH00000", "v_SH00001"),
         context=_context(tmp_path, 6),
     )
-    shapes = [e for e in client.events if e.get("event") == "scene_judge_request"]
+    shapes = [e for e in client.events if e.get("status") == "scene_judge_request"]
     assert len(shapes) == 1
     shape = shapes[0]
     assert shape["request_kind"] == "primary"
@@ -98,7 +98,7 @@ def test_a_wider_context_reports_a_longer_prompt(tmp_path):
             context=_context(tmp_path, count),
         )
     small, large = [
-        e for e in client.events if e.get("event") == "scene_judge_request"
+        e for e in client.events if e.get("status") == "scene_judge_request"
     ]
     assert large["prompt_chars"] > small["prompt_chars"]
     assert large["sheet_height"] > small["sheet_height"]
@@ -116,7 +116,7 @@ def test_the_index_increments_so_a_failing_request_is_identifiable(tmp_path):
     indices = [
         e["request_index"]
         for e in client.events
-        if e.get("event") == "scene_judge_request"
+        if e.get("status") == "scene_judge_request"
     ]
     assert indices == [0, 1, 2]
 
@@ -138,14 +138,14 @@ def test_shape_is_emitted_before_the_request_runs(tmp_path):
         )
     except RuntimeError:
         pass
-    assert [e for e in client.events if e.get("event") == "scene_judge_request"]
+    assert [e for e in client.events if e.get("status") == "scene_judge_request"]
 
 
 def test_a_wrapped_client_still_reaches_the_log():
     """Production hands the judge a fallback wrapping a metadata wrapping local."""
     inner = _Client()
     wrapped = SimpleNamespace(clients=[SimpleNamespace(client=inner)])
-    _emit_request_shape(wrapped, {"event": "scene_judge_request"})
+    _emit_request_shape(wrapped, {"status": "scene_judge_request"})
     assert inner.events
 
 

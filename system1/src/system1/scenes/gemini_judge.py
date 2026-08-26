@@ -108,7 +108,11 @@ class StructuredSceneBoundaryJudge:
         _emit_request_shape(
             self.client,
             {
-                "event": "scene_judge_request",
+                # Must be "status": the lifecycle callback pops that key without
+                # a default and overwrites "event", so an "event" payload raises
+                # KeyError and the emitter below swallows it. That is why the
+                # first run carrying this logging produced no records at all.
+                "status": "scene_judge_request",
                 "request_index": self.request_index,
                 "request_kind": request_kind,
                 "video_id": self.video_id,

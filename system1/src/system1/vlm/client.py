@@ -437,6 +437,12 @@ class LocalVisionStructuredClient:
                 continue
             except Exception as exc:
                 if _is_cuda_oom(exc):
+                    # Before releasing, not after: the traceback still points at
+                    # the frames holding the activations that just overflowed,
+                    # so freeing while it lives reclaims the model and nothing
+                    # else. Keep the text — only the frames go.
+                    oom_detail = str(exc)
+                    _drop_traceback(exc)
                     _release_torch_memory()
                     if effective_batch_size > 1:
                         previous = effective_batch_size
@@ -468,12 +474,17 @@ class LocalVisionStructuredClient:
                         continue
                     self.close()
                     systemic = SystemicProviderError(
-                        f"{self.provider_name} CUDA OOM at batch_size=1: {exc}"
+                        f"{self.provider_name} CUDA OOM at batch_size=1: {oom_detail}"
                     )
                     for index in misses[cursor:]:
                         errors[index] = systemic
                     raise BatchRequestError(results=results, errors=errors) from exc
                 if _is_systemic_runtime_error(exc):
+                    # Same reason as the OOM branch above: close() below frees
+                    # the model, but the traceback keeps the failed pass's
+                    # tensors reachable until the frames go.
+                    runtime_detail = str(exc)
+                    _drop_traceback(exc)
                     systemic_attempts += 1
                     if systemic_attempts < self.total_attempts:
                         self.close()
@@ -489,7 +500,7 @@ class LocalVisionStructuredClient:
                         continue
                     self.close()
                     systemic = SystemicProviderError(
-                        f"{self.provider_name} runtime unavailable: {exc}"
+                        f"{self.provider_name} runtime unavailable: {runtime_detail}"
                     )
                     for index in misses[cursor:]:
                         errors[index] = systemic
@@ -1122,6 +1133,28 @@ def _close_client(client: Any) -> None:
     close = getattr(client, "close", None)
     if callable(close):
         close()
+
+
+def _drop_traceback(exc: BaseException) -> BaseException:
+    """Detach the frames an exception is holding, and its cause's frames too.
+
+    A caught exception keeps every stack frame it unwound, so the activations
+    the failed forward pass had just allocated stay reachable — `del model` and
+    `empty_cache()` cannot touch them. The 26/08 run reported 8.646 GB still
+    allocated right after unloading a 6.923 GB model for exactly this reason.
+
+    Returns the exception so it stays usable in the message that reports it.
+    """
+    current: BaseException | None = exc
+    seen: set[int] = set()
+    while current is not None and id(current) not in seen:
+        seen.add(id(current))
+        try:
+            current.__traceback__ = None
+        except Exception:  # noqa: BLE001 - cleanup never breaks the run
+            pass
+        current = current.__cause__ or current.__context__
+    return exc
 
 
 def _release_torch_memory() -> None:
