@@ -1,0 +1,23 @@
+{
+  "len_440": {
+    "raw_text": "{\"boundaries\": [{\"gap_index\": 0, \"is_scene_boundary\": true, \"reason\": \"The scene changes from a close-up of the mouse to an outdoor setting showing a man holding a wild boar.\", \"confidence\": null, \"evidence_used\": [\"OCR text\", \"Caption\"]}, {\"gap_index\": 1, \"is_scene_boundary\": false, \"reason\": \"This is part of the same scene as before; it continues with the outdoor setting and the man holding the wild boar.\", \"confidence\": null, \"eviden",
+    "reason": "schema_validation_error",
+    "error": "[{'gap_index': 0, 'is_scene_boundary': True, 'reason': 'The scene changes from a close-up of the mouse to an outdoor setting showing a man holding a wild boar.', 'confidence': None, 'evidence_used': ["
+  },
+  "len_686": {
+    "raw_text": "[{\"gap_index\": 0, \"is_scene_boundary\": true, \"reason\": \"Caption changes from 'Báo cáo tin tức trên truyền hình' to 'Thành phố Hồ Chí Minh khởi công dự án cải tạo, sửa chữa đền thờ Lễ Thành ông Nguyễn Thủ Cảnh. D di tích Hải Vân Quang bắt đầu mở cửa đóng khách tham quan từ ngày hôm nay tháng.'\", \"confidence\": null, \"evidence_used\": [\"visible_text_summary_en\"]}, {\"gap_index\": 1, \"is_scene_boundary\": false, \"reason\": \"Caption remains the same: 'Nhiệt độ T tại Barcelona đạt bốn mươi độ C nóng nhất trong qua, cứuứ hộ nam thanh niên rơi xuống vực sâu bên đèo Grai.', but there is a change in OCR text and transcript.\", \"confidence\": null, \"evidence_used\": [\"OCR_TEXT\", \"TRANSCRIPT\"]}]}]",
+    "reason": "json_decode_error",
+    "error": "Expecting value: line 1 column 685 (char 684)"
+  },
+  "len_477": {
+    "raw_text": "[{\"gap_index\": 0, \"is_scene_boundary\": true, \"reason\": \"The scene transitions from a news broadcast to an outdoor market setting.\", \"confidence\": null, \"evidence_used\": [\"OCR_text\", \"visible_text_summary_en\"]}, {\"gap_index\": 1, \"is_scene_boundary\": true, \"reason\": \"'Tỷ lệ đăng ký học đại học tăng' is displayed in multiple shots across different scenes (office and waiting room).\", \"confidence\": null, \"evidence_used\": [\"visible_text_summary_vi\", \"visible_text_summary_en\"]}]]",
+    "reason": "json_decode_error",
+    "error": "Expecting value: line 1 column 477 (char 476)"
+  },
+  "len_1024": {
+    "raw_text": "!!!!!!!!!!!!\"!!!!!!!!!!!#!!!!!!!!!!!$!!!!!!!!!!!%!!!!!!!!!!!&!!!!!!!!!!!'!!!!!!!!!!!(!!!!!!!!!!!)!!!!!!!!!!!*!!!!!!!!!!!+!!!!!!!!!!!,!!!!!!!!!!!-!!!!!!!!!!!.!!!!!!!!!!!/!!!!!!!!!!!0!!!!!!!!!!!1!!!!!!!!!!!2!!!!!!!!!!!3!!!!!!!!!!!4!!!!!!!!!!!5!!!!!!!!!!!6!!!!!!!!!!!7!!!!!!!!!!!8!!!!!!!!!!!9!!!!!!!!!!!:!!!!!!!!!!!;!!!!!!!!!!!<!!!!!!!!!!!=!!!!!!!!!!!>!!!!!!!!!!!?!!!!!!!!!!!@!!!!!!!!!!!A!!!!!!!!!!!B!!!!!!!!!!!C!!!!!!!!!!!D!!!!!!!!!!!E!!!!!!!!!!!F!!!!!!!!!!!G!!!!!!!!!!!H!!!!!!!!!!!I!!!!!!!!!!!J!!!!!!!!!!!K!!!!!!!!!!!L!!!!!!!!!!!M!!!!!!!!!!!N!!!!!!!!!!!O!!!!!!!!!!!P!!!!!!!!!!!Q!!!!!!!!!!!R!!!!!!!!!!!S!!!!!!!!!!!T!!!!!!!!!!!U!!!!!!!!!!!V!!!!!!!!!!!W!!!!!!!!!!!X!!!!!!!!!!!Y!!!!!!!!!!!Z!!!!!!!!!!![!!!!!!!!!!!\\!!!!!!!!!!!]!!!!!!!!!!!^!!!!!!!!!!!_!!!!!!!!!!!`!!!!!!!!!!!a!!!!!!!!!!!b!!!!!!!!!!!c!!!!!!!!!!!d!!!!!!!!!!!e!!!!!!!!!!!f!!!!!!!!!!!g!!!!!!!!!!!h!!!!!!!!!!!i!!!!!!!!!!!j!!!!!!!!!!!k!!!!!!!!!!!l!!!!!!!!!!!m!!!!!!!!!!!n!!!!!!!!!!!o!!!!!!!!!!!p!!!!!!!!!!!q!!!!!!!!!!!r!!!!!!!!!!!s!!!!!!!!!!!t!!!!!!!!!!!u!!!!!!!!!!!v!!!",
+    "reason": "json_decode_error",
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "note": "caption thoai hoa do nan - lay tu kg10 26/08"
+  }
+}

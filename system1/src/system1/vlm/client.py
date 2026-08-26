@@ -6,6 +6,7 @@ import re
 import threading
 import time
 import warnings
+from collections import Counter
 from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Any, Protocol
@@ -54,6 +55,14 @@ class BatchRequestError(RuntimeError):
             for index, error in sorted(self.errors.items())
         )
         super().__init__(details or "structured request batch failed")
+
+
+class DegenerateOutputError(ValueError):
+    """The model emitted a repeated-character run instead of a reply.
+
+    Distinct from a parse failure: this is what NaN logits look like from the
+    outside, and lumping it in with json_decode_error hides the real cause.
+    """
 
 
 class _NativeBatchUnavailable(RuntimeError):
@@ -132,6 +141,11 @@ class FallbackStructuredClient:
         try:
             return self.request_many([request])[0]
         except BatchRequestError as exc:
+            # Keep the systemic type: callers isolate a single bad reply but must
+            # not swallow "the provider is gone", and a bare RuntimeError makes
+            # those two indistinguishable.
+            if any(_is_systemic_provider_error(e) for e in exc.errors.values()):
+                raise SystemicProviderError(str(exc)) from exc
             raise RuntimeError(str(exc)) from exc
 
     def request_many(
@@ -217,14 +231,22 @@ class FallbackStructuredClient:
                     all_errors.pop(index, None)
                 except Exception as exc:  # noqa: BLE001 - try next fallback
                     previous = all_errors.get(index)
-                    all_errors[index] = (
-                        RuntimeError(
+                    if previous is None:
+                        all_errors[index] = exc
+                    else:
+                        combined = (
                             f"{type(previous).__name__}: {previous} | "
                             f"{type(exc).__name__}: {exc}"
                         )
-                        if previous is not None
-                        else exc
-                    )
+                        # Merging the two attempts must not erase "the provider
+                        # is gone" — callers branch on that type to tell a dead
+                        # GPU from one unparseable reply.
+                        all_errors[index] = (
+                            SystemicProviderError(combined)
+                            if _is_systemic_provider_error(previous)
+                            or _is_systemic_provider_error(exc)
+                            else RuntimeError(combined)
+                        )
                     next_unresolved.append(index)
             unresolved = next_unresolved
         self._emit(
@@ -239,10 +261,13 @@ class FallbackStructuredClient:
 
     def _record_provider_requests(self, client: StructuredClient, count: int) -> None:
         provider = str(getattr(client, "provider_name", ""))
-        if provider == "qwen_local":
-            self._counts["qwen_request_count"] += count
-        elif provider == "gemini":
+        if provider == "gemini":
             self._counts["gemini_request_count"] += count
+        elif provider:
+            # Anything that is not the remote provider is a local one. Listing
+            # local providers by name meant Vintern went uncounted for its whole
+            # run; the key keeps its qwen_ name because logs and tests read it.
+            self._counts["qwen_request_count"] += count
 
     def _open_circuit(self, primary: StructuredClient, *, reason: str) -> None:
         if self._circuit_open:
@@ -297,6 +322,11 @@ class LocalVisionStructuredClient:
             self.model_config.get("inference_batch_size", 1)
         )
         self.max_dynamic_patch = int(self.model_config.get("max_dynamic_patch", 1))
+        self.max_repeat_char_ratio = float(
+            self.model_config.get("max_repeat_char_ratio", 0.6)
+        )
+        if not 0.0 < self.max_repeat_char_ratio <= 1.0:
+            raise ValueError("local VLM max_repeat_char_ratio must be in (0, 1]")
         if self.total_attempts < 1:
             raise ValueError("local VLM total_attempts must be positive")
         if self.inference_batch_size < 1:
@@ -482,6 +512,14 @@ class LocalVisionStructuredClient:
                 batch_indices, batch_requests, raw_texts, strict=True
             ):
                 try:
+                    # Checked here, not in the generate call: one NaN reply must
+                    # cost its own request, not the whole batch it rode in with.
+                    if _is_degenerate_output(raw_text, self.max_repeat_char_ratio):
+                        character, count = Counter(raw_text).most_common(1)[0]
+                        raise DegenerateOutputError(
+                            "vintern_local returned a degenerate repeat: "
+                            f"{count}/{len(raw_text)} characters are {character!r}"
+                        )
                     normalized = _parse_json_object(raw_text, request.response_schema)
                     self._write_cached(
                         cache_paths[index], request=request, normalized=normalized
@@ -829,6 +867,9 @@ class LocalVisionStructuredClient:
                         )
                     model = model.to(device)
                 model.eval()
+                attn_implementation = _apply_attn_implementation(
+                    model, self.model_config.get("attn_implementation")
+                )
                 self._loaded = (tokenizer, model)
             except Exception as exc:
                 _release_torch_memory()
@@ -846,6 +887,7 @@ class LocalVisionStructuredClient:
                 load_seconds=round(time.monotonic() - started, 3),
                 quantization_mode="none",
                 native_batch_capable=callable(getattr(model, "batch_chat", None)),
+                attn_implementation=attn_implementation,
             )
             return tokenizer, model
 
@@ -921,6 +963,57 @@ def _torch_dtype(value: Any, torch: Any):
     return getattr(torch, attribute)
 
 
+_MIN_DEGENERATE_LENGTH = 64
+
+
+def _is_degenerate_output(text: str, ratio: float) -> bool:
+    """True when one character dominates the reply — the NaN signature.
+
+    Measured over the 3360 caption strings the 355-image benchmark produced:
+    real captions peak at 0.302 (the winner being a space), while the NaN walk
+    sits at 0.917 and above. The length floor keeps short legitimate replies,
+    where a single character trivially dominates, out of it.
+    """
+    if len(text) < _MIN_DEGENERATE_LENGTH:
+        return False
+    most_common = Counter(text).most_common(1)[0][1]
+    return most_common / len(text) >= ratio
+
+
+def _apply_attn_implementation(model: Any, requested: Any) -> str | None:
+    """Swap the attention kernel the remote code picked, after the model loads.
+
+    Vintern's `__init__` overwrites `_attn_implementation` unconditionally —
+    'eager' whenever flash-attn is off, which it always is on a T4. Eager is the
+    one kernel that materialises attn_weights in fp16 and adds the causal mask to
+    it, so an overflow to inf becomes NaN and every logit follows
+    (transformers#33294). Qwen2Attention re-reads the setting on each forward,
+    so overriding it here takes effect without touching the remote code.
+
+    Returns the value in force afterwards, or None when the model has no config
+    to set it on. Never raises: the worst case is the behaviour we already had.
+    """
+    if not requested:
+        requested = None
+    language_model = getattr(model, "language_model", None)
+    config = getattr(language_model, "config", None)
+    if config is None:
+        return None
+    if requested is None:
+        return getattr(config, "_attn_implementation", None)
+    try:
+        config._attn_implementation = requested
+        modules = getattr(language_model, "modules", None)
+        if callable(modules):
+            for module in modules():
+                child = getattr(module, "config", None)
+                if child is not None and child is not config:
+                    child._attn_implementation = requested
+    except Exception:  # noqa: BLE001 - a frozen config is not worth failing a load
+        pass
+    return getattr(config, "_attn_implementation", None)
+
+
 def _supported_torch_dtype(value: Any, torch: Any):
     """Downgrade bfloat16 to float16 on GPUs that lack bf16 (Kaggle's T4 is Turing).
 
@@ -990,6 +1083,10 @@ def _record_failure_sample(
 def _fallback_reason(exc: BaseException) -> str:
     if isinstance(exc, SystemicProviderError):
         return "systemic_local_runtime"
+    # Before the ValueError catch-all below: a NaN-driven repeat is a numerics
+    # failure, not a malformed reply, and the two need separate counts in the log.
+    if isinstance(exc, DegenerateOutputError):
+        return "degenerate_output"
     if isinstance(exc, json.JSONDecodeError):
         return "json_decode_error"
     if isinstance(exc, ValidationError):
@@ -1119,7 +1216,13 @@ def _salvage_wrapper_items(text: str, wrapper: str) -> list[Any] | None:
 
 
 def _load_concatenated_arrays(text: str) -> list[Any]:
-    """Parse one array, or several the model ran together as `[...], [...]`."""
+    """Parse one array, or several the model ran together as `[...], [...]`.
+
+    Trailing junk after a complete array is dropped rather than raised on: the
+    26/08 run lost two replies that held every requested boundary and ended in
+    one stray `]`. Nothing is invented here — the caller still validates the
+    salvaged items against the schema, so a short reply fails as it always did.
+    """
     decoder = json.JSONDecoder()
     items: list[Any] = []
     index = 0
@@ -1129,7 +1232,12 @@ def _load_concatenated_arrays(text: str) -> list[Any]:
             index += 1
         if index >= length:
             break
-        value, index = decoder.raw_decode(text, index)
+        try:
+            value, index = decoder.raw_decode(text, index)
+        except json.JSONDecodeError:
+            if items:
+                break
+            raise
         if not isinstance(value, list):
             raise TypeError("structured local VLM response must be an object")
         items.extend(value)

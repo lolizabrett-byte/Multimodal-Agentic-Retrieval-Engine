@@ -85,6 +85,15 @@ phase01:
     # shard a model that fits on one card, adding cross-GPU hops for nothing.
     torch_dtype: float16
     device_map: cuda:0
+    # Remote code dat cung 'eager' khi khong co flash-attn, ma T4 khong chay duoc
+    # flash-attn. Eager la duong duy nhat vat chat hoa attn_weights o fp16 roi
+    # cong causal mask: tran thanh inf, inf+(-inf) ra nan, model xuat "!!!!"
+    # (transformers#33294). SDPA nhan cung dau vao do ma khong ra nan.
+    attn_implementation: sdpa
+    # Chuoi mot ky tu lap la dau hieu logits nan. Do tren 3360 caption that:
+    # cao nhat 0,302 (lap dau cach); chuoi hong 0,917-1,000. Nguong 0,6 nam
+    # giua khoang trong do.
+    max_repeat_char_ratio: 0.6
     prompt_version: keyframe_ocr_v2
     response_schema_version: keyframe_ocr_response_v1
     max_new_tokens: 512
@@ -114,6 +123,13 @@ phase01:
     trust_remote_code: true
     torch_dtype: float16
     device_map: cuda:0
+    # Xem giai thich o muc ocr: eager + fp16 tren T4 sinh nan -> "!!!!".
+    # Luot chay 26/08 hong 74/981 request (7,5%) vi loi nay.
+    attn_implementation: sdpa
+    # Chuoi mot ky tu lap la dau hieu logits nan. Do tren 3360 caption that:
+    # cao nhat 0,302 (lap dau cach); chuoi hong 0,917-1,000. Nguong 0,6 nam
+    # giua khoang trong do.
+    max_repeat_char_ratio: 0.6
     prompt_version: shot_caption_v4
     response_schema_version: shot_caption_response_v2
     # Judge ranh gioi canh dung chung client nay (production.py:934 truyen
@@ -144,9 +160,11 @@ phase01:
     model_key: shot_caption
     # v3 bo after_shot_id: model tra gap_index (vi tri trong FOCUS GAPS) thay vi
     # chep lai shot id. No khong the bia mot so nguyen ngoai khoang [0, N).
-    prompt_version: scene_boundary_primary_v3
-    focused_prompt_version: scene_boundary_focused_v3
-    consistency_prompt_version: scene_boundary_consistency_v3
+    # v4 chi con gap_index + is_scene_boundary. Ba truong kia khong ai tinh
+    # toan (qa.py chi hien thi), va reason la thu day cau tra loi vuot tran.
+    prompt_version: scene_boundary_primary_v4
+    focused_prompt_version: scene_boundary_focused_v4
+    consistency_prompt_version: scene_boundary_consistency_v4
     response_schema_version: scene_boundary_response_v1
     fallbacks:
       - provider: gemini
