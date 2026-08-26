@@ -16,6 +16,7 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+from jsonschema.exceptions import ValidationError
 
 from system1.artifacts.checkpoint import sha256_file
 from system1.artifacts.hf_store import HuggingFaceDatasetArtifactStore
@@ -49,6 +50,7 @@ from system1.vlm import (
     FallbackStructuredClient,
     LocalVisionStructuredClient,
     MetadataStructuredClient,
+    SystemicProviderError,
 )
 
 PARQUET_COLUMNS: dict[str, list[str]] = {
@@ -2386,5 +2388,34 @@ def _required_text(payload: Mapping[str, Any], key: str) -> str:
 
 
 def _retryable_video_error(exc):
+    # "decode" is here for ffmpeg, not for JSON. A malformed reply says nothing
+    # about the machine, and treating one as infrastructure re-raises past the
+    # per-scene degradation below — three good videos died on 27/08 because one
+    # summary in thirteen came back with the wrong closing bracket.
+    if _carries(exc, (SystemicProviderError, MemoryError)):
+        return True
+    if _carries(exc, (json.JSONDecodeError, ValidationError)):
+        return False
     message = str(exc).lower()
     return any(marker in message for marker in ("timeout", "timed out", "429", "500", "502", "503", "504", "out of memory", "temporarily unavailable", "connection reset", "decode", "i/o"))
+
+
+def _carries(exc, types: tuple[type, ...]) -> bool:
+    """True when exc is one of `types`, or wraps one.
+
+    A batch failure reports as BatchRequestError and keeps the real cause in
+    `.errors`, so the type that decides how to react is never the outer one.
+    """
+    seen: set[int] = set()
+    queue = [exc]
+    while queue:
+        current = queue.pop()
+        if current is None or id(current) in seen:
+            continue
+        seen.add(id(current))
+        if isinstance(current, types):
+            return True
+        queue.extend((getattr(current, "errors", None) or {}).values())
+        queue.append(current.__cause__)
+        queue.append(current.__context__)
+    return False
