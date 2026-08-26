@@ -100,6 +100,24 @@ class StructuredSceneBoundaryJudge:
             "required": ["boundaries"],
             "additionalProperties": False,
         }
+        # Emitted before the request, not after: the run that OOMed left no trace
+        # of what the offending request looked like, so 123 healthy ones and the
+        # one that took 14 GB were indistinguishable afterwards. This goes to the
+        # lifecycle log rather than diagnostics_dir, which lives on scratch and
+        # never leaves the machine.
+        _emit_request_shape(
+            self.client,
+            {
+                "event": "scene_judge_request",
+                "request_index": self.request_index,
+                "request_kind": request_kind,
+                "video_id": self.video_id,
+                "prompt_chars": len(prompt),
+                "context_shots": len(context),
+                "focus_gaps": len(focus_gap_ids),
+                **(_image_shape(image_paths[0]) if image_paths else {}),
+            },
+        )
         response = self.client.request(
             StructuredRequest(
                 request_kind=f"scene_boundary_{request_kind}",
@@ -142,6 +160,46 @@ class StructuredSceneBoundaryJudge:
 
     def diagnostics_for(self, gap_id: str) -> Mapping[str, Any]:
         return self._diagnostics.get(gap_id, {})
+
+
+def _image_shape(path: Path) -> dict[str, Any]:
+    """The sheet's dimensions, which decide how many tiles Vintern splits it into."""
+    try:
+        from PIL import Image
+
+        with Image.open(path) as image:
+            width, height = image.size
+    except Exception:  # noqa: BLE001 - diagnostics must not break a request
+        return {}
+    return {
+        "sheet_width": width,
+        "sheet_height": height,
+        "sheet_aspect": round(width / height, 2) if height else None,
+    }
+
+
+def _emit_request_shape(client: Any, payload: Mapping[str, Any]) -> None:
+    """Send the request's shape to whatever lifecycle log the client reports to.
+
+    The client arrives wrapped (fallback around metadata around local), and only
+    the innermost one carries the callback, so walk the wrappers to find it.
+    """
+    seen: set[int] = set()
+    queue = [client]
+    while queue:
+        current = queue.pop(0)
+        if current is None or id(current) in seen:
+            continue
+        seen.add(id(current))
+        callback = getattr(current, "lifecycle_callback", None)
+        if callable(callback):
+            try:
+                callback(dict(payload))
+            except Exception:  # noqa: BLE001 - diagnostics never break a request
+                pass
+            return
+        queue.append(getattr(current, "client", None))
+        queue.extend(getattr(current, "clients", None) or [])
 
 
 def _write_contact_sheet(context: Sequence[Mapping[str, Any]], output: Path) -> None:
