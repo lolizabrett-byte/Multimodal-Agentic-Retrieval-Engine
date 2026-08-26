@@ -73,7 +73,14 @@ class StructuredSceneBoundaryJudge:
                     "items": {
                         "type": "object",
                         "properties": {
-                            "after_shot_id": {"type": "string"},
+                            # A position, not a shot id. The model kept inventing
+                            # ids from other videos; an integer it cannot spell
+                            # wrong is checkable arithmetically instead.
+                            "gap_index": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": len(focus_gap_ids) - 1,
+                            },
                             "is_scene_boundary": {"type": "boolean"},
                             "reason": {"type": "string"},
                             "confidence": {"type": ["number", "null"]},
@@ -82,7 +89,7 @@ class StructuredSceneBoundaryJudge:
                                 "items": {"type": "string"},
                             },
                         },
-                        "required": ["after_shot_id", "is_scene_boundary"],
+                        "required": ["gap_index", "is_scene_boundary"],
                         "additionalProperties": False,
                     },
                 }
@@ -106,7 +113,12 @@ class StructuredSceneBoundaryJudge:
         boundaries = response["boundaries"]
         result: dict[str, bool] = {}
         for item in boundaries:
-            gap_id = str(item["after_shot_id"])
+            index = int(item["gap_index"])
+            if not 0 <= index < len(focus_gap_ids):
+                raise ValueError(
+                    f"Structured judge returned out-of-range gap_index: {index}"
+                )
+            gap_id = focus_gap_ids[index]
             if gap_id in result:
                 raise ValueError(f"Structured judge duplicated scene gap: {gap_id}")
             result[gap_id] = item["is_scene_boundary"]
@@ -115,6 +127,11 @@ class StructuredSceneBoundaryJudge:
                 "confidence": item.get("confidence"),
                 "evidence_used": item.get("evidence_used", []),
             }
+        if len(result) != len(focus_gap_ids):
+            raise ValueError(
+                "Structured judge did not cover every requested gap: "
+                f"expected {len(focus_gap_ids)}, got {len(result)}"
+            )
         return result
 
     def diagnostics_for(self, gap_id: str) -> Mapping[str, Any]:

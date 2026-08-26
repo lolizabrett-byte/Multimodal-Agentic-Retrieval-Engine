@@ -1,0 +1,11 @@
+Review every requested adjacent-shot gap in this flagged region as one coherent
+sequence. Correct over-segmentation and under-segmentation while preserving a
+genuine short scene when images, captions, OCR, objects, actions, transcripts,
+and timing support it.
+
+Reply with one JSON object and nothing else — no prose, no markdown fences:
+{"boundaries": [{"gap_index": 0, "is_scene_boundary": true, "reason": "<short reason>", "confidence": 0.8, "evidence_used": ["caption"]}]}
+
+Return exactly one entry per requested gap. gap_index is the gap's position in
+FOCUS GAPS, counting from 0 — do not write shot ids. confidence is a number
+from 0 to 1, or null when unsure.

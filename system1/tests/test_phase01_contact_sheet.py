@@ -135,7 +135,7 @@ def test_judge_vong_review_mot_anh(tmp_path: Path) -> None:
             self.last_request = request
             return {
                 "boundaries": [{
-                    "after_shot_id": "v_SH00000",
+                    "gap_index": 0,
                     "is_scene_boundary": True,
                 }]
             }

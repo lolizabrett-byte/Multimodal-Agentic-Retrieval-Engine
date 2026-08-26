@@ -138,9 +138,11 @@ phase01:
   scene_boundary:
     provider: vintern_local
     model_key: shot_caption
-    prompt_version: scene_boundary_primary_v2
-    focused_prompt_version: scene_boundary_focused_v2
-    consistency_prompt_version: scene_boundary_consistency_v2
+    # v3 bo after_shot_id: model tra gap_index (vi tri trong FOCUS GAPS) thay vi
+    # chep lai shot id. No khong the bia mot so nguyen ngoai khoang [0, N).
+    prompt_version: scene_boundary_primary_v3
+    focused_prompt_version: scene_boundary_focused_v3
+    consistency_prompt_version: scene_boundary_consistency_v3
     response_schema_version: scene_boundary_response_v1
     fallbacks:
       - provider: gemini

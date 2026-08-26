@@ -126,7 +126,7 @@ def test_generic_qwen_boundary_judge_receives_existing_multimodal_evidence(
             self.last_request = request
             return {
                 "boundaries": [{
-                    "after_shot_id": "v_SH00000",
+                    "gap_index": 0,
                     "is_scene_boundary": True,
                     "reason": "location changed",
                     "confidence": 0.8,
