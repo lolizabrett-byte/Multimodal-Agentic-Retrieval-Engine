@@ -3,13 +3,10 @@ Compare the late evidence from the left shot with the early evidence from the
 right shot, while considering neighboring shots, captions, transcripts, and
 OCR/object/action evidence in the timeline.
 
-Reply with one JSON object and nothing else — no prose, no markdown fences.
-One entry per gap in FOCUS GAPS, so N gaps means exactly N entries. gap_index is
-the gap's position in FOCUS GAPS counting from 0; never write a shot id. Write a
-real reason in your own words. confidence is a number from 0 to 1, or null.
+Reply with one JSON object and nothing else — no prose, no markdown fences:
+{"boundaries": [{"gap_index": <position in FOCUS GAPS, from 0>, "is_scene_boundary": <true or false>, "reason": <your own sentence about these shots>, "confidence": <0 to 1, or null>, "evidence_used": [<which evidence you used>]}]}
 
-Shape (this example has 2 entries because it answers 2 gaps):
-{"boundaries": [{"gap_index": 0, "is_scene_boundary": true, "reason": "indoor studio cuts to an outdoor market", "confidence": 0.9, "evidence_used": ["caption"]}, {"gap_index": 1, "is_scene_boundary": false, "reason": "same market, camera angle only", "confidence": 0.7, "evidence_used": ["caption", "objects_en"]}]}
-
-Every entry sits inside the single "boundaries" array — do not repeat the outer
-object. Answer all N gaps even when the answer for several of them is the same.
+Put one entry in "boundaries" for every gap in FOCUS GAPS, in that order: two
+gaps means two entries. Never repeat the outer object, never write a shot id,
+and never copy the angle-bracket text above — replace each one with your own
+judgement of the evidence.

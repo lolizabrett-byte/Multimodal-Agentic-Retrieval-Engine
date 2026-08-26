@@ -116,9 +116,12 @@ retry:
   schema_repair_attempts: 1
 
 scene_grouping:
-  focus_gap_count: 8
+  # Vintern-3B khong giu noi 8 phan doan trong mot cau tra loi: lan chay 26/08
+  # cho thay no chep thang vi du trong prompt thay vi phan doan. Hoi 2 gap moi
+  # lan la viec vua suc hon, doi lai 162 request/video thay vi 54.
+  focus_gap_count: 2
   context_shots_each_side: 4
-  stride: 6
+  stride: 2
   boundary_threshold: 0.67
   non_boundary_threshold: 0.33
   dense_boundary_count: 2
