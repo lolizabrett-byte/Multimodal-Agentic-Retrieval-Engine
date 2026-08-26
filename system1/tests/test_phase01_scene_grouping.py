@@ -36,6 +36,7 @@ def config() -> dict:
         "strong_disagreement_min_votes": 2,
         "strong_disagreement_requires_both_labels": True,
         "max_consistency_review_rounds": 1,
+        "consistency_review_max_gaps": 2,
         "min_failed_gaps_before_abort": 3,
         "max_failed_gap_ratio": 0.25,
         "scene_confidence_aggregation": "null_v1",
@@ -96,7 +97,7 @@ def test_ambiguous_overlap_triggers_focused_review() -> None:
     assert any(call[0] == "focused_review" for call in judge.calls)
 
 
-def test_dense_boundaries_trigger_one_bounded_consistency_region() -> None:
+def test_dense_boundaries_trigger_bounded_consistency_regions() -> None:
     def handler(kind, ids):
         if kind == "primary":
             return {gap_id: gap_id in {"v_SH00001", "v_SH00002"} for gap_id in ids}
@@ -107,7 +108,9 @@ def test_dense_boundaries_trigger_one_bounded_consistency_region() -> None:
         video_id="v", shots=shots(7), evidence=shots(7), judge=judge, config=config()
     )
     consistency_calls = [call for call in judge.calls if call[0] == "consistency_review"]
-    assert len(consistency_calls) == 1
+    assert consistency_calls
+    cap = config()["consistency_review_max_gaps"]
+    assert all(len(call[1]) <= cap for call in consistency_calls)
     assert any(decision.consistency_review_triggered for decision in decisions)
 
 

@@ -17,6 +17,7 @@ CONFIG = {
     "strong_disagreement_min_votes": 2,
     "strong_disagreement_requires_both_labels": True,
     "max_consistency_review_rounds": 1,
+    "consistency_review_max_gaps": 2,
     "min_failed_gaps_before_abort": 3,
     "max_failed_gap_ratio": 0.25,
 }

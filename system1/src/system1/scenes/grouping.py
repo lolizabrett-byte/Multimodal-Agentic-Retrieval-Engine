@@ -200,6 +200,7 @@ def group_scenes(
             triggered,
             gap_count=len(gap_ids),
             padding=int(config["context_shots_each_side"]),
+            max_gaps=int(config["consistency_review_max_gaps"]),
         ):
             region_ids = tuple(gap_ids[index] for index in region)
             context_start = max(0, region[0] - int(config["context_shots_each_side"]))
@@ -416,7 +417,7 @@ def _consistency_trigger_gaps(
 
 
 def _merge_review_regions(
-    triggered: set[int], *, gap_count: int, padding: int
+    triggered: set[int], *, gap_count: int, padding: int, max_gaps: int
 ) -> list[tuple[int, ...]]:
     intervals = [
         (max(0, index - padding), min(gap_count - 1, index + padding))
@@ -428,7 +429,15 @@ def _merge_review_regions(
             merged.append([start, end])
         else:
             merged[-1][1] = max(merged[-1][1], end)
-    return [tuple(range(start, end + 1)) for start, end in merged]
+    # A dense video triggers nearly every gap, and merging then yields one region
+    # spanning the whole video: 247 shots and 97k tokens in a single request, which
+    # no GPU budget survives. Splitting keeps each request the size the primary
+    # round already runs at.
+    regions: list[tuple[int, ...]] = []
+    for start, end in merged:
+        for offset in range(start, end + 1, max_gaps):
+            regions.append(tuple(range(offset, min(offset + max_gaps, end + 1))))
+    return regions
 
 
 def _validate_ordered_shots(shots: Sequence[Mapping[str, Any]], video_id: str) -> None:

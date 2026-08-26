@@ -135,6 +135,10 @@ scene_grouping:
   strong_disagreement_min_votes: 2
   strong_disagreement_requires_both_labels: true
   max_consistency_review_rounds: 1
+  # Bang focus_gap_count: mot video cat canh nhanh trigger gan het gap, gop lai
+  # thanh mot vung phu ca video. 2 giu moi request dung bang co request primary
+  # da chay on suot 123 lan.
+  consistency_review_max_gaps: 2
   scene_confidence_aggregation: null_v1
 
 scene_summary:
@@ -192,5 +196,6 @@ production_readiness:
     - phase01.scene_grouping.dense_boundary_gap_window
     - phase01.scene_grouping.strong_disagreement_min_votes
     - phase01.scene_grouping.max_consistency_review_rounds
+    - phase01.scene_grouping.consistency_review_max_gaps
     - phase01.scene_grouping.scene_confidence_aggregation
     - storage.checkpoint.repo_id
