@@ -1302,6 +1302,42 @@ def _drop_unknown_item_keys(
     ]
 
 
+def _salvage_flat_object(text: str) -> Any:
+    """Read an object the model closed with the wrong bracket, or not at all.
+
+    Vintern-3B ends `{"summary_vi": ..., "summary_en": ...` with `]` instead of
+    `}` on roughly one reply in thirteen, and sometimes appends the prompt's own
+    evidence after it. The array-shaped salvage paths above cannot help: a flat
+    object has no wrapper property, so those never run and the reply is lost
+    with every field intact.
+
+    Only the model's own closing punctuation is corrected. Truncated string
+    values are left broken, so nothing is invented — the caller still validates
+    against the schema.
+    """
+    decoder = json.JSONDecoder()
+    stripped = text.lstrip()
+    try:
+        value, _ = decoder.raw_decode(stripped)
+    except json.JSONDecodeError:
+        pass
+    else:
+        if isinstance(value, dict):
+            return value
+    # Walk back from every closing quote: the wrong bracket sits right after the
+    # last value the model finished, and whatever follows is the prompt's own
+    # evidence echoed back. Closing at each candidate finds where the object
+    # really ended without guessing at the content.
+    for cut in reversed([index for index, char in enumerate(stripped) if char == '"']):
+        try:
+            value = json.loads(stripped[: cut + 1] + "}")
+        except json.JSONDecodeError:
+            continue
+        if isinstance(value, dict):
+            return value
+    raise json.JSONDecodeError("could not repair the object", text, 0)
+
+
 def _parse_json_object(raw_text: str, schema: dict[str, Any]) -> dict[str, Any]:
     text = raw_text.strip()
     fence = re.fullmatch(r"```(?:json)?\s*(.*?)\s*```", text, flags=re.DOTALL)
@@ -1326,7 +1362,10 @@ def _parse_json_object(raw_text: str, schema: dict[str, Any]) -> dict[str, Any]:
             end = text.rfind("}")
             if start >= 0 and end > start:
                 text = text[start : end + 1]
-        payload = json.loads(text)
+        try:
+            payload = json.loads(text)
+        except json.JSONDecodeError:
+            payload = _salvage_flat_object(text)
     if not isinstance(payload, dict):
         raise TypeError("structured local VLM response must be an object")
     # A well-formed object can still carry the model's misspellings, so the
