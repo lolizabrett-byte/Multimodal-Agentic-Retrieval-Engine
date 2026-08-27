@@ -60,7 +60,7 @@ def run_phase01_pipeline(
     ):
         if user_settings.get(setting) is not None:
             release_storage[key] = user_settings[setting]
-    discovery_cache = output_root.resolve().parent / ".phase01_hf_cache" / "discovery"
+    discovery_cache = output_root.resolve().parent / ".phase01_hf_cache" / f"discovery-{os.getpid()}"
     try:
         release_store = _hf_store(release_storage, cache_dir=discovery_cache)
         selected = resolve_phase00_release(
@@ -77,7 +77,7 @@ def run_phase01_pipeline(
     require_phase01_production_ready(resolved)
     scratch_root = _scratch_root(resolved.payload["storage"], output_root)
     if validate_remote:
-        preflight_cache = scratch_root / ".hf_cache" / "storage_preflight"
+        preflight_cache = scratch_root / ".hf_cache" / f"storage_preflight-{os.getpid()}"
         try:
             run_phase01_storage_preflight(resolved, cache_dir=preflight_cache)
         finally:
@@ -85,7 +85,7 @@ def run_phase01_pipeline(
     release_id = str(resolved.payload["runtime"]["release_id"])
     release_dir = output_root.resolve() / release_id
     if restore_phase00:
-        restore_cache = scratch_root / ".hf_cache" / "phase00_restore"
+        restore_cache = scratch_root / ".hf_cache" / f"phase00_restore-{os.getpid()}"
         try:
             _restore_phase00_if_needed(
                 output_root=output_root,
