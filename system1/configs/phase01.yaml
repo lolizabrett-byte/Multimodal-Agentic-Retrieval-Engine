@@ -135,10 +135,11 @@ scene_grouping:
   strong_disagreement_min_votes: 2
   strong_disagreement_requires_both_labels: true
   max_consistency_review_rounds: 1
-  # Bang focus_gap_count: mot video cat canh nhanh trigger gan het gap, gop lai
-  # thanh mot vung phu ca video. 2 giu moi request dung bang co request primary
-  # da chay on suot 123 lan.
-  consistency_review_max_gaps: 2
+  # Mot video cat canh nhanh trigger gan het gap, gop lai thanh mot vung phu ca
+  # video: 247 shot va 97k token trong mot request, khong card nao chiu noi.
+  # 4 cho 13 shot moi request (~5.4k token, 7.67 GB tren card 15 GB) va mot nua
+  # so request so voi 2 - dang ke khi ngan sach GPU la rang buoc chinh.
+  consistency_review_max_gaps: 4
   scene_confidence_aggregation: null_v1
 
 scene_summary:
