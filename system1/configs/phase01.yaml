@@ -15,7 +15,9 @@ execution:
   # sized for two concurrent workers (scripts/run_dual_gpu.py), not one.
   inference_batch_size:
     ocr: 4
-    shot_captions: 2
+    # 4 do duoc 3.47s/shot vs 4.97s o 2 — nhanh 30%, va dinh VRAM chi 7.71 GB
+    # tren card 15 GB. Do tren 4 video chay tu dau, 431 shot.
+    shot_captions: 4
   require_phase00_frame_timeline: true
   checkpoint_after_each_stage: true
   continue_after_retryable_video_failure: true
