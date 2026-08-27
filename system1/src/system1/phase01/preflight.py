@@ -80,7 +80,7 @@ def run_phase01_preflight(
         expected_conversion_verified=bool(shot_model.get("conversion_verified", True)),
     )
     if validate_remote:
-        storage_cache = scratch_root / ".hf_cache" / "storage_preflight"
+        storage_cache = scratch_root / ".hf_cache" / f"storage_preflight-{os.getpid()}"
         try:
             run_phase01_storage_preflight(config, cache_dir=storage_cache)
         finally:

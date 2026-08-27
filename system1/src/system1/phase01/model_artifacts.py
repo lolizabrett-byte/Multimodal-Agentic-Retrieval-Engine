@@ -40,7 +40,7 @@ def materialize_transnet_artifact(
         except (FileNotFoundError, ValueError):
             shutil.rmtree(target)
 
-    download_cache = cache_root / ".hf_download_cache"
+    download_cache = cache_root / f".hf_download_cache-{os.getpid()}"
     store = HuggingFaceDatasetArtifactStore(
         repo_id=str(storage_config["repo_id"]),
         repo_type=str(storage_config.get("repo_type", "dataset")),
@@ -71,7 +71,15 @@ def materialize_transnet_artifact(
                 expected_conversion_verified=expected_conversion_verified,
             )
             target.parent.mkdir(parents=True, exist_ok=True)
-            os.replace(staged, target)
+            try:
+                os.replace(staged, target)
+            except OSError:
+                # Another worker on this machine finished the same download while
+                # this one was still fetching. os.replace refuses a non-empty
+                # directory, and the bundle is content-addressed by commit, so
+                # whatever landed there is the same bundle — validated below.
+                if not target.is_dir():
+                    raise
     finally:
         shutil.rmtree(download_cache, ignore_errors=True)
     return load_transnet_artifact(
